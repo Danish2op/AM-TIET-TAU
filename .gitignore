@@ -2,7 +2,8 @@ node_modules/
 dist/
 .vercel/
 tmp/
+resources and photos/
+tsconfig.tsbuildinfo
 *.local
 .env
 .env.*
-
