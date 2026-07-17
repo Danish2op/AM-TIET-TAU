@@ -1,0 +1,9 @@
+node_modules
+dist
+tmp
+resources and photos
+.git
+*.local
+.env
+.env.*
+
