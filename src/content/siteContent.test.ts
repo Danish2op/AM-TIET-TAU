@@ -24,4 +24,22 @@ describe("site content", () => {
   it("keeps the primary collaboration contact focused on the centre mailbox", () => {
     expect(siteContent.contact.email).toBe("coeam@thapar.edu");
   });
+
+  it("defines a multipage route model instead of one long anchored page", () => {
+    expect(siteContent.navigation.map((item) => item.path)).toEqual([
+      "/",
+      "/about",
+      "/facilities",
+      "/research",
+      "/industry",
+      "/gallery",
+      "/contact"
+    ]);
+  });
+
+  it("provides smaller gallery assets with meaningful captions", () => {
+    expect(siteContent.gallery).toHaveLength(6);
+    expect(siteContent.gallery.every((item) => item.caption.length > 20)).toBe(true);
+    expect(siteContent.gallery.every((item) => item.src.endsWith(".webp"))).toBe(true);
+  });
 });
