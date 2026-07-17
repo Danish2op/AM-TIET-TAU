@@ -105,8 +105,7 @@ button:focus-visible {
   max-width: 1360px;
   min-height: 72px;
   padding: 0.7rem clamp(0.75rem, 2vw, 1rem);
-  position: sticky;
-  top: 1rem;
+  position: relative;
   width: calc(100% - clamp(1rem, 6vw, 4rem));
   z-index: 20;
 }
