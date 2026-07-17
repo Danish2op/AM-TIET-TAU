@@ -18,7 +18,7 @@ describe("site content", () => {
     expect(claims.join(" ")).toContain(
       "India's first InssTek Directed Energy Deposition MX-Fab3 5-axis system"
     );
-    expect(claims.join(" ")).toContain("±2–5 microns");
+    expect(claims.join(" ")).toContain("+/-2-5 microns");
   });
 
   it("keeps the primary collaboration contact focused on the centre mailbox", () => {
@@ -41,5 +41,12 @@ describe("site content", () => {
     expect(siteContent.gallery).toHaveLength(6);
     expect(siteContent.gallery.every((item) => item.caption.length > 20)).toBe(true);
     expect(siteContent.gallery.every((item) => item.src.endsWith(".webp"))).toBe(true);
+  });
+
+  it("keeps research and industry pages substantive", () => {
+    expect(siteContent.researchAreas).toHaveLength(6);
+    expect(siteContent.industryOfferings).toHaveLength(6);
+    expect(siteContent.researchAreas.every((area) => area.summary.length > 70)).toBe(true);
+    expect(siteContent.industryOfferings.every((offering) => offering.summary.length > 70)).toBe(true);
   });
 });

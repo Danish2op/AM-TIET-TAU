@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, Route, Routes } from "react-router-dom";
 import {
   ArrowRight,
@@ -56,6 +56,7 @@ function Layout() {
           <Route path="/industry" element={<IndustryPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 
@@ -103,20 +104,20 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="image-stack" aria-label="Facility image preview">
+        <NavLink className="image-stack" to="/gallery" aria-label="Open facility image gallery">
           {siteContent.gallery.slice(0, 3).map((item, index) => (
             <figure className={`stack-card stack-${index + 1}`} key={item.src}>
               <img src={item.src} alt={item.alt} />
               <figcaption>{item.tag}</figcaption>
             </figure>
           ))}
-        </div>
+        </NavLink>
       </section>
 
       <section className="section-shell">
         <div className="section-heading compact">
           <p className="eyebrow">Capability map</p>
-          <h2>Smaller entry points into the centre instead of one endless page.</h2>
+          <h2>Clear entry points for facilities, research, training, and collaboration.</h2>
         </div>
         <div className="capability-grid">
           {siteContent.capabilityStrip.map((capability, index) => {
@@ -179,7 +180,7 @@ function FacilitiesPage() {
       <PageHero
         eyebrow="Facilities"
         title="Compact view of core infrastructure and validation support."
-        summary="The revised facility pages keep images contextual and pair each asset with specs, applications, and evidence."
+        summary="Core systems are paired with technical specifications, process roles, and validation support so visitors can quickly understand capability."
       />
       <section className="section-shell facility-grid">
         {siteContent.coreInfrastructure.map((item) => (
@@ -216,16 +217,17 @@ function ResearchPage() {
           <h2>Six applied directions.</h2>
           <div className="pill-grid">
             {siteContent.researchAreas.map((area) => (
-              <div className="pill-item" key={area}>
-                {area}
-              </div>
+              <article className="pill-item" key={area.title}>
+                <h3>{area.title}</h3>
+                <p>{area.summary}</p>
+              </article>
             ))}
           </div>
         </div>
         <figure className="glass-card compact-figure">
           <img src="/assets/sample-coupons.webp" alt="Advanced manufacturing sample coupons with different surface outcomes" />
           <figcaption>
-            Material samples and surface outcomes keep the research page grounded in visible process evidence.
+            Material samples and surface outcomes connect the research agenda with visible process evidence.
           </figcaption>
         </figure>
       </section>
@@ -239,13 +241,14 @@ function IndustryPage() {
       <PageHero
         eyebrow="Industry"
         title="Collaboration paths for development, qualification, training, and consultancy."
-        summary="This page separates industry-facing offerings from research content so corporate visitors can find practical entry points quickly."
+        summary="Industry-facing services connect component problems with process development, pilot builds, qualification support, training, and sponsored R&D."
       />
       <section className="section-shell offering-grid">
         {siteContent.industryOfferings.map((offering) => (
-          <article className="glass-card offering" key={offering}>
+          <article className="glass-card offering" key={offering.title}>
             <Sparkles aria-hidden="true" size={20} />
-            <h2>{offering}</h2>
+            <h2>{offering.title}</h2>
+            <p>{offering.summary}</p>
           </article>
         ))}
       </section>
@@ -264,17 +267,79 @@ function IndustryPage() {
 
 function GalleryPage() {
   const [selected, setSelected] = useState<GalleryItem | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const lastFocusedRef = useRef<HTMLElement | null>(null);
+
+  const openGalleryItem = (item: GalleryItem) => {
+    lastFocusedRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    setSelected(item);
+  };
+
+  const closeGalleryItem = () => {
+    setSelected(null);
+  };
+
+  useEffect(() => {
+    if (!selected) {
+      lastFocusedRef.current?.focus();
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeGalleryItem();
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) {
+        return;
+      }
+
+      const focusable = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+
+      if (!focusable.length) {
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [selected]);
 
   return (
     <>
       <PageHero
         eyebrow="Gallery"
-        title="Facility and material images in a compact interactive grid."
-        summary="Images are now thumbnails with captions and a lightbox, rather than oversized static blocks."
+        title="Facility and material images with direct technical context."
+        summary="A compact gallery presents systems, process views, sample surfaces, and demonstration components without overwhelming the page."
       />
       <section className="section-shell gallery-grid">
         {siteContent.gallery.map((item) => (
-          <button className="gallery-tile glass-card" key={item.src} onClick={() => setSelected(item)}>
+          <button className="gallery-tile glass-card" key={item.src} onClick={() => openGalleryItem(item)}>
             <img src={item.src} alt={item.alt} loading="lazy" />
             <span>{item.tag}</span>
             <p>{item.caption}</p>
@@ -283,8 +348,24 @@ function GalleryPage() {
         ))}
       </section>
       {selected && (
-        <div className="lightbox" role="dialog" aria-modal="true" aria-label={selected.tag}>
-          <button className="lightbox-close" onClick={() => setSelected(null)} aria-label="Close image preview">
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={selected.tag}
+          ref={dialogRef}
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) {
+              closeGalleryItem();
+            }
+          }}
+        >
+          <button
+            className="lightbox-close"
+            onClick={closeGalleryItem}
+            aria-label="Close image preview"
+            ref={closeButtonRef}
+          >
             <X aria-hidden="true" size={22} />
           </button>
           <figure>
@@ -303,7 +384,7 @@ function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="A simple collaboration path for academia, industry, and innovators."
-        summary="The first draft keeps the contact path focused on the centre mailbox and institute address."
+        summary="Use the centre mailbox for collaboration, training, sponsored R&D, consultancy, prototyping, or technology development conversations."
       />
       <section className="section-shell contact-page">
         <address className="glass-panel">
@@ -323,6 +404,32 @@ function ContactPage() {
             consultancy, or prototyping conversations.
           </figcaption>
         </figure>
+      </section>
+    </>
+  );
+}
+
+function NotFoundPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Page not found"
+        title="This page is not part of the centre site."
+        summary="Use the main navigation to return to the current TIET-TAU centre information."
+      />
+      <section className="section-shell contact-strip glass-panel">
+        <div>
+          <p className="eyebrow">Continue</p>
+          <h2>Go back to the centre overview or contact the team directly.</h2>
+        </div>
+        <div className="actions">
+          <NavLink className="button primary" to="/">
+            Home <ArrowRight aria-hidden="true" size={18} />
+          </NavLink>
+          <NavLink className="button secondary" to="/contact">
+            Contact <ChevronRight aria-hidden="true" size={18} />
+          </NavLink>
+        </div>
       </section>
     </>
   );

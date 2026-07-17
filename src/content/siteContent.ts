@@ -20,6 +20,16 @@ export type GalleryItem = {
   tag: string;
 };
 
+export type ResearchArea = {
+  title: string;
+  summary: string;
+};
+
+export type IndustryOffering = {
+  title: string;
+  summary: string;
+};
+
 export const siteContent = {
   centreName: "Centre of Excellence in Advanced Manufacturing",
   eyebrow: "TIET-TAU",
@@ -102,8 +112,8 @@ export const siteContent = {
       alt: "CNC Wire EDM system in the centre facility",
       specs: [
         "Wire diameter of 0.1-0.25 mm",
-        "Achievable tolerance of ±2–5 microns",
-        "Surface finish up to approximately 0.8 µm Ra",
+        "Achievable tolerance of +/-2-5 microns",
+        "Surface finish up to approximately 0.8 micrometers Ra",
         "Hardened tool steels, superalloys, carbides, and conductive composites"
       ]
     },
@@ -123,21 +133,69 @@ export const siteContent = {
     }
   ] satisfies InfrastructureItem[],
   researchAreas: [
-    "Additive manufacturing process optimization",
-    "High-performance metals, alloys, ceramics, composites, polymers, and FGMs",
-    "Functionally graded and multi-material systems",
-    "Surface engineering, repair, cladding, and near-net shape manufacturing",
-    "Advanced machining, micro-features, and dimensional accuracy studies",
-    "Industry 4.0 monitoring, analytics, and intelligent decision-making"
-  ],
+    {
+      title: "Additive manufacturing process optimization",
+      summary:
+        "Laser power, powder delivery, toolpath, atmosphere, and build strategy studies for repeatable DED outcomes."
+    },
+    {
+      title: "High-performance material systems",
+      summary:
+        "Metals, alloys, ceramics, composites, polymers, and functionally graded materials for advanced applications."
+    },
+    {
+      title: "Functionally graded and multi-material systems",
+      summary:
+        "Composition transitions and multi-feed deposition routes for parts that need location-specific performance."
+    },
+    {
+      title: "Repair, cladding, and surface engineering",
+      summary:
+        "Near-net shape restoration, wear-resistant surfaces, and component repair workflows for high-value parts."
+    },
+    {
+      title: "Precision machining and dimensional accuracy",
+      summary:
+        "Wire EDM, micro-feature machining, metrology, and finishing studies for validated component geometry."
+    },
+    {
+      title: "Industry 4.0 monitoring and analytics",
+      summary:
+        "Process data, monitoring, analytics, and intelligent decision-making for advanced manufacturing workflows."
+    }
+  ] satisfies ResearchArea[],
   industryOfferings: [
-    "Process development and optimization",
-    "Prototype development and pilot production",
-    "Material and component qualification",
-    "Hybrid manufacturing solutions",
-    "Industry-focused DED and Wire EDM training",
-    "Sponsored R&D and consultancy projects"
-  ],
+    {
+      title: "Process development and optimization",
+      summary:
+        "Define manufacturable parameter windows for DED, Wire EDM, post-processing, and validation workflows."
+    },
+    {
+      title: "Prototype development and pilot production",
+      summary:
+        "Move from concept geometry to trial components, iteration builds, and small-batch demonstrators."
+    },
+    {
+      title: "Material and component qualification",
+      summary:
+        "Connect fabrication with testing, metrology, surface evaluation, and documentation for decision-ready results."
+    },
+    {
+      title: "Hybrid manufacturing solutions",
+      summary:
+        "Combine additive deposition, subtractive machining, finishing, and inspection around one component problem."
+    },
+    {
+      title: "DED and Wire EDM training",
+      summary:
+        "Hands-on training modules for students, researchers, engineers, and industry teams working with advanced systems."
+    },
+    {
+      title: "Sponsored R&D and consultancy projects",
+      summary:
+        "Structured collaboration for materials, process studies, component repair, product development, and technical advice."
+    }
+  ] satisfies IndustryOffering[],
   leadership: [
     {
       name: "Prof. Noam Eliaz",
