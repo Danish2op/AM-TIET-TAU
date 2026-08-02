@@ -39,9 +39,6 @@ export type PartnerLogo = {
 export const siteContent = {
   centreName: "Centre of Excellence in Advanced Manufacturing",
   eyebrow: "TIET-TAU",
-  heroTitle: "Advanced manufacturing capability, from material to validated component.",
-  heroSummary:
-    "A collaborative initiative between Thapar Institute of Engineering and Technology, Patiala, and Tel Aviv University, Israel, built for high-impact research, industry translation, training, prototyping, consultancy, and technology development.",
   contact: {
     email: "coeam@thapar.edu",
     website: "https://am.thapar.edu/",

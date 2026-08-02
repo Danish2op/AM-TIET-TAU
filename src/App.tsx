@@ -1,24 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 import {
   ArrowRight,
   ChevronRight,
-  Factory,
-  GraduationCap,
-  Layers3,
   Mail,
   MapPin,
   Maximize2,
-  Microscope,
   Sparkles,
   Users,
-  Wrench,
   X
 } from "lucide-react";
 import { GalleryItem, siteContent } from "./content/siteContent";
 import { HeroCarousel } from "./components/HeroCarousel";
-
-const capabilityIcons = [Factory, Layers3, Microscope, Wrench, GraduationCap, Users];
 
 function Layout() {
   return (
@@ -53,7 +46,7 @@ function Layout() {
       <main id="main">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
+          <Route path="/about" element={<Navigate to="/" replace />} />
           <Route path="/facilities" element={<FacilitiesPage />} />
           <Route path="/research" element={<ResearchPage />} />
           <Route path="/industry" element={<IndustryPage />} />
@@ -91,119 +84,37 @@ function PageHero({
 function HomePage() {
   return (
     <>
-      <section className="home-hero">
-        <div className="glass-panel home-copy">
-          <p className="eyebrow">{siteContent.eyebrow}</p>
-          <h1>{siteContent.centreName}</h1>
-          <p className="hero-title">{siteContent.heroTitle}</p>
-          <p>{siteContent.heroSummary}</p>
-          <div className="actions">
-            <NavLink className="button primary" to="/facilities">
-              Explore facilities <ArrowRight aria-hidden="true" size={18} />
-            </NavLink>
-            <NavLink className="button secondary" to="/industry">
-              Industry collaboration <ChevronRight aria-hidden="true" size={18} />
-            </NavLink>
-          </div>
-        </div>
-
-        <HeroCarousel items={siteContent.gallery} />
-      </section>
-
       <section className="section-shell about-section">
-        <div className="glass-panel">
-          <p className="eyebrow">About the centre</p>
-          <h2>A TIET-TAU platform for research, prototyping, and workforce development.</h2>
+        <div className="about-copy glass-panel">
+          <p className="eyebrow">About</p>
+          <h1>{siteContent.centreName}</h1>
+          <span className="rule" aria-hidden="true" />
           {siteContent.aboutCentre.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
-      </section>
-
-      <section className="section-shell">
-        <div className="section-heading compact">
-          <p className="eyebrow">Capability map</p>
-          <h2>Clear entry points for facilities, research, training, and collaboration.</h2>
-        </div>
-        <div className="capability-grid">
-          {siteContent.capabilityStrip.map((capability, index) => {
-            const Icon = capabilityIcons[index] ?? Factory;
-            return (
-              <NavLink
-                className="glass-card capability-card"
-                to={index < 4 ? "/facilities" : "/industry"}
-                key={capability}
-              >
-                <Icon aria-hidden="true" size={22} />
-                <span>{capability}</span>
-              </NavLink>
-            );
-          })}
-        </div>
+        <HeroCarousel items={siteContent.gallery} />
       </section>
 
       <section className="section-shell director-section">
         <div className="glass-panel director-copy">
           <p className="eyebrow">Leadership</p>
           <h2>{siteContent.directorMessage.heading}</h2>
+          <span className="rule" aria-hidden="true" />
           {siteContent.directorMessage.paragraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
-        <div className="director-photo" role="img" aria-label="Director photo placeholder — to be replaced before launch">
+        <div
+          className="director-photo"
+          role="img"
+          aria-label="Director photo placeholder — to be replaced before launch"
+        >
           <Users aria-hidden="true" size={48} />
         </div>
       </section>
 
-      <section className="section-shell contact-banner-landing glass-panel">
-        <div className="contact-banner-info">
-          <p className="eyebrow">Get in touch</p>
-          <h2>Bring a material, process, or component problem to CoE-AM.</h2>
-          <address>
-            <a href={`mailto:${siteContent.contact.email}`}>
-              <Mail aria-hidden="true" size={18} />
-              {siteContent.contact.email}
-            </a>
-            <span>
-              <MapPin aria-hidden="true" size={18} />
-              {siteContent.contact.address}
-            </span>
-          </address>
-          <NavLink className="button primary" to="/contact">
-            Contact the centre <ArrowRight aria-hidden="true" size={18} />
-          </NavLink>
-        </div>
-        <div className="contact-banner-logos">
-          {siteContent.partnerLogos.map((logo) => (
-            <img key={logo.src} src={logo.src} alt={logo.alt} />
-          ))}
-        </div>
-      </section>
-    </>
-  );
-}
-
-function AboutPage() {
-  return (
-    <>
-      <PageHero
-        eyebrow="About"
-        title="A TIET-TAU platform for research, prototyping, and workforce development."
-        summary="CoE-AM brings advanced manufacturing infrastructure and domain experts together to support academia, industry, defense, healthcare, and innovators."
-      />
-      <section className="section-shell split-layout">
-        <div className="glass-panel">
-          <p className="eyebrow">Centre focus</p>
-          <h2>From concept to validated component.</h2>
-          <p>
-            The centre supports end-to-end technology development from conceptual
-            design, modelling, simulation, prototyping, testing, refinement, and
-            final validation. Beyond research, it supports specialized training,
-            certifications, workshops, entrepreneurship, and consultancy.
-          </p>
-        </div>
-        <LeadershipBlock />
-      </section>
+      <ContactBanner />
     </>
   );
 }
@@ -469,17 +380,27 @@ function NotFoundPage() {
   );
 }
 
-function LeadershipBlock() {
+function ContactBanner() {
   return (
-    <div className="leadership-grid">
-      {siteContent.leadership.map((person) => (
-        <article className="glass-card person" key={person.name}>
-          <h2>{person.name}</h2>
-          <p className="role">{person.role}</p>
-          <p>{person.affiliation}</p>
-        </article>
-      ))}
-    </div>
+    <section className="contact-banner">
+      <div className="contact-banner-inner">
+        <div className="contact-banner-logos">
+          {siteContent.partnerLogos.map((logo) => (
+            <img key={logo.src} src={logo.src} alt={logo.alt} />
+          ))}
+        </div>
+        <div className="contact-banner-grid">
+          <div>
+            <strong>{siteContent.centreName}</strong>
+            <p>{siteContent.contact.address}</p>
+          </div>
+          <div>
+            <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
+            <a href={siteContent.contact.website}>{siteContent.contact.website}</a>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
