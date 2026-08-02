@@ -85,6 +85,7 @@ export function SiteNav() {
             to={item.path}
             className={({ isActive }) => (isActive ? "active" : undefined)}
             end={item.path === "/"}
+            onClick={() => setOpen(false)}
           >
             {item.label}
           </NavLink>
