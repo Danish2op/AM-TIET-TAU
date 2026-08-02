@@ -7,13 +7,14 @@
   --blue: #1976d2;
   --sky: #8fd0ff;
   --cyan: #dff4ff;
-  --glass: rgba(255, 255, 255, 0.68);
-  --glass-strong: rgba(255, 255, 255, 0.84);
-  --line: rgba(114, 160, 198, 0.28);
+  --glass: rgba(255, 255, 255, 0.82);
+  --glass-strong: rgba(255, 255, 255, 0.92);
+  --line: rgba(114, 160, 198, 0.34);
+  --rule: rgba(114, 160, 198, 0.45);
   --ink: #07182c;
   --muted: #536478;
   --red: #c82032;
-  --shadow: 0 20px 60px rgba(3, 20, 38, 0.12);
+  --shadow: 0 6px 18px rgba(3, 20, 38, 0.1);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -171,7 +172,7 @@ nav {
 
 nav a {
   align-items: center;
-  border-radius: 999px;
+  border-radius: 4px;
   color: var(--navy);
   display: inline-flex;
   font-size: 0.9rem;
@@ -189,23 +190,22 @@ nav a.active {
 
 .glass-panel,
 .glass-card {
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(10px);
   background: var(--glass);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
 }
 
 .glass-panel {
-  border-radius: 28px;
-  padding: clamp(1.2rem, 3vw, 2.5rem);
+  border-radius: 10px;
+  padding: clamp(1.25rem, 2.6vw, 2.25rem);
 }
 
 .glass-card {
-  border-radius: 22px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
-.home-hero,
 .page-hero,
 .section-shell,
 .site-footer {
@@ -213,21 +213,6 @@ nav a.active {
   margin-right: auto;
   max-width: 1180px;
   width: calc(100% - clamp(1rem, 6vw, 5rem));
-}
-
-.home-hero {
-  align-items: center;
-  display: grid;
-  gap: clamp(1.25rem, 4vw, 3.5rem);
-  grid-template-columns: minmax(0, 0.96fr) minmax(320px, 0.84fr);
-  min-height: calc(86dvh - 100px);
-  padding: clamp(3rem, 7vw, 6.5rem) 0 3rem;
-}
-
-.home-copy {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.56)),
-    rgba(255, 255, 255, 0.72);
 }
 
 .page-hero {
@@ -268,19 +253,19 @@ h2 {
   color: var(--navy);
   font-family: "Space Grotesk", Inter, ui-sans-serif, system-ui, sans-serif;
   font-weight: 850;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
   line-height: 1.02;
 }
 
 h1 {
-  font-size: clamp(2.45rem, 5vw, 4.65rem);
+  font-size: clamp(2rem, 3.4vw, 3.1rem);
   margin-bottom: 1rem;
-  max-width: 12ch;
+  max-width: 20ch;
   text-wrap: balance;
 }
 
 h2 {
-  font-size: clamp(1.55rem, 3vw, 3rem);
+  font-size: clamp(1.4rem, 2.2vw, 2.1rem);
   margin-bottom: 0.85rem;
 }
 
@@ -292,13 +277,15 @@ h3 {
 
 p {
   color: var(--muted);
+  line-height: 1.7;
 }
 
-.hero-title {
-  color: var(--navy-2);
-  font-size: clamp(1.1rem, 2vw, 1.55rem);
-  font-weight: 750;
-  line-height: 1.35;
+.rule {
+  background: var(--rule);
+  display: block;
+  height: 1px;
+  margin: 1.1rem 0 1.4rem;
+  width: 100%;
 }
 
 .actions {
@@ -311,7 +298,7 @@ p {
 .button {
   align-items: center;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: 4px;
   cursor: pointer;
   display: inline-flex;
   font-weight: 850;
@@ -339,7 +326,7 @@ p {
 }
 
 .hero-carousel {
-  border-radius: 24px;
+  border-radius: 10px;
   min-height: 460px;
   outline-offset: 6px;
   position: relative;
@@ -348,7 +335,7 @@ p {
 .hero-carousel-frame {
   background: rgba(255, 255, 255, 0.58);
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 10px;
   box-shadow: var(--shadow);
   height: 100%;
   min-height: 460px;
@@ -439,43 +426,18 @@ p {
   margin-top: 1.25rem;
 }
 
-.section-heading.compact {
-  max-width: 720px;
-}
-
-.capability-grid,
 .facility-grid,
 .offering-grid,
-.gallery-grid,
-.leadership-grid {
+.gallery-grid {
   display: grid;
   gap: 1rem;
 }
 
-.capability-grid {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-
-.capability-card {
-  align-items: center;
-  color: var(--navy);
-  display: flex;
-  flex-direction: column;
-  font-weight: 850;
-  gap: 0.8rem;
-  min-height: 140px;
-  padding: 1.1rem;
-  text-align: center;
-  transition: transform 180ms ease, border-color 180ms ease;
-}
-
-.capability-card:hover,
 .gallery-tile:hover {
   border-color: rgba(25, 118, 210, 0.38);
   transform: translateY(-4px);
 }
 
-.capability-card svg,
 .offering svg {
   color: var(--blue);
 }
@@ -497,7 +459,7 @@ p {
   align-items: center;
   background: rgba(255, 255, 255, 0.5);
   border: 1px dashed var(--line);
-  border-radius: 22px;
+  border-radius: 8px;
   color: var(--muted);
   display: flex;
   justify-content: center;
@@ -512,18 +474,6 @@ p {
     aspect-ratio: 16 / 9;
     max-height: 260px;
   }
-}
-
-.contact-banner-landing {
-  align-items: center;
-  display: grid;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.5fr);
-}
-
-.contact-banner-info address {
-  gap: 0.75rem;
-  margin: 1.25rem 0;
 }
 
 .contact-banner-logos {
@@ -541,10 +491,6 @@ p {
 }
 
 @media (max-width: 980px) {
-  .contact-banner-landing {
-    grid-template-columns: 1fr;
-  }
-
   .contact-banner-logos {
     justify-content: flex-start;
   }
@@ -567,23 +513,6 @@ p {
   display: grid;
   gap: 1rem;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
-}
-
-.leadership-grid {
-  grid-template-columns: 1fr;
-}
-
-.person {
-  padding: 1.15rem;
-}
-
-.person h2 {
-  font-size: 1.15rem;
-}
-
-.role {
-  color: var(--blue);
-  font-weight: 850;
 }
 
 .facility-grid {
@@ -619,7 +548,7 @@ p {
 .spec-list li {
   background: rgba(255, 255, 255, 0.62);
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: 4px;
   color: var(--navy);
   font-size: 0.9rem;
   padding: 0.55rem 0.75rem;
@@ -635,7 +564,7 @@ p {
 .pill-item {
   background: rgba(255, 255, 255, 0.62);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 6px;
   color: var(--navy);
   padding: 1rem;
 }
@@ -793,7 +722,7 @@ address span {
   align-items: start;
   background: rgba(255, 255, 255, 0.62);
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 6px;
   display: flex;
   gap: 0.8rem;
   padding: 1rem;
@@ -828,7 +757,6 @@ address svg {
 }
 
 @media (max-width: 980px) {
-  .home-hero,
   .split-layout,
   .research-layout,
   .contact-page,
@@ -845,12 +773,6 @@ address svg {
     justify-content: flex-start;
   }
 
-  .home-hero {
-    min-height: auto;
-    padding-top: 2rem;
-  }
-
-  .capability-grid,
   .offering-grid,
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -862,7 +784,6 @@ address svg {
 }
 
 @media (max-width: 640px) {
-  .home-hero,
   .page-hero,
   .section-shell,
   .site-footer {
@@ -888,7 +809,7 @@ address svg {
   }
 
   .glass-panel {
-    border-radius: 22px;
+    border-radius: 10px;
     padding: 1rem;
   }
 
@@ -897,14 +818,12 @@ address svg {
     width: 100%;
   }
 
-  .capability-grid,
   .offering-grid,
   .gallery-grid,
   .pill-grid {
     grid-template-columns: 1fr;
   }
 
-  .capability-card,
   .offering {
     min-height: 0;
   }
