@@ -26,25 +26,27 @@ function Layout() {
         Skip to main content
       </a>
       <header className="site-header">
-        <NavLink className="brand" to="/" aria-label="TIET-TAU home">
-          <span className="brand-mark">ti</span>
-          <span>
-            <strong>{siteContent.eyebrow}</strong>
-            <small>{siteContent.centreName}</small>
-          </span>
-        </NavLink>
-        <nav aria-label="Primary navigation">
-          {siteContent.navigation.map((item) => (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              className={({ isActive }) => (isActive ? "active" : undefined)}
-              end={item.path === "/"}
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
+        <div className="header-inner">
+          <NavLink className="brand" to="/" aria-label="TIET-TAU home">
+            <span className="brand-mark">ti</span>
+            <span>
+              <strong>{siteContent.eyebrow}</strong>
+              <small>{siteContent.centreName}</small>
+            </span>
+          </NavLink>
+          <nav aria-label="Primary navigation">
+            {siteContent.navigation.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) => (isActive ? "active" : undefined)}
+                end={item.path === "/"}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
       </header>
 
       <main id="main">
