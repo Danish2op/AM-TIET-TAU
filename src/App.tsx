@@ -142,6 +142,19 @@ function HomePage() {
         </div>
       </section>
 
+      <section className="section-shell director-section">
+        <div className="glass-panel director-copy">
+          <p className="eyebrow">Leadership</p>
+          <h2>{siteContent.directorMessage.heading}</h2>
+          {siteContent.directorMessage.paragraphs.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+        <div className="director-photo" role="img" aria-label="Director photo placeholder — to be replaced before launch">
+          <Users aria-hidden="true" size={48} />
+        </div>
+      </section>
+
       <section className="section-shell route-grid">
         {siteContent.navigation.slice(1).map((item) => (
           <NavLink className="route-card glass-card" key={item.path} to={item.path}>
