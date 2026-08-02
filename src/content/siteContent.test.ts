@@ -49,4 +49,31 @@ describe("site content", () => {
     expect(siteContent.researchAreas.every((area) => area.summary.length > 70)).toBe(true);
     expect(siteContent.industryOfferings.every((offering) => offering.summary.length > 70)).toBe(true);
   });
+
+  it("uses brochure-exact About the Centre copy", () => {
+    expect(siteContent.aboutCentre).toHaveLength(2);
+    expect(siteContent.aboutCentre[0]).toContain(
+      "The Centre of Excellence in Advanced Manufacturing (CoE-AM) is a dedicated platform established to promote innovation"
+    );
+    expect(siteContent.aboutCentre[0]).toContain("Prof. Noam Eliaz");
+    expect(siteContent.aboutCentre[1]).toContain(
+      "Beyond research, CoE-AM is committed to creating a highly capable and industry-ready workforce"
+    );
+  });
+
+  it("marks the director message as placeholder content", () => {
+    expect(siteContent.directorMessage.heading).toBe("Message from Director, CoE-AM");
+    expect(siteContent.directorMessage.paragraphs.length).toBeGreaterThan(0);
+    expect(siteContent.directorMessage.paragraphs[0]).toContain("Lorem ipsum");
+  });
+
+  it("lists both partner institution logos", () => {
+    expect(siteContent.partnerLogos).toHaveLength(2);
+    expect(siteContent.partnerLogos.map((logo) => logo.name)).toEqual([
+      "Thapar Institute of Engineering and Technology",
+      "Tel Aviv University"
+    ]);
+    expect(siteContent.partnerLogos.every((logo) => logo.src.startsWith("/assets/"))).toBe(true);
+    expect(siteContent.partnerLogos.every((logo) => logo.alt.length > 10)).toBe(true);
+  });
 });
