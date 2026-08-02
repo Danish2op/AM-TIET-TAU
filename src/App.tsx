@@ -16,6 +16,7 @@ import {
   X
 } from "lucide-react";
 import { GalleryItem, siteContent } from "./content/siteContent";
+import { HeroCarousel } from "./components/HeroCarousel";
 
 const capabilityIcons = [Factory, Layers3, Microscope, Wrench, GraduationCap, Users];
 
@@ -106,14 +107,7 @@ function HomePage() {
           </div>
         </div>
 
-        <NavLink className="image-stack" to="/gallery" aria-label="Open facility image gallery">
-          {siteContent.gallery.slice(0, 3).map((item, index) => (
-            <figure className={`stack-card stack-${index + 1}`} key={item.src}>
-              <img src={item.src} alt={item.alt} />
-              <figcaption>{item.tag}</figcaption>
-            </figure>
-          ))}
-        </NavLink>
+        <HeroCarousel items={siteContent.gallery} />
       </section>
 
       <section className="section-shell">

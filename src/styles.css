@@ -338,58 +338,92 @@ p {
   color: var(--navy);
 }
 
-.image-stack {
-  color: inherit;
-  cursor: pointer;
-  display: grid;
+.hero-carousel {
+  border-radius: 24px;
   min-height: 460px;
+  outline-offset: 6px;
   position: relative;
 }
 
-.stack-card {
+.hero-carousel-frame {
   background: rgba(255, 255, 255, 0.58);
   border: 1px solid var(--line);
   border-radius: 24px;
   box-shadow: var(--shadow);
-  margin: 0;
+  height: 100%;
+  min-height: 460px;
   overflow: hidden;
+  position: relative;
+}
+
+.hero-carousel-slide {
+  height: 100%;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
   position: absolute;
-  transition: transform 220ms ease;
-  width: min(78%, 360px);
+  transition: opacity 480ms ease;
+  width: 100%;
 }
 
-.stack-card:hover {
-  transform: translateY(-6px);
+.hero-carousel-slide.active {
+  opacity: 1;
 }
 
-.stack-card img {
-  aspect-ratio: 4 / 3;
-  height: auto;
+.hero-carousel-slide img {
+  height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
-.stack-card figcaption {
-  color: var(--navy);
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 850;
-  padding: 0.8rem 1rem;
-}
-
-.stack-1 {
-  right: 7%;
-  top: 0;
-}
-
-.stack-2 {
-  left: 0;
-  top: 34%;
-}
-
-.stack-3 {
+.hero-carousel-slide figcaption {
+  background: linear-gradient(0deg, rgba(7, 24, 44, 0.72), transparent);
   bottom: 0;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 850;
+  left: 0;
+  padding: 2.2rem 1.2rem 1rem;
+  position: absolute;
   right: 0;
+}
+
+.hero-carousel-dots {
+  bottom: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.hero-carousel-dots button {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  cursor: pointer;
+  height: 10px;
+  padding: 0;
+  width: 10px;
+}
+
+.hero-carousel-dots button.active {
+  background: #fff;
+}
+
+@media (max-width: 980px) {
+  .hero-carousel,
+  .hero-carousel-frame {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-carousel,
+  .hero-carousel-frame {
+    min-height: 280px;
+  }
 }
 
 .section-shell {
@@ -755,10 +789,6 @@ address svg {
     padding-top: 2rem;
   }
 
-  .image-stack {
-    min-height: 360px;
-  }
-
   .capability-grid,
   .route-grid,
   .offering-grid,
@@ -805,21 +835,6 @@ address svg {
   .actions,
   .button {
     width: 100%;
-  }
-
-  .image-stack {
-    display: grid;
-    gap: 0.75rem;
-    min-height: 0;
-  }
-
-  .stack-card {
-    position: static;
-    width: 100%;
-  }
-
-  .stack-card:not(:first-child) {
-    display: none;
   }
 
   .capability-grid,
