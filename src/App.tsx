@@ -110,6 +110,16 @@ function HomePage() {
         <HeroCarousel items={siteContent.gallery} />
       </section>
 
+      <section className="section-shell about-section">
+        <div className="glass-panel">
+          <p className="eyebrow">About the centre</p>
+          <h2>A TIET-TAU platform for research, prototyping, and workforce development.</h2>
+          {siteContent.aboutCentre.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
+      </section>
+
       <section className="section-shell">
         <div className="section-heading compact">
           <p className="eyebrow">Capability map</p>

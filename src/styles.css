@@ -430,6 +430,15 @@ p {
   padding: clamp(1.7rem, 4vw, 3.5rem) 0;
 }
 
+.about-section .glass-panel p {
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+
+.about-section .glass-panel p:first-of-type {
+  margin-top: 1.25rem;
+}
+
 .section-heading.compact {
   max-width: 720px;
 }
