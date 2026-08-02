@@ -44,6 +44,7 @@ export const siteContent = {
     "A collaborative initiative between Thapar Institute of Engineering and Technology, Patiala, and Tel Aviv University, Israel, built for high-impact research, industry translation, training, prototyping, consultancy, and technology development.",
   contact: {
     email: "coeam@thapar.edu",
+    website: "https://am.thapar.edu/",
     address:
       "Thapar Institute of Engineering & Technology, Patiala-147004, Punjab, India"
   },
@@ -78,11 +79,6 @@ export const siteContent = {
       summary: "Compact overview of CoE-AM capabilities and collaboration routes."
     },
     {
-      label: "About",
-      path: "/about",
-      summary: "Mission, TIET-TAU collaboration, and centre leadership."
-    },
-    {
       label: "Facilities",
       path: "/facilities",
       summary: "DED, Wire EDM, validation labs, metrology, and finishing support."
@@ -108,14 +104,6 @@ export const siteContent = {
       summary: "Primary collaboration email and institute address."
     }
   ] satisfies NavigationItem[],
-  capabilityStrip: [
-    "Directed Energy Deposition",
-    "Wire EDM",
-    "Materials Characterization",
-    "Post-Processing",
-    "Industry Training",
-    "Consultancy"
-  ],
   coreInfrastructure: [
     {
       eyebrow: "Metal additive manufacturing",
@@ -226,26 +214,6 @@ export const siteContent = {
         "Structured collaboration for materials, process studies, component repair, product development, and technical advice."
     }
   ] satisfies IndustryOffering[],
-  leadership: [
-    {
-      name: "Prof. Noam Eliaz",
-      role: "Founding Director & Chair Professor",
-      affiliation:
-        "Dean, The Iby and Aladar Fleischman Faculty of Engineering, Tel Aviv University, Israel"
-    },
-    {
-      name: "Prof. Bhaskar Chandra Mohanty",
-      role: "Joint-Director",
-      affiliation:
-        "Department of Physics & Materials Science, Thapar Institute of Engineering and Technology, Patiala"
-    },
-    {
-      name: "Dr. Vineet Srivastava",
-      role: "Joint-Director",
-      affiliation:
-        "Mechanical Engineering Department, Thapar Institute of Engineering and Technology, Patiala"
-    }
-  ],
   gallery: [
     {
       src: "/assets/ded-system.webp",

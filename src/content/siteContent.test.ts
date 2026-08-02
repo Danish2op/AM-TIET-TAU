@@ -25,16 +25,25 @@ describe("site content", () => {
     expect(siteContent.contact.email).toBe("coeam@thapar.edu");
   });
 
-  it("defines a multipage route model instead of one long anchored page", () => {
+  it("defines the six-page route model with no standalone about page", () => {
     expect(siteContent.navigation.map((item) => item.path)).toEqual([
       "/",
-      "/about",
       "/facilities",
       "/research",
       "/industry",
       "/gallery",
       "/contact"
     ]);
+    expect(siteContent.navigation.some((item) => item.path === "/about")).toBe(false);
+  });
+
+  it("no longer carries team or capability strip content", () => {
+    expect("leadership" in siteContent).toBe(false);
+    expect("capabilityStrip" in siteContent).toBe(false);
+  });
+
+  it("exposes the centre website for the contact banner", () => {
+    expect(siteContent.contact.website).toBe("https://am.thapar.edu/");
   });
 
   it("provides smaller gallery assets with meaningful captions", () => {
