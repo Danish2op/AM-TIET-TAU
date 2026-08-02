@@ -155,14 +155,29 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell route-grid">
-        {siteContent.navigation.slice(1).map((item) => (
-          <NavLink className="route-card glass-card" key={item.path} to={item.path}>
-            <span>{item.label}</span>
-            <p>{item.summary}</p>
-            <ChevronRight aria-hidden="true" size={18} />
+      <section className="section-shell contact-banner-landing glass-panel">
+        <div className="contact-banner-info">
+          <p className="eyebrow">Get in touch</p>
+          <h2>Bring a material, process, or component problem to CoE-AM.</h2>
+          <address>
+            <a href={`mailto:${siteContent.contact.email}`}>
+              <Mail aria-hidden="true" size={18} />
+              {siteContent.contact.email}
+            </a>
+            <span>
+              <MapPin aria-hidden="true" size={18} />
+              {siteContent.contact.address}
+            </span>
+          </address>
+          <NavLink className="button primary" to="/contact">
+            Contact the centre <ArrowRight aria-hidden="true" size={18} />
           </NavLink>
-        ))}
+        </div>
+        <div className="contact-banner-logos">
+          {siteContent.partnerLogos.map((logo) => (
+            <img key={logo.src} src={logo.src} alt={logo.alt} />
+          ))}
+        </div>
       </section>
     </>
   );

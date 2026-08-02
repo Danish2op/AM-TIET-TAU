@@ -444,7 +444,6 @@ p {
 }
 
 .capability-grid,
-.route-grid,
 .facility-grid,
 .offering-grid,
 .gallery-grid,
@@ -471,7 +470,6 @@ p {
 }
 
 .capability-card:hover,
-.route-card:hover,
 .gallery-tile:hover {
   border-color: rgba(25, 118, 210, 0.38);
   transform: translateY(-4px);
@@ -516,30 +514,50 @@ p {
   }
 }
 
-.route-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.contact-banner-landing {
+  align-items: center;
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.5fr);
 }
 
-.route-card {
-  min-height: 190px;
-  padding: 1.25rem;
-  position: relative;
-  transition: transform 180ms ease, border-color 180ms ease;
+.contact-banner-info address {
+  gap: 0.75rem;
+  margin: 1.25rem 0;
 }
 
-.route-card span {
-  color: var(--navy);
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 850;
-  margin-bottom: 0.75rem;
+.contact-banner-logos {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 
-.route-card svg {
-  bottom: 1.1rem;
-  color: var(--blue);
-  position: absolute;
-  right: 1.1rem;
+.contact-banner-logos img {
+  height: 64px;
+  object-fit: contain;
+  width: auto;
+}
+
+@media (max-width: 980px) {
+  .contact-banner-landing {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-banner-logos {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-banner-logos {
+    gap: 1.25rem;
+  }
+
+  .contact-banner-logos img {
+    height: 48px;
+  }
 }
 
 .split-layout,
@@ -833,7 +851,6 @@ address svg {
   }
 
   .capability-grid,
-  .route-grid,
   .offering-grid,
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -881,7 +898,6 @@ address svg {
   }
 
   .capability-grid,
-  .route-grid,
   .offering-grid,
   .gallery-grid,
   .pill-grid {
@@ -889,7 +905,6 @@ address svg {
   }
 
   .capability-card,
-  .route-card,
   .offering {
     min-height: 0;
   }
