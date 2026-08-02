@@ -380,13 +380,15 @@ function ContactBanner() {
           ))}
         </div>
         <div className="contact-banner-grid">
-          <div>
+          <address>
             <strong>{siteContent.centreName}</strong>
-            <p>{siteContent.contact.address}</p>
-          </div>
-          <div>
+            <span>{siteContent.contact.address}</span>
+          </address>
+          <div className="contact-banner-links">
             <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
-            <a href={siteContent.contact.website}>{siteContent.contact.website}</a>
+            <a href={siteContent.contact.website} rel="noreferrer" target="_blank">
+              {siteContent.contact.website}
+            </a>
           </div>
         </div>
       </div>
