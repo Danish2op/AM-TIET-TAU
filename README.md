@@ -2,7 +2,7 @@
 
 This repository contains the source code for the website of the **Centre of Excellence in Advanced Manufacturing (CoE-AM)**, a collaborative initiative between the **Thapar Institute of Engineering and Technology (TIET)**, Patiala, India, and **Tel Aviv University (TAU)**, Israel.
 
-The website is a modern, responsive, multipage Single Page Application (SPA) built with React, TypeScript, Vite, and Vanilla CSS, featuring a technical, lab-focused glassmorphism design.
+The website is a modern, responsive, multipage Single Page Application (SPA) built with React, TypeScript, Vite, and Vanilla CSS, featuring a professional institutional design system with toned-down frosted surfaces.
 
 ---
 
@@ -50,9 +50,11 @@ AM-TIETTAU/
 ├── scripts/                   # Auxiliary automation scripts
 │   └── prepare-assets.py      # Python script to compress and optimize images
 ├── src/                       # Frontend source files
+│   ├── components/            # SiteNav (hamburger) and HeroCarousel
 │   ├── content/               # Factual content files and test suites
 │   │   ├── siteContent.ts     # Central source of truth for text copy
 │   │   └── siteContent.test.ts # Vitest assertions for brochure claims & routing
+│   ├── lib/                   # Pure helpers (carousel index math)
 │   ├── App.tsx                # Main SPA components, layout, and pages
 │   ├── main.tsx               # Client entry point (renders App with BrowserRouter)
 │   └── styles.css             # Unified styling system with custom variables
@@ -146,7 +148,8 @@ Developers and agents working on the codebase should adhere to the following vis
 
 *   **Color Palette:** Built on deep navy, steel blue, technical blue, white, cool gray, and a subtle TIET red accent.
 *   **Typography:** Modern, clean sans-serif styles using standard browser fonts with fallback options (preferring system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif).
-*   **Glassmorphism Motifs:** Card containers and headers use frosted glass effects (`backdrop-filter: blur()`, semi-transparent border, and subtle box shadows) to give the application a premium, modern feel.
+*   **Surface Treatment:** Toned-down frosted surfaces (`backdrop-filter: blur(10px)`, 8-10px radii, near-opaque fills) for a professional institutional feel rather than a modern-startup one.
+*   **Background:** A fixed two-layer engineering system — brushed-steel micro-grain plus large machining/turning arcs — held at or below 6% opacity so it never competes with content.
 *   **Contrast & Accessibility:**
     *   Maintain high text contrast ratios (light text over dark navy glass elements).
     *   Use correct HTML5 semantic tags (`header`, `main`, `footer`, `section`, `article`, `address`).
