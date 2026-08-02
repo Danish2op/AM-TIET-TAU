@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { GalleryItem, siteContent } from "./content/siteContent";
 import { HeroCarousel } from "./components/HeroCarousel";
+import { SiteNav } from "./components/SiteNav";
 
 function Layout() {
   return (
@@ -28,18 +29,7 @@ function Layout() {
               <small>{siteContent.centreName}</small>
             </span>
           </NavLink>
-          <nav aria-label="Primary navigation">
-            {siteContent.navigation.map((item) => (
-              <NavLink
-                key={item.path}
-                to={item.path}
-                className={({ isActive }) => (isActive ? "active" : undefined)}
-                end={item.path === "/"}
-              >
-                {item.label}
-              </NavLink>
-            ))}
-          </nav>
+          <SiteNav />
         </div>
       </header>
 

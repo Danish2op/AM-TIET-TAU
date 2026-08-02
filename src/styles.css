@@ -119,6 +119,7 @@ button:focus-visible {
   border-bottom: 1px solid var(--line);
   box-shadow: 0 12px 34px rgba(8, 33, 61, 0.06);
   left: 0;
+  /* sticky also establishes the containing block for the mobile nav panel */
   position: sticky;
   right: 0;
   top: 0;
@@ -194,6 +195,50 @@ nav a:hover,
 nav a.active {
   background: rgba(25, 118, 210, 0.12);
   color: var(--blue);
+}
+
+.nav-toggle {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--navy);
+  cursor: pointer;
+  display: none;
+  height: 44px;
+  justify-content: center;
+  width: 44px;
+}
+
+@media (max-width: 900px) {
+  .header-inner {
+    align-items: center;
+    display: flex;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  nav {
+    background: rgba(246, 251, 255, 0.98);
+    border-bottom: 1px solid var(--line);
+    display: none;
+    flex-direction: column;
+    left: 0;
+    padding: 0.5rem clamp(1rem, 4vw, 2.5rem) 1rem;
+    position: absolute;
+    right: 0;
+    top: 100%;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  nav a {
+    width: 100%;
+  }
 }
 
 .glass-panel,
@@ -770,15 +815,6 @@ address svg {
   .contact-page,
   .facility-card {
     grid-template-columns: 1fr;
-  }
-
-  .header-inner {
-    align-items: start;
-    display: grid;
-  }
-
-  nav {
-    justify-content: flex-start;
   }
 
   .offering-grid,
