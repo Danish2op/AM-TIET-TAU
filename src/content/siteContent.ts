@@ -62,12 +62,12 @@ export const siteContent = {
   partnerLogos: [
     {
       name: "Thapar Institute of Engineering and Technology",
-      src: "/assets/tiet-logo.svg",
+      src: "/assets/tiet-logo.png",
       alt: "Thapar Institute of Engineering and Technology official logo"
     },
     {
       name: "Tel Aviv University",
-      src: "/assets/tau-logo.svg",
+      src: "/assets/tau-logo.png",
       alt: "Tel Aviv University official logo"
     }
   ] satisfies PartnerLogo[],
