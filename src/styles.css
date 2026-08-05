@@ -260,8 +260,7 @@ nav a.active {
 }
 
 .page-hero,
-.section-shell,
-.site-footer {
+.section-shell {
   margin-left: auto;
   margin-right: auto;
   max-width: 1180px;
@@ -281,7 +280,7 @@ nav a.active {
 }
 
 .page-hero h1 {
-  font-size: clamp(2.05rem, 4vw, 4.05rem);
+  margin-bottom: 0;
   max-width: 780px;
 }
 
@@ -876,26 +875,42 @@ address svg {
   }
 }
 
+/* Sits directly under the navy contact band, so it continues that band
+   rather than reverting to the light page surface. */
 .site-footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.9rem;
+  padding: 1.25rem clamp(1rem, 6vw, 5rem) 1.75rem;
+  width: 100%;
+}
+
+.footer-inner {
   align-items: center;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
   justify-content: space-between;
-  padding: 2rem 0 2.5rem;
+  margin: 0 auto;
+  max-width: 1180px;
 }
 
 .site-footer span:first-child {
-  color: var(--blue);
+  color: rgba(255, 255, 255, 0.9);
   font-weight: 850;
 }
 
 .site-footer a {
   align-items: center;
+  color: rgba(255, 255, 255, 0.86);
   display: inline-flex;
   min-height: 44px;
+}
+
+.site-footer a:hover {
+  color: #fff;
+  text-decoration: underline;
 }
 
 @media (max-width: 980px) {
@@ -918,8 +933,7 @@ address svg {
 
 @media (max-width: 640px) {
   .page-hero,
-  .section-shell,
-  .site-footer {
+  .section-shell {
     width: calc(100% - 1rem);
   }
 

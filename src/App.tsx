@@ -46,6 +46,7 @@ function Layout() {
         </Routes>
       </main>
 
+      <ContactBanner />
       <Footer />
     </>
   );
@@ -65,6 +66,7 @@ function PageHero({
       <div className="glass-panel hero-panel">
         <p className="eyebrow">{eyebrow}</p>
         <h1>{title}</h1>
+        <span className="rule" aria-hidden="true" />
         <p>{summary}</p>
       </div>
     </section>
@@ -103,8 +105,6 @@ function HomePage() {
           <Users aria-hidden="true" size={48} />
         </div>
       </section>
-
-      <ContactBanner />
     </>
   );
 }
@@ -186,15 +186,6 @@ function IndustryPage() {
             <p>{offering.summary}</p>
           </article>
         ))}
-      </section>
-      <section className="section-shell contact-strip glass-panel">
-        <div>
-          <p className="eyebrow">Start a discussion</p>
-          <h2>Bring a material, process, or component problem.</h2>
-        </div>
-        <NavLink className="button primary" to="/contact">
-          Contact the centre <Mail aria-hidden="true" size={18} />
-        </NavLink>
       </section>
     </>
   );
@@ -399,9 +390,11 @@ function ContactBanner() {
 function Footer() {
   return (
     <footer className="site-footer">
-      <span>{siteContent.eyebrow}</span>
-      <span>{siteContent.centreName}</span>
-      <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
+      <div className="footer-inner">
+        <span>{siteContent.eyebrow}</span>
+        <span>{siteContent.centreName}</span>
+        <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
+      </div>
     </footer>
   );
 }
