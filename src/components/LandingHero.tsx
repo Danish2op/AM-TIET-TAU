@@ -13,7 +13,7 @@ export function LandingHero() {
         </div>
         <h1 id="landing-hero-title" data-reveal="" data-reveal-delay="1">
           <span>Centre of Excellence</span>
-          <span>in</span>
+          <span className="hero-hinge">in</span>
           <span>Advanced Manufacturing</span>
         </h1>
         <p className="landing-hero-tagline" data-reveal="" data-reveal-delay="2">

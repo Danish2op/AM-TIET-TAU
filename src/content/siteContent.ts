@@ -39,8 +39,7 @@ export type PartnerLogo = {
 export const siteContent = {
   centreName: "Centre of Excellence in Advanced Manufacturing",
   eyebrow: "TIET-TAU",
-  tagline:
-    "A Thapar Institute and Tel Aviv University initiative, taking advanced manufacturing from concept to validated component.",
+  tagline: "Engineered precision, smarter tomorrow.",
   contact: {
     email: "coeam@thapar.edu",
     website: "https://am.thapar.edu/",

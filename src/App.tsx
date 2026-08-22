@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink, Navigate, Route, Routes } from "react-router-dom";
+import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import {
   ArrowRight,
   ChevronRight,
@@ -18,13 +18,26 @@ import { useScrollReveal } from "./lib/useScrollReveal";
 
 function Layout() {
   useScrollReveal();
+  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+
+  // The bar rides transparently over the landing hero and turns solid once
+  // the reader leaves it, so white-on-photo never lands on white-on-white.
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const overlayHeader = location.pathname === "/" && !scrolled;
 
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to main content
       </a>
-      <header className="site-header">
+      <header className={`site-header${overlayHeader ? " site-header--overlay" : ""}`}>
         <div className="header-inner">
           <NavLink className="brand" to="/" aria-label="TIET-TAU home">
             <span className="brand-logos">
