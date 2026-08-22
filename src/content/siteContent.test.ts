@@ -42,6 +42,10 @@ describe("site content", () => {
     expect("capabilityStrip" in siteContent).toBe(false);
   });
 
+  it("carries the brochure tagline used by the landing hero", () => {
+    expect(siteContent.tagline).toContain("Many paths, one purpose");
+  });
+
   it("exposes the centre website for the contact banner", () => {
     expect(siteContent.contact.website).toBe("https://am.thapar.edu/");
   });

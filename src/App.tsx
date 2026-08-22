@@ -12,9 +12,13 @@ import {
 } from "lucide-react";
 import { GalleryItem, siteContent } from "./content/siteContent";
 import { HeroCarousel } from "./components/HeroCarousel";
+import { LandingHero } from "./components/LandingHero";
 import { SiteNav } from "./components/SiteNav";
+import { useScrollReveal } from "./lib/useScrollReveal";
 
 function Layout() {
+  useScrollReveal();
+
   return (
     <>
       <a className="skip-link" href="#main">
@@ -23,8 +27,12 @@ function Layout() {
       <header className="site-header">
         <div className="header-inner">
           <NavLink className="brand" to="/" aria-label="TIET-TAU home">
-            <span className="brand-mark">ti</span>
-            <span>
+            <span className="brand-logos">
+              {siteContent.partnerLogos.map((logo) => (
+                <img key={logo.src} src={logo.src} alt={logo.alt} />
+              ))}
+            </span>
+            <span className="brand-text">
               <strong>{siteContent.eyebrow}</strong>
               <small>{siteContent.centreName}</small>
             </span>
@@ -76,19 +84,22 @@ function PageHero({
 function HomePage() {
   return (
     <>
-      <section className="section-shell about-section">
-        <div className="about-copy glass-panel">
+      <LandingHero />
+
+      <section className="section-shell about-section" id="about">
+        <div className="about-copy glass-panel" data-reveal="">
           <p className="eyebrow">About</p>
-          <h1>{siteContent.centreName}</h1>
           <span className="rule" aria-hidden="true" />
           {siteContent.aboutCentre.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
         </div>
-        <HeroCarousel items={siteContent.gallery} />
+        <div className="about-media" data-reveal="" data-reveal-delay="1">
+          <HeroCarousel items={siteContent.gallery} />
+        </div>
       </section>
 
-      <section className="section-shell director-section">
+      <section className="section-shell director-section" data-reveal="">
         <div className="glass-panel director-copy">
           <p className="eyebrow">Leadership</p>
           <h2>{siteContent.directorMessage.heading}</h2>
