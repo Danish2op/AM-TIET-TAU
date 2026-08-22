@@ -42,8 +42,10 @@ describe("site content", () => {
     expect("capabilityStrip" in siteContent).toBe(false);
   });
 
-  it("carries the brochure tagline used by the landing hero", () => {
-    expect(siteContent.tagline).toContain("Many paths, one purpose");
+  it("describes the centre in the landing hero tagline", () => {
+    expect(siteContent.tagline).toContain("Thapar Institute");
+    expect(siteContent.tagline).toContain("Tel Aviv University");
+    expect(siteContent.tagline).toContain("concept to validated component");
   });
 
   it("exposes the centre website for the contact banner", () => {

@@ -11,19 +11,15 @@ export function LandingHero() {
           <span aria-hidden="true" />
           <img src={siteContent.partnerLogos[1].src} alt={siteContent.partnerLogos[1].alt} />
         </div>
-        <p className="landing-hero-key" data-reveal="" data-reveal-delay="1">
-          {siteContent.eyebrow}
-        </p>
-        <p className="landing-hero-eyebrow" data-reveal="" data-reveal-delay="2">
-          Centre of Excellence in
-        </p>
-        <h1 id="landing-hero-title" data-reveal="" data-reveal-delay="3">
-          Advanced Manufacturing
+        <h1 id="landing-hero-title" data-reveal="" data-reveal-delay="1">
+          <span>Centre of Excellence</span>
+          <span>in</span>
+          <span>Advanced Manufacturing</span>
         </h1>
-        <p className="landing-hero-tagline" data-reveal="" data-reveal-delay="4">
+        <p className="landing-hero-tagline" data-reveal="" data-reveal-delay="2">
           {siteContent.tagline}
         </p>
-        <a className="landing-hero-cta" href="#about" data-reveal="" data-reveal-delay="5">
+        <a className="landing-hero-cta" href="#about" data-reveal="" data-reveal-delay="3">
           Explore <ChevronDown aria-hidden="true" size={18} />
         </a>
       </div>
