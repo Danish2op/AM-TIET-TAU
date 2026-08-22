@@ -133,15 +133,14 @@ button:focus-visible {
   z-index: 20;
 }
 
+/* Brand and links sit hard against the viewport edges — no centred cap. */
 .header-inner {
   align-items: center;
   display: flex;
   gap: 1rem;
   justify-content: space-between;
-  margin: 0 auto;
-  max-width: 1360px;
   min-height: 72px;
-  padding: 0.7rem clamp(1rem, 4vw, 2.5rem);
+  padding: 0.7rem clamp(0.85rem, 1.6vw, 1.5rem);
   width: 100%;
 }
 
@@ -164,22 +163,31 @@ button:focus-visible {
   width: auto;
 }
 
-.brand strong {
+/* Exactly two lines, both set at the same size:
+   TIET-TAU
+   Centre of Excellence in Advanced Manufacturing */
+.brand-text {
   display: block;
   font-family: var(--font-display);
-  font-size: 0.98rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-size: 0.85rem;
+  line-height: 1.35;
 }
 
-.brand small {
+.brand-text strong {
+  color: var(--navy);
   display: block;
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
-.brand small {
+.brand-text small {
   color: var(--muted);
-  font-size: 0.78rem;
-  max-width: 260px;
+  display: block;
+  font-size: inherit;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 nav {
@@ -221,9 +229,9 @@ nav a.active {
   width: 44px;
 }
 
-/* Two institutional logos plus six nav links need more room than a bare
-   wordmark, so the hamburger takes over well before phone widths. */
-@media (max-width: 1024px) {
+/* Two logos plus a two-line brand plus six links need real width; below
+   this the links collapse into the hamburger rather than crowding. */
+@media (max-width: 1200px) {
   .header-inner {
     align-items: center;
     display: flex;
