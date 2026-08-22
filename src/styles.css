@@ -621,7 +621,7 @@ p {
 
 .landing-hero-inner {
   margin: 0 auto;
-  max-width: 1000px;
+  max-width: 1120px;
   padding: clamp(2.5rem, 7vw, 5rem) clamp(1rem, 6vw, 5rem);
   position: relative;
   z-index: 1;
@@ -661,17 +661,27 @@ p {
 .landing-hero h1 {
   color: #fff;
   font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 6.6vw, 5.4rem);
+  font-size: clamp(1.3rem, 3.5vw, 3.2rem);
   font-weight: 600;
   letter-spacing: 0.07em;
-  line-height: 1.12;
+  line-height: 1.25;
   margin: 0 auto 1.7rem;
-  max-width: 24ch;
+  max-width: 100%;
   text-transform: uppercase;
 }
 
+/* Each line of the name holds together — "Centre of Excellence" never
+   breaks across two rows. */
 .landing-hero h1 span {
   display: block;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .landing-hero h1 {
+    font-size: clamp(1.1rem, 5.2vw, 1.7rem);
+    letter-spacing: 0.03em;
+  }
 }
 
 .landing-hero h1 .hero-hinge {
