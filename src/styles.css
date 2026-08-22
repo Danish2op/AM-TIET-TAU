@@ -613,7 +613,7 @@ p {
       rgba(8, 33, 61, 0.68) 42%,
       rgba(13, 55, 102, 0.78) 100%
     ),
-    url("/assets/thapar-campus.webp") center / cover no-repeat;
+    url("/assets/thapar-campus.webp") center top / cover no-repeat;
   inset: 0;
   position: absolute;
   z-index: 0;
@@ -652,14 +652,16 @@ p {
   width: 1px;
 }
 
-/* Grotesque caps carrying the name, with a serif italic "in" as the hinge
-   between them — the same pairing the brochure cover uses. */
+/* One serif family throughout the lockup: high-contrast caps for the name
+   and the same face italic for the hinge, so the two agree by construction
+   rather than being asked to complement across families. */
 .landing-hero h1 {
   color: #fff;
-  font-size: clamp(1.85rem, 4.8vw, 3.9rem);
-  font-weight: 800;
-  letter-spacing: 0.005em;
-  line-height: 1.1;
+  font-family: var(--font-serif);
+  font-size: clamp(2.1rem, 5.8vw, 4.7rem);
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1.08;
   margin: 0 auto 1.7rem;
   max-width: 22ch;
   text-transform: uppercase;
@@ -670,13 +672,11 @@ p {
 }
 
 .landing-hero h1 .hero-hinge {
-  color: rgba(255, 255, 255, 0.82);
-  font-family: var(--font-serif);
-  font-size: 0.56em;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.5em;
   font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1.5;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
   text-transform: lowercase;
 }
 

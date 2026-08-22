@@ -39,7 +39,7 @@ export type PartnerLogo = {
 export const siteContent = {
   centreName: "Centre of Excellence in Advanced Manufacturing",
   eyebrow: "TIET-TAU",
-  tagline: "Engineered precision, smarter tomorrow.",
+  tagline: "Engineered Precision, Smarter Tomorrow",
   contact: {
     email: "coeam@thapar.edu",
     website: "https://am.thapar.edu/",

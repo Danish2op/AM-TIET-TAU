@@ -43,7 +43,7 @@ describe("site content", () => {
   });
 
   it("carries the centre tagline used by the landing hero", () => {
-    expect(siteContent.tagline).toBe("Engineered precision, smarter tomorrow.");
+    expect(siteContent.tagline).toBe("Engineered Precision, Smarter Tomorrow");
   });
 
   it("exposes the centre website for the contact banner", () => {
