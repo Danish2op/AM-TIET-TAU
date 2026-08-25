@@ -63,21 +63,32 @@ describe("site content", () => {
     expect(siteContent.industryOfferings.every((offering) => offering.summary.length > 70)).toBe(true);
   });
 
-  it("uses brochure-exact About the Centre copy", () => {
-    expect(siteContent.aboutCentre).toHaveLength(2);
-    expect(siteContent.aboutCentre[0]).toContain(
-      "The Centre of Excellence in Advanced Manufacturing (CoE-AM) is a dedicated platform established to promote innovation"
-    );
-    expect(siteContent.aboutCentre[0]).toContain("Prof. Noam Eliaz");
-    expect(siteContent.aboutCentre[1]).toContain(
-      "Beyond research, CoE-AM is committed to creating a highly capable and industry-ready workforce"
-    );
+  it("describes the centre and its four research focus areas", () => {
+    expect(siteContent.aboutCentre.intro).toHaveLength(2);
+    expect(siteContent.aboutCentre.intro[0]).toContain("flagship joint initiative");
+    expect(siteContent.aboutCentre.intro[0]).toContain("Noam Eliaz");
+    expect(siteContent.aboutCentre.focusHeading).toBe("Core Research Focus Areas");
+    expect(siteContent.aboutCentre.focusAreas.map((area) => area.title)).toEqual([
+      "Advanced Additive & Hybrid Manufacturing",
+      "High-Performance Materials",
+      "Process Innovations",
+      "Industry 4.0 Integration"
+    ]);
+    expect(siteContent.aboutCentre.closing).toContain("talent engine and startup incubator");
   });
 
-  it("marks the director message as placeholder content", () => {
-    expect(siteContent.directorMessage.heading).toBe("Message from Director, CoE-AM");
-    expect(siteContent.directorMessage.paragraphs.length).toBeGreaterThan(0);
-    expect(siteContent.directorMessage.paragraphs[0]).toContain("Lorem ipsum");
+  it("carries the director welcome message and attribution", () => {
+    expect(siteContent.directorMessage.heading).toBe("Welcome Message from the Director");
+    expect(siteContent.directorMessage.paragraphs).toHaveLength(5);
+    expect(siteContent.directorMessage.paragraphs[0]).toContain("Welcome to the Centre of Excellence");
+    expect(siteContent.directorMessage.signatureName).toBe("Prof. Noam Eliaz");
+    expect(siteContent.directorMessage.signatureRole).toContain("Founding Director");
+    expect(siteContent.directorMessage.photoAlt.length).toBeGreaterThan(10);
+  });
+
+  it("no longer ships placeholder director copy", () => {
+    const joined = siteContent.directorMessage.paragraphs.join(" ");
+    expect(joined).not.toContain("Lorem ipsum");
   });
 
   it("lists both partner institution logos", () => {

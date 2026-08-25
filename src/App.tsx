@@ -7,7 +7,6 @@ import {
   MapPin,
   Maximize2,
   Sparkles,
-  Users,
   X
 } from "lucide-react";
 import { GalleryItem, siteContent } from "./content/siteContent";
@@ -24,10 +23,18 @@ function Layout() {
   // The bar rides transparently over the landing hero and turns solid once
   // the reader leaves it, so white-on-photo never lands on white-on-white.
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 40;
+      setScrolled(isScrolled);
+      // Drives the hero picture inset, which lives outside this subtree.
+      document.body.classList.toggle("is-scrolled", isScrolled);
+    };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.classList.remove("is-scrolled");
+    };
   }, []);
 
   const overlayHeader = location.pathname === "/" && !scrolled;
@@ -103,9 +110,19 @@ function HomePage() {
         <div className="about-copy glass-panel" data-reveal="">
           <p className="eyebrow">About</p>
           <span className="rule" aria-hidden="true" />
-          {siteContent.aboutCentre.map((paragraph, index) => (
+          {siteContent.aboutCentre.intro.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
+          <h2 className="focus-heading">{siteContent.aboutCentre.focusHeading}</h2>
+          <dl className="focus-list">
+            {siteContent.aboutCentre.focusAreas.map((area) => (
+              <div key={area.title}>
+                <dt>{area.title}</dt>
+                <dd>{area.summary}</dd>
+              </div>
+            ))}
+          </dl>
+          <p>{siteContent.aboutCentre.closing}</p>
         </div>
         <div className="about-media" data-reveal="" data-reveal-delay="1">
           <HeroCarousel items={siteContent.gallery} />
@@ -114,19 +131,18 @@ function HomePage() {
 
       <section className="section-shell director-section" data-reveal="">
         <div className="glass-panel director-copy">
-          <p className="eyebrow">Leadership</p>
-          <h2>{siteContent.directorMessage.heading}</h2>
+          <figure className="director-portrait">
+            <img src={siteContent.directorMessage.photo} alt={siteContent.directorMessage.photoAlt} />
+          </figure>
+          <p className="eyebrow">{siteContent.directorMessage.heading}</p>
           <span className="rule" aria-hidden="true" />
           {siteContent.directorMessage.paragraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
-        </div>
-        <div
-          className="director-photo"
-          role="img"
-          aria-label="Director photo placeholder — to be replaced before launch"
-        >
-          <Users aria-hidden="true" size={48} />
+          <p className="director-signature">
+            <strong>{siteContent.directorMessage.signatureName}</strong>
+            <span>{siteContent.directorMessage.signatureRole}</span>
+          </p>
         </div>
       </section>
     </>

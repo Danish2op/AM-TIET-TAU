@@ -30,6 +30,11 @@ export type IndustryOffering = {
   summary: string;
 };
 
+export type FocusArea = {
+  title: string;
+  summary: string;
+};
+
 export type PartnerLogo = {
   name: string;
   src: string;
@@ -46,17 +51,49 @@ export const siteContent = {
     address:
       "Thapar Institute of Engineering & Technology, Patiala-147004, Punjab, India"
   },
-  aboutCentre: [
-    "The Centre of Excellence in Advanced Manufacturing (CoE-AM) is a dedicated platform established to promote innovation, high-impact research, and technology-driven transformation in modern manufacturing domains. The Centre is a collaborative initiative between Thapar Institute of Engineering and Technology (TIET), Patiala, and Tel Aviv University (TAU), Israel. It is led by the founding Director and Chair Professor, Prof. Noam Eliaz. It serves as a multidisciplinary ecosystem where cutting-edge infrastructure and expert researchers converge to provide specialised support to academia, industry, defense organizations, healthcare institutions, etc. In particular, the Centre aims to facilitate end-to-end technology development from conceptual design and simulation to prototyping, testing, refinement, and final validation. Its research thrust areas include additive manufacturing process optimization, development of high-performance materials, including metals and alloys, ceramics, composites, functionally graded materials (FGMs), multi-material systems, and polymers, for advanced applications; novel innovations in welding, casting, and forming techniques; surface engineering; advanced machining strategies; hybrid manufacturing approaches; and deployment of Industry 4.0 tools for real-time monitoring and intelligent decision-making. Through such initiatives, the Centre seeks to drive improvements in manufacturing efficiency, product reliability, and sustainability.",
-    "Beyond research, CoE-AM is committed to creating a highly capable and industry-ready workforce and bridging the skills gap by offering specialized training, certifications, and hands-on workshops for students and professionals. It also serves as a vital incubator for entrepreneurs, providing the prototyping tools and expert consultancy necessary to transform ideas into market-ready products. The Centre encourages innovation-driven entrepreneurship by collaborative projects, and consultancy services, thereby strengthening the industry-academia-innovation chain. Ultimately, the CoE-AM is envisioned as a powerful catalyst for economic and technological growth, fostering a highly skilled workforce and a robust innovation ecosystem that strengthens global industrial competitiveness."
-  ],
+  aboutCentre: {
+    intro: [
+      "The Centre of Excellence in Advanced Manufacturing (CoE-AM) is a flagship joint initiative of Thapar Institute of Engineering and Technology (TIET), Patiala, and Tel Aviv University (TAU), Israel. Founded under the leadership of Chair Professor Noam Eliaz, the Centre operates as an advanced multidisciplinary hub connecting academia, industry, defense, and healthcare.",
+      "CoE-AM supports end-to-end technology development—guiding projects from conceptual design and simulation to prototyping, testing, refinement, and validation."
+    ],
+    focusHeading: "Core Research Focus Areas",
+    focusAreas: [
+      {
+        title: "Advanced Additive & Hybrid Manufacturing",
+        summary: "Process optimization and integrated hybrid techniques."
+      },
+      {
+        title: "High-Performance Materials",
+        summary:
+          "Research into metals, alloys, ceramics, composites, functionally graded materials (FGMs), multi-material systems, and polymers."
+      },
+      {
+        title: "Process Innovations",
+        summary:
+          "Advanced techniques in welding, casting, forming, surface engineering, and machining."
+      },
+      {
+        title: "Industry 4.0 Integration",
+        summary:
+          "Real-time monitoring, smart automation, and intelligent decision-making systems to elevate production efficiency and sustainability."
+      }
+    ] satisfies FocusArea[],
+    closing:
+      "In addition to core research, CoE-AM acts as a talent engine and startup incubator. By hosting specialized certifications, hands-on technical workshops, and collaborative industry projects, the Centre actively bridges the skills gap while helping entrepreneurs turn innovative concepts into market-ready products."
+  },
   directorMessage: {
-    heading: "Message from Director, CoE-AM",
-    // Placeholder copy — replace with the Director's actual message before launch.
+    heading: "Welcome Message from the Director",
     paragraphs: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    ]
+      "Welcome to the Centre of Excellence in Advanced Manufacturing (CoE-AM).",
+      "Modern manufacturing is undergoing a profound shift, driven by breakthrough material science, smart automation, and unprecedented cross-disciplinary collaboration. Established through a partnership between Thapar Institute of Engineering and Technology and Tel Aviv University, CoE-AM was built to lead this transformation.",
+      "Our mission is simple: bridging the gap between world-class academic research and real-world industrial impact. Whether optimizing additive manufacturing, engineering resilient materials, or integrating Industry 4.0 systems, our state-of-the-art facilities empower researchers, students, and industry partners to solve complex engineering challenges.",
+      "Beyond technology development, we are deeply committed to nurturing talent and supporting entrepreneurs. Through our specialized training programs and incubation ecosystem, we aim to equip the next generation of engineers and innovators with the hands-on expertise needed to compete globally.",
+      "I invite students, researchers, industry leaders, and visionaries to explore CoE-AM, collaborate with our team, and help us shape the future of advanced manufacturing."
+    ],
+    signatureName: "Prof. Noam Eliaz",
+    signatureRole: "Founding Director and Chair Professor, CoE-AM",
+    photo: "/assets/director.webp",
+    photoAlt: "Prof. Noam Eliaz, Founding Director and Chair Professor of CoE-AM"
   },
   partnerLogos: [
     {

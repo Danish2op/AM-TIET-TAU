@@ -76,9 +76,12 @@ body::after {
       transparent 1px,
       transparent 18px
     );
-  background-position: 0 0, 0 0;
+  /* Sized past the viewport and anchored to the corners the arcs radiate
+     from, so their outer boundary falls off-screen instead of ending in a
+     hard vertical edge partway across the page. */
+  background-position: top right, bottom left;
   background-repeat: no-repeat, no-repeat;
-  background-size: 70vw 70vh, 55vw 55vh;
+  background-size: 160vmax 160vmax, 150vmax 150vmax;
   content: "";
   inset: 0;
   pointer-events: none;
@@ -463,7 +466,7 @@ p {
 }
 
 .hero-carousel-frame {
-  background: rgba(255, 255, 255, 0.58);
+  background: linear-gradient(180deg, rgba(8, 33, 61, 0.06), rgba(8, 33, 61, 0.12));
   border: 1px solid var(--line);
   border-radius: 10px;
   box-shadow: var(--shadow);
@@ -487,9 +490,12 @@ p {
   opacity: 1;
 }
 
+/* Contain, not cover: these are equipment photographs, and a cropped
+   machine tells the reader less than a whole one. */
 .hero-carousel-slide img {
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  padding: 0.75rem;
   width: 100%;
 }
 
@@ -614,9 +620,24 @@ p {
       rgba(13, 55, 102, 0.78) 100%
     ),
     url("/assets/thapar-campus.webp") center top / cover no-repeat;
+  border-radius: 0;
   inset: 0;
   position: absolute;
+  transition: inset 420ms ease, border-radius 420ms ease;
   z-index: 0;
+}
+
+/* Scrolling off the hero draws the picture in from the edges, the same
+   move the nav makes when it takes on its surface. */
+body.is-scrolled .landing-hero-media {
+  border-radius: 18px;
+  inset: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-hero-media {
+    transition: none;
+  }
 }
 
 .landing-hero-inner {
@@ -760,6 +781,33 @@ p {
   margin-top: 1rem;
 }
 
+.focus-heading {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  margin: 1.9rem 0 0.9rem;
+}
+
+.focus-list {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0;
+}
+
+.focus-list dt {
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.focus-list dd {
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0.3rem 0 0;
+  padding-left: 0.85rem;
+}
+
 .about-media {
   display: flex;
   min-height: 0;
@@ -811,36 +859,56 @@ p {
 }
 
 .director-section {
-  align-items: start;
-  display: grid;
-  gap: 1.25rem;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.55fr);
+  display: block;
 }
 
 .director-copy p {
-  line-height: 1.7;
   margin-top: 1rem;
 }
 
-.director-photo {
-  aspect-ratio: 3 / 4;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px dashed var(--line);
-  border-radius: 8px;
-  color: var(--muted);
-  display: flex;
-  justify-content: center;
+/* The portrait sits in a pocket cut into the top-right of the card and the
+   message wraps around it, rather than occupying a column of its own. */
+.director-portrait {
+  float: right;
+  margin: 0.25rem 0 1.25rem 1.75rem;
+  shape-margin: 1.5rem;
+  width: clamp(150px, 20vw, 232px);
 }
 
-@media (max-width: 980px) {
-  .director-section {
-    grid-template-columns: 1fr;
-  }
+.director-portrait img {
+  aspect-ratio: 3 / 4;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  object-fit: cover;
+  width: 100%;
+}
 
-  .director-photo {
-    aspect-ratio: 16 / 9;
-    max-height: 260px;
+.director-signature {
+  border-top: 1px solid var(--rule);
+  clear: both;
+  display: grid;
+  gap: 0.15rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+}
+
+.director-signature strong {
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.director-signature span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 560px) {
+  .director-portrait {
+    float: none;
+    margin: 0 0 1.5rem;
+    width: min(200px, 60%);
   }
 }
 
