@@ -13,6 +13,7 @@ ASSETS = {
     "20251106_172303.jpg": ("sample-coupons.webp", 1400),
     "20230808_200852.jpg": ("demo-component.webp", 1400),
     "thapar-campus.jpg": ("thapar-campus.webp", 1600),
+    "director.png": ("director.webp", 720),
 }
 
 

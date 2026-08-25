@@ -874,6 +874,8 @@ body.is-scrolled .landing-hero-media {
   border: 1px solid var(--line);
   border-radius: 8px;
   object-fit: cover;
+  /* Source is 5:7; anchoring top keeps the crop off the face. */
+  object-position: center top;
   width: 100%;
 }
 
