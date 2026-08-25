@@ -623,7 +623,12 @@ p {
   border-radius: 0;
   inset: 0;
   position: absolute;
-  transition: inset 420ms ease, border-radius 420ms ease;
+  /* Scale, not inset — insets relayout every frame and the move stutters.
+     Transform and border-radius stay off the layout path. */
+  transform: scale(1);
+  transition: transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-radius 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
   z-index: 0;
 }
 
@@ -631,7 +636,7 @@ p {
    move the nav makes when it takes on its surface. */
 body.is-scrolled .landing-hero-media {
   border-radius: 18px;
-  inset: 12px;
+  transform: scale(0.978);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -765,13 +770,11 @@ body.is-scrolled .landing-hero-media {
   }
 }
 
-/* Two equal columns that also match in height: the carousel stretches to
-   the About card rather than sitting short beside it. */
+/* One card. The carousel sits inside it and the copy wraps around, so the
+   whole About text fits a single screen instead of running down a column
+   beside a tall image. */
 .about-section {
-  align-items: stretch;
-  display: grid;
-  gap: clamp(1.25rem, 3vw, 2.5rem);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  display: block;
   padding-top: clamp(2rem, 5vw, 3.5rem);
   scroll-margin-top: 80px;
 }
@@ -809,36 +812,27 @@ body.is-scrolled .landing-hero-media {
 }
 
 .about-media {
-  display: flex;
-  min-height: 0;
+  float: right;
+  margin: 0.25rem 0 1.5rem 1.9rem;
+  width: clamp(280px, 38%, 460px);
 }
 
-.about-section .hero-carousel {
-  height: 100%;
+.about-section .hero-carousel,
+.about-section .hero-carousel-frame {
+  height: auto;
   min-height: 0;
   width: 100%;
 }
 
 .about-section .hero-carousel-frame {
-  height: 100%;
-  min-height: 0;
+  aspect-ratio: 4 / 3;
 }
 
-@media (max-width: 980px) {
-  .about-section {
-    grid-template-columns: 1fr;
-  }
-
-  .about-section .hero-carousel,
-  .about-section .hero-carousel-frame {
-    min-height: 360px;
-  }
-}
-
-@media (max-width: 640px) {
-  .about-section .hero-carousel,
-  .about-section .hero-carousel-frame {
-    min-height: 280px;
+@media (max-width: 720px) {
+  .about-media {
+    float: none;
+    margin: 0 0 1.5rem;
+    width: 100%;
   }
 }
 

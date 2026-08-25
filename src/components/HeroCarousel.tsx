@@ -33,8 +33,8 @@ export function HeroCarousel({ items }: { items: GalleryItem[] }) {
   return (
     <div
       className="hero-carousel"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      // Pauses for keyboard users only. Pausing on hover meant a pointer
+      // resting anywhere over the image stopped the rotation entirely.
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
       onKeyDown={handleKeyDown}

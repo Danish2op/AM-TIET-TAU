@@ -110,6 +110,9 @@ function HomePage() {
         <div className="about-copy glass-panel" data-reveal="">
           <p className="eyebrow">About</p>
           <span className="rule" aria-hidden="true" />
+          <div className="about-media">
+            <HeroCarousel items={siteContent.gallery} />
+          </div>
           {siteContent.aboutCentre.intro.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>
           ))}
@@ -123,9 +126,6 @@ function HomePage() {
             ))}
           </dl>
           <p>{siteContent.aboutCentre.closing}</p>
-        </div>
-        <div className="about-media" data-reveal="" data-reveal-delay="1">
-          <HeroCarousel items={siteContent.gallery} />
         </div>
       </section>
 
