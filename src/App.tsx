@@ -34,22 +34,52 @@ function Layout() {
       return;
     }
 
-    const DISTANCE = 260;
+    const DISTANCE = 420;
+    // Damping factor. A wheel tick jumps the scroll ~100px at once, so
+    // following it exactly still lands in steps. Easing toward the target
+    // each frame is what turns those jumps into a glide.
+    const EASE = 0.055;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const targetOf = () => Math.min(1, Math.max(0, window.scrollY / DISTANCE));
+
+    let target = targetOf();
+    let current = target;
     let frame = 0;
 
-    const write = () => {
-      frame = 0;
-      const progress = Math.min(1, Math.max(0, window.scrollY / DISTANCE));
-      root.style.setProperty("--scroll-progress", progress.toFixed(4));
+    const commit = (value: number) => {
+      root.style.setProperty("--scroll-progress", value.toFixed(4));
+    };
+
+    const tick = () => {
+      current += (target - current) * EASE;
+
+      if (Math.abs(target - current) < 0.0004) {
+        current = target;
+        commit(current);
+        frame = 0;
+        return;
+      }
+
+      commit(current);
+      frame = window.requestAnimationFrame(tick);
     };
 
     const handleScroll = () => {
+      target = targetOf();
+
+      if (prefersReducedMotion) {
+        current = target;
+        commit(current);
+        return;
+      }
+
       if (!frame) {
-        frame = window.requestAnimationFrame(write);
+        frame = window.requestAnimationFrame(tick);
       }
     };
 
-    write();
+    commit(current);
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleScroll, { passive: true });
 

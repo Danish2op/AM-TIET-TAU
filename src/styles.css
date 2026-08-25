@@ -168,13 +168,16 @@ button:focus-visible {
   box-shadow: none;
 }
 
+/* No backdrop-filter here on purpose: fading the opacity of a blurred
+   layer re-runs the blur every frame, which is the single most expensive
+   thing this transition could do. The photograph behind it needs no blur. */
 .site-header--overlay::before {
-  backdrop-filter: blur(10px);
-  background: rgba(246, 251, 255, 0.9);
+  background: rgba(246, 251, 255, 0.94);
   content: "";
   inset: 0;
   opacity: var(--scroll-progress);
   position: absolute;
+  will-change: opacity;
   z-index: 0;
 }
 
