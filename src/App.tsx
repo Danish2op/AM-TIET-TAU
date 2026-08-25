@@ -18,38 +18,65 @@ import { useScrollReveal } from "./lib/useScrollReveal";
 function Layout() {
   useScrollReveal();
   const location = useLocation();
-  const [scrolled, setScrolled] = useState(false);
 
   // The bar rides transparently over the landing hero and turns solid once
   // the reader leaves it, so white-on-photo never lands on white-on-white.
+  const isLanding = location.pathname === "/";
+
+  // Scroll-linked rather than a threshold toggle: every frame writes a 0-1
+  // progress value that the header surface and hero picture interpolate
+  // against, so the change tracks the scroll instead of snapping once.
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 40;
-      setScrolled(isScrolled);
-      // Drives the hero picture inset, which lives outside this subtree.
-      document.body.classList.toggle("is-scrolled", isScrolled);
+    const root = document.documentElement;
+
+    if (!isLanding) {
+      root.style.setProperty("--scroll-progress", "1");
+      return;
+    }
+
+    const DISTANCE = 260;
+    let frame = 0;
+
+    const write = () => {
+      frame = 0;
+      const progress = Math.min(1, Math.max(0, window.scrollY / DISTANCE));
+      root.style.setProperty("--scroll-progress", progress.toFixed(4));
     };
-    handleScroll();
+
+    const handleScroll = () => {
+      if (!frame) {
+        frame = window.requestAnimationFrame(write);
+      }
+    };
+
+    write();
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      document.body.classList.remove("is-scrolled");
+      window.removeEventListener("resize", handleScroll);
+      if (frame) {
+        window.cancelAnimationFrame(frame);
+      }
+      root.style.setProperty("--scroll-progress", "1");
     };
-  }, []);
-
-  const overlayHeader = location.pathname === "/" && !scrolled;
+  }, [isLanding]);
 
   return (
     <>
       <a className="skip-link" href="#main">
         Skip to main content
       </a>
-      <header className={`site-header${overlayHeader ? " site-header--overlay" : ""}`}>
+      <header className={`site-header${isLanding ? " site-header--overlay" : ""}`}>
         <div className="header-inner">
           <NavLink className="brand" to="/" aria-label="TIET-TAU home">
             <span className="brand-logos">
               {siteContent.partnerLogos.map((logo) => (
-                <img key={logo.src} src={logo.src} alt={logo.alt} />
+                <span className="brand-logo" key={logo.src}>
+                  <img src={logo.src} alt={logo.alt} />
+                  <img className="brand-logo-white" src={logo.src} alt="" aria-hidden="true" />
+                </span>
               ))}
             </span>
             <span className="brand-text">
