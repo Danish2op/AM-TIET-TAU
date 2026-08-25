@@ -28,13 +28,9 @@ function Layout() {
   // against, so the change tracks the scroll instead of snapping once.
   useEffect(() => {
     const root = document.documentElement;
-
-    if (!isLanding) {
-      root.style.setProperty("--scroll-progress", "1");
-      return;
-    }
-
-    const DISTANCE = 420;
+    // The landing hero fills the viewport; inner pages open on a shorter
+    // banner, so the bar has less runway before it needs its surface.
+    const DISTANCE = isLanding ? 420 : 200;
     // Damping factor. A wheel tick jumps the scroll ~100px at once, so
     // following it exactly still lands in steps. Easing toward the target
     // each frame is what turns those jumps into a glide.
@@ -98,7 +94,7 @@ function Layout() {
       <a className="skip-link" href="#main">
         Skip to main content
       </a>
-      <header className={`site-header${isLanding ? " site-header--overlay" : ""}`}>
+      <header className="site-header site-header--overlay">
         <div className="header-inner">
           <NavLink className="brand" to="/" aria-label="TIET-TAU home">
             <span className="brand-logos">
@@ -137,21 +133,13 @@ function Layout() {
   );
 }
 
-function PageHero({
-  eyebrow,
-  title,
-  summary
-}: {
-  eyebrow: string;
-  title: string;
-  summary: string;
-}) {
+function PageHero({ title, summary }: { title: string; summary: string }) {
   return (
     <section className="page-hero">
-      <div className="glass-panel hero-panel">
-        <p className="eyebrow">{eyebrow}</p>
+      <div className="page-hero-media" aria-hidden="true" />
+      <div className="page-hero-inner">
         <h1>{title}</h1>
-        <span className="rule" aria-hidden="true" />
+        <span className="page-hero-rule" aria-hidden="true" />
         <p>{summary}</p>
       </div>
     </section>
@@ -210,8 +198,7 @@ function FacilitiesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Facilities"
-        title="Compact view of core infrastructure and validation support."
+        title="Facilities"
         summary="Core systems are paired with technical specifications, process roles, and validation support so visitors can quickly understand capability."
       />
       <section className="section-shell facility-grid">
@@ -239,8 +226,7 @@ function ResearchPage() {
   return (
     <>
       <PageHero
-        eyebrow="Research"
-        title="Material, process, and measurement discipline for advanced applications."
+        title="Research"
         summary="Research areas stay factual and linked to the centre's equipment, materials, repair, machining, and smart manufacturing capabilities."
       />
       <section className="section-shell research-layout">
@@ -271,8 +257,7 @@ function IndustryPage() {
   return (
     <>
       <PageHero
-        eyebrow="Industry"
-        title="Collaboration paths for development, qualification, training, and consultancy."
+        title="Industry"
         summary="Industry-facing services connect component problems with process development, pilot builds, qualification support, training, and sponsored R&D."
       />
       <section className="section-shell offering-grid">
@@ -356,8 +341,7 @@ function GalleryPage() {
   return (
     <>
       <PageHero
-        eyebrow="Gallery"
-        title="Facility and material images with direct technical context."
+        title="Gallery"
         summary="A compact gallery presents systems, process views, sample surfaces, and demonstration components without overwhelming the page."
       />
       <section className="section-shell gallery-grid">
@@ -405,8 +389,7 @@ function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Contact"
-        title="A simple collaboration path for academia, industry, and innovators."
+        title="Contact"
         summary="Use the centre mailbox for collaboration, training, sponsored R&D, consultancy, prototyping, or technology development conversations."
       />
       <section className="section-shell contact-page">
@@ -436,8 +419,7 @@ function NotFoundPage() {
   return (
     <>
       <PageHero
-        eyebrow="Page not found"
-        title="This page is not part of the centre site."
+        title="Page not found"
         summary="Use the main navigation to return to the current TIET-TAU centre information."
       />
       <section className="section-shell contact-strip glass-panel">

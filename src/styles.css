@@ -383,7 +383,6 @@ nav a.active {
   overflow: hidden;
 }
 
-.page-hero,
 .section-shell {
   margin-left: auto;
   margin-right: auto;
@@ -391,21 +390,67 @@ nav a.active {
   width: calc(100% - clamp(1rem, 6vw, 5rem));
 }
 
+/* Inner pages open on the same photograph as the landing hero, cut to
+   roughly 45% of its height, so a page banner reads as the same site
+   rather than a card floating on the page background. */
 .page-hero {
-  padding: clamp(2.4rem, 5vw, 4.5rem) 0 1rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: -73px;
+  min-height: clamp(260px, 45dvh, 440px);
+  overflow: hidden;
+  padding-top: 73px;
+  position: relative;
+  text-align: center;
+  width: 100%;
 }
 
-.hero-panel {
-  max-width: 980px;
+.page-hero-media {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 33, 61, 0.62) 0%,
+      rgba(8, 33, 61, 0.75) 45%,
+      rgba(13, 55, 102, 0.82) 100%
+    ),
+    url("/assets/thapar-campus.webp") center 32% / cover no-repeat;
+  inset: 0;
+  position: absolute;
+  z-index: 0;
 }
 
-.page-hero .hero-panel {
-  max-width: 860px;
+.page-hero-inner {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: clamp(1.75rem, 4vw, 3rem) clamp(1rem, 6vw, 5rem);
+  position: relative;
+  z-index: 1;
 }
 
 .page-hero h1 {
-  margin-bottom: 0;
-  max-width: 780px;
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 4.4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  margin: 0;
+  max-width: none;
+  text-transform: uppercase;
+}
+
+.page-hero-rule {
+  background: rgba(255, 255, 255, 0.55);
+  display: block;
+  height: 1px;
+  margin: 1.1rem auto 1.2rem;
+  width: clamp(80px, 12vw, 150px);
+}
+
+.page-hero p {
+  color: rgba(255, 255, 255, 0.84);
+  margin: 0 auto;
+  max-width: 62ch;
 }
 
 /* Mono marks the measured and the labelled — specs, tags, section keys. */
@@ -1342,7 +1387,6 @@ address svg {
 }
 
 @media (max-width: 640px) {
-  .page-hero,
   .section-shell {
     width: calc(100% - 1rem);
   }
