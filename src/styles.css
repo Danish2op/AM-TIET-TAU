@@ -1250,12 +1250,23 @@ address svg {
 }
 
 .footer-inner {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  gap: 1.1rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: 1180px;
+}
+
+.footer-text,
+.footer-text strong,
+.footer-text span,
+.footer-email {
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .footer-text {
@@ -1264,24 +1275,18 @@ address svg {
   gap: 0.35rem;
 }
 
-.footer-text strong {
-  color: #fff;
-  font-size: 1.35rem;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.footer-text span {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.9rem;
+.footer-text strong,
+.footer-text span,
+.footer-email {
+  color: rgba(255, 255, 255, 0.86);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
   line-height: 1.6;
 }
 
-.footer-email {
+.footer-text strong {
   color: #fff;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
 }
 
 .footer-email:hover {
@@ -1292,11 +1297,14 @@ address svg {
   align-items: center;
   display: flex;
   flex-direction: row;
+  flex-shrink: 0;
   gap: 1.25rem;
 }
 
 .footer-logo {
   align-items: center;
+  background: none;
+  border: none;
   display: flex;
 }
 
@@ -1304,6 +1312,17 @@ address svg {
   height: 68px;
   object-fit: contain;
   width: auto;
+}
+
+@media (max-width: 640px) {
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-logo img {
+    height: 48px;
+  }
 }
 
 @media (max-width: 980px) {
