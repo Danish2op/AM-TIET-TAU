@@ -553,17 +553,18 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <address className="footer-text">
-          <strong>
-            <span className="footer-eyebrow">{siteContent.eyebrow}</span>
-            {" – "}
-            {siteContent.centreName}
+        <div className="footer-text">
+          <strong className="footer-title">
+            {siteContent.eyebrow} – {siteContent.centreName}
           </strong>
-          <span>{siteContent.contact.address}</span>
-          <a className="footer-email" href={`mailto:${siteContent.contact.email}`}>
-            Email: {siteContent.contact.email}
-          </a>
-        </address>
+          <span className="footer-address">{siteContent.contact.address}</span>
+          <span className="footer-email-row">
+            Email:{" "}
+            <a className="footer-email" href={`mailto:${siteContent.contact.email}`}>
+              {siteContent.contact.email}
+            </a>
+          </span>
+        </div>
         <div className="footer-logos">
           {siteContent.partnerLogos.map((logo) => (
             <span className="footer-logo" key={logo.src}>

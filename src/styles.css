@@ -1218,14 +1218,14 @@ p {
   width: 44px;
 }
 
-address {
+.contact-page address {
   display: grid;
   font-style: normal;
   gap: 1rem;
 }
 
-address a,
-address span {
+.contact-page address a,
+.contact-page address span {
   align-items: start;
   background: rgba(255, 255, 255, 0.62);
   border: 1px solid var(--line);
@@ -1235,7 +1235,7 @@ address span {
   padding: 1rem;
 }
 
-address svg {
+.contact-page address svg {
   color: var(--blue);
   flex: 0 0 auto;
   margin-top: 0.1rem;
@@ -1259,41 +1259,38 @@ address svg {
   max-width: 1180px;
 }
 
-.footer-text,
-.footer-text strong,
-.footer-text span,
-.footer-email {
-  background: none;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-}
-
 .footer-text {
-  display: grid;
-  font-style: normal;
-  gap: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
-.footer-eyebrow,
-.footer-text strong,
-.footer-text span,
+.footer-title,
+.footer-address,
+.footer-email-row,
 .footer-email {
   color: rgba(255, 255, 255, 0.86);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.4;
   margin: 0;
+  padding: 0;
   text-align: left;
 }
 
-.footer-eyebrow {
-  letter-spacing: 0.06em;
+.footer-title {
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
-.footer-text strong {
-  color: #fff;
+.footer-email {
+  color: inherit;
+  text-decoration: none;
 }
 
 .footer-email:hover {
@@ -1326,6 +1323,10 @@ address svg {
   .footer-inner {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .footer-title {
+    white-space: normal;
   }
 
   .footer-logo img {
