@@ -129,7 +129,6 @@ function Layout() {
         </Routes>
       </main>
 
-      <ContactBanner />
       <Footer />
     </>
   );
@@ -550,11 +549,11 @@ function NotFoundPage() {
   );
 }
 
-function ContactBanner() {
+function Footer() {
   return (
-    <section className="contact-banner">
-      <div className="contact-banner-inner">
-        <address className="contact-banner-text">
+    <footer className="site-footer">
+      <div className="footer-inner">
+        <address className="footer-text">
           <strong>{siteContent.centreName}</strong>
           <span>{siteContent.contact.address}</span>
           <span>
@@ -565,25 +564,13 @@ function ContactBanner() {
             </a>
           </span>
         </address>
-        <div className="contact-banner-logos">
+        <div className="footer-logos">
           {siteContent.partnerLogos.map((logo) => (
-            <span className="contact-banner-logo" key={logo.src}>
+            <span className="footer-logo" key={logo.src}>
               <img src={logo.src} alt={logo.alt} />
             </span>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="site-footer">
-      <div className="footer-inner">
-        <span>{siteContent.eyebrow}</span>
-        <span>{siteContent.centreName}</span>
-        <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
       </div>
     </footer>
   );

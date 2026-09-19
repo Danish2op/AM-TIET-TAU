@@ -1241,15 +1241,15 @@ address svg {
   margin-top: 0.1rem;
 }
 
-.contact-banner {
-  background: #fff;
-  border-top: 1px solid var(--line);
+.site-footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   margin-top: clamp(2rem, 5vw, 4rem);
-  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 6vw, 5rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 6vw, 5rem);
   width: 100%;
 }
 
-.contact-banner-inner {
+.footer-inner {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -1259,34 +1259,35 @@ address svg {
   max-width: 1180px;
 }
 
-.contact-banner-text {
+.footer-text {
   display: grid;
   font-style: normal;
-  gap: 0.3rem;
+  gap: 0.35rem;
 }
 
-.contact-banner-text strong {
-  color: var(--navy);
-  font-size: 0.9rem;
+.footer-text strong {
+  color: #fff;
+  font-size: 0.92rem;
   font-weight: 600;
   line-height: 1.4;
 }
 
-.contact-banner-text span {
-  color: var(--muted);
-  font-size: 0.8rem;
+.footer-text span {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.82rem;
   line-height: 1.6;
 }
 
-.contact-banner-text a {
-  color: var(--blue);
+.footer-text a {
+  color: rgba(255, 255, 255, 0.86);
 }
 
-.contact-banner-text a:hover {
+.footer-text a:hover {
+  color: #fff;
   text-decoration: underline;
 }
 
-.contact-banner-logos {
+.footer-logos {
   align-items: flex-end;
   display: flex;
   flex-direction: column;
@@ -1294,60 +1295,22 @@ address svg {
   gap: 0.9rem;
 }
 
-.contact-banner-logo {
+.footer-logo {
   align-items: center;
   display: flex;
 }
 
-.contact-banner-logo img {
+.footer-logo img {
   height: 68px;
   object-fit: contain;
   width: auto;
 }
 
 @media (max-width: 640px) {
-  .contact-banner-inner {
+  .footer-inner {
     align-items: flex-start;
     flex-direction: column;
   }
-}
-
-/* Sits directly under the navy contact band, so it continues that band
-   rather than reverting to the light page surface. */
-.site-footer {
-  background: var(--navy);
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 0.9rem;
-  padding: 1.25rem clamp(1rem, 6vw, 5rem) 1.75rem;
-  width: 100%;
-}
-
-.footer-inner {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 1180px;
-}
-
-.site-footer span:first-child {
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 700;
-}
-
-.site-footer a {
-  align-items: center;
-  color: rgba(255, 255, 255, 0.86);
-  display: inline-flex;
-  min-height: 44px;
-}
-
-.site-footer a:hover {
-  color: #fff;
-  text-decoration: underline;
 }
 
 @media (max-width: 980px) {
