@@ -1283,6 +1283,7 @@ address svg {
   font-size: 0.85rem;
   font-weight: 500;
   line-height: 1.6;
+  text-align: justify;
 }
 
 .footer-text strong {
@@ -1298,18 +1299,19 @@ address svg {
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
-  gap: 1.25rem;
+  gap: 1rem;
 }
 
 .footer-logo {
   align-items: center;
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
   display: flex;
+  padding: 0.5rem 0.9rem;
 }
 
 .footer-logo img {
-  height: 68px;
+  height: 56px;
   object-fit: contain;
   width: auto;
 }
