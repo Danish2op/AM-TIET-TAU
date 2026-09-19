@@ -25,17 +25,17 @@ describe("site content", () => {
     expect(siteContent.contact.email).toBe("coeam@thapar.edu");
   });
 
-  it("defines the seven-page route model with no standalone about page", () => {
+  it("defines the six-page route model with no standalone about or contact page", () => {
     expect(siteContent.navigation.map((item) => item.path)).toEqual([
       "/",
       "/facilities",
       "/research",
       "/industry",
-      "/gallery",
       "/people",
-      "/contact"
+      "/gallery"
     ]);
     expect(siteContent.navigation.some((item) => item.path === "/about")).toBe(false);
+    expect(siteContent.navigation.some((item) => item.path === "/contact")).toBe(false);
   });
 
   it("no longer carries team or capability strip content", () => {

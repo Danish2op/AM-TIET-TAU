@@ -4,8 +4,6 @@ import {
   ArrowRight,
   ChevronRight,
   Linkedin,
-  Mail,
-  MapPin,
   Maximize2,
   Sparkles,
   X
@@ -124,7 +122,6 @@ function Layout() {
           <Route path="/industry" element={<IndustryPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/people" element={<PeoplePage />} />
-          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
@@ -504,29 +501,6 @@ function PeoplePage() {
   );
 }
 
-function ContactPage() {
-  return (
-    <>
-      <PageHero title="Contact" />
-      <section className="section-shell contact-page">
-        <address className="glass-panel">
-          <a href={`mailto:${siteContent.contact.email}`}>
-            <Mail aria-hidden="true" size={20} />
-            {siteContent.contact.email}
-          </a>
-          <span>
-            <MapPin aria-hidden="true" size={20} />
-            {siteContent.contact.address}
-          </span>
-        </address>
-        <figure className="glass-card compact-figure">
-          <img src="/assets/ded-process.webp" alt="Directed Energy Deposition work area showing the process setup" />
-        </figure>
-      </section>
-    </>
-  );
-}
-
 function NotFoundPage() {
   return (
     <>
@@ -534,14 +508,14 @@ function NotFoundPage() {
       <section className="section-shell contact-strip glass-panel">
         <div>
           <p className="eyebrow">Continue</p>
-          <h2>Go back to the centre overview or contact the team directly.</h2>
+          <h2>Go back to the centre overview or meet the team directly.</h2>
         </div>
         <div className="actions">
           <NavLink className="button primary" to="/">
             Home <ArrowRight aria-hidden="true" size={18} />
           </NavLink>
-          <NavLink className="button secondary" to="/contact">
-            Contact <ChevronRight aria-hidden="true" size={18} />
+          <NavLink className="button secondary" to="/people">
+            People <ChevronRight aria-hidden="true" size={18} />
           </NavLink>
         </div>
       </section>

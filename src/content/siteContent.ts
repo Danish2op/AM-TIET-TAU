@@ -139,19 +139,14 @@ export const siteContent = {
       summary: "Training, prototyping, qualification, sponsored R&D, and consultancy."
     },
     {
-      label: "Gallery",
-      path: "/gallery",
-      summary: "Facility and material images in a compact interactive gallery."
-    },
-    {
       label: "People",
       path: "/people",
       summary: "Faculty, researchers, and engineers who drive CoE-AM work."
     },
     {
-      label: "Contact",
-      path: "/contact",
-      summary: "Primary collaboration email and institute address."
+      label: "Gallery",
+      path: "/gallery",
+      summary: "Facility and material images in a compact interactive gallery."
     }
   ] satisfies NavigationItem[],
   coreInfrastructure: [
