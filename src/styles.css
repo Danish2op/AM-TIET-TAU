@@ -1285,7 +1285,7 @@ address svg {
   font-weight: 500;
   line-height: 1.35;
   margin: 0;
-  text-align: justify;
+  text-align: left;
 }
 
 .footer-eyebrow {
