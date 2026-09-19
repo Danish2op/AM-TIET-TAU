@@ -563,9 +563,9 @@ function Footer() {
         <address className="footer-text">
           <strong>{siteContent.centreName}</strong>
           <span>{siteContent.contact.address}</span>
-          <span>
-            <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
-          </span>
+          <a className="footer-email" href={`mailto:${siteContent.contact.email}`}>
+            {siteContent.contact.email}
+          </a>
         </address>
       </div>
     </footer>
