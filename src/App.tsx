@@ -554,8 +554,11 @@ function Footer() {
     <footer className="site-footer">
       <div className="footer-inner">
         <address className="footer-text">
-          <span className="footer-eyebrow">{siteContent.eyebrow}</span>
-          <strong>{siteContent.centreName}</strong>
+          <strong>
+            <span className="footer-eyebrow">{siteContent.eyebrow}</span>
+            {" – "}
+            {siteContent.centreName}
+          </strong>
           <span>{siteContent.contact.address}</span>
           <a className="footer-email" href={`mailto:${siteContent.contact.email}`}>
             Email: {siteContent.contact.email}
