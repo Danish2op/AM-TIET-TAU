@@ -41,6 +41,16 @@ export type PartnerLogo = {
   alt: string;
 };
 
+export type TeamMember = {
+  name: string;
+  role: string;
+  affiliation: string;
+  photo: string;
+  photoAlt: string;
+  linkedin: string;
+  note: string;
+};
+
 export const siteContent = {
   centreName: "Centre of Excellence in Advanced Manufacturing",
   eyebrow: "TIET-TAU",
@@ -82,7 +92,7 @@ export const siteContent = {
       "In addition to core research, CoE-AM acts as a talent engine and startup incubator. By hosting specialized certifications, hands-on technical workshops, and collaborative industry projects, the Centre actively bridges the skills gap while helping entrepreneurs turn innovative concepts into market-ready products."
   },
   directorMessage: {
-    heading: "Welcome Message from the Director",
+    heading: "Message from Director",
     paragraphs: [
       "Welcome to the Centre of Excellence in Advanced Manufacturing (CoE-AM).",
       "Modern manufacturing is undergoing a profound shift, driven by breakthrough material science, smart automation, and unprecedented cross-disciplinary collaboration. Established through a partnership between Thapar Institute of Engineering and Technology and Tel Aviv University, CoE-AM was built to lead this transformation.",
@@ -132,6 +142,11 @@ export const siteContent = {
       label: "Gallery",
       path: "/gallery",
       summary: "Facility and material images in a compact interactive gallery."
+    },
+    {
+      label: "People",
+      path: "/people",
+      summary: "Faculty, researchers, and engineers who drive CoE-AM work."
     },
     {
       label: "Contact",
@@ -249,6 +264,53 @@ export const siteContent = {
         "Structured collaboration for materials, process studies, component repair, product development, and technical advice."
     }
   ] satisfies IndustryOffering[],
+  people: [
+    {
+      name: "Prof. Noam Eliaz",
+      role: "Founding Director & Chair Professor",
+      affiliation: "Tel Aviv University / CoE-AM",
+      photo: "/assets/director.webp",
+      photoAlt: "Prof. Noam Eliaz, Founding Director of CoE-AM",
+      linkedin: "https://www.linkedin.com/in/noam-eliaz/",
+      note: "It is a privilege to lead this initiative that bridges world-class academic research with real industrial challenges. My hope is that CoE-AM becomes a launchpad for transformative ideas that shape the future of manufacturing globally."
+    },
+    {
+      name: "Prof. Rajeev Sharma",
+      role: "Co-Director, CoE-AM",
+      affiliation: "Thapar Institute of Engineering & Technology",
+      photo: "/assets/person-placeholder.svg",
+      photoAlt: "Prof. Rajeev Sharma, Co-Director of CoE-AM",
+      linkedin: "#",
+      note: "Building CoE-AM has been about more than machines and processes — it has been about creating an ecosystem where students, researchers, and industry professionals can solve real problems together. That collaborative spirit is what drives us every day."
+    },
+    {
+      name: "Dr. Priya Kapoor",
+      role: "Senior Research Scientist",
+      affiliation: "CoE-AM, TIET",
+      photo: "/assets/person-placeholder.svg",
+      photoAlt: "Dr. Priya Kapoor, Senior Research Scientist at CoE-AM",
+      linkedin: "#",
+      note: "Functionally graded materials fascinate me because they are nature's own engineering strategy. At CoE-AM we have the tools to translate that idea into real components, and that translational capability is rare anywhere in the world."
+    },
+    {
+      name: "Mr. Arjun Singh",
+      role: "Research Engineer — DED & Machining",
+      affiliation: "CoE-AM, TIET",
+      photo: "/assets/person-placeholder.svg",
+      photoAlt: "Mr. Arjun Singh, Research Engineer at CoE-AM",
+      linkedin: "#",
+      note: "Every morning I walk in to one of India's most capable metal additive manufacturing setups. Working hands-on with the InssTek system and refining our deposition workflows keeps this role endlessly engaging."
+    },
+    {
+      name: "Ms. Sarah Cohen",
+      role: "Visiting Research Fellow",
+      affiliation: "Tel Aviv University",
+      photo: "/assets/person-placeholder.svg",
+      photoAlt: "Ms. Sarah Cohen, Visiting Research Fellow from Tel Aviv University",
+      linkedin: "#",
+      note: "The India-Israel collaboration at CoE-AM is genuinely unique. Joining the team from TAU has given me access to large-scale DED infrastructure I could not find in most academic settings, combined with a research culture that is both rigorous and welcoming."
+    }
+  ] satisfies TeamMember[],
   gallery: [
     {
       src: "/assets/ded-system.webp",

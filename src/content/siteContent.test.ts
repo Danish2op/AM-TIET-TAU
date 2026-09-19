@@ -25,13 +25,14 @@ describe("site content", () => {
     expect(siteContent.contact.email).toBe("coeam@thapar.edu");
   });
 
-  it("defines the six-page route model with no standalone about page", () => {
+  it("defines the seven-page route model with no standalone about page", () => {
     expect(siteContent.navigation.map((item) => item.path)).toEqual([
       "/",
       "/facilities",
       "/research",
       "/industry",
       "/gallery",
+      "/people",
       "/contact"
     ]);
     expect(siteContent.navigation.some((item) => item.path === "/about")).toBe(false);
@@ -78,7 +79,7 @@ describe("site content", () => {
   });
 
   it("carries the director welcome message and attribution", () => {
-    expect(siteContent.directorMessage.heading).toBe("Welcome Message from the Director");
+    expect(siteContent.directorMessage.heading).toBe("Message from Director");
     expect(siteContent.directorMessage.paragraphs).toHaveLength(5);
     expect(siteContent.directorMessage.paragraphs[0]).toContain("Welcome to the Centre of Excellence");
     expect(siteContent.directorMessage.signatureName).toBe("Prof. Noam Eliaz");

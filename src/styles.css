@@ -457,7 +457,7 @@ nav a.active {
 .eyebrow {
   color: var(--blue);
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 1.1rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   margin: 0 0 0.7rem;
@@ -814,6 +814,7 @@ p {
 
 .landing-hero-tagline {
   color: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-mono);
   font-size: clamp(0.98rem, 1.4vw, 1.12rem);
   margin: 0 auto clamp(2rem, 4vw, 2.75rem);
   max-width: 46ch;
@@ -874,6 +875,7 @@ p {
 .about-copy p {
   margin-bottom: 0;
   margin-top: 1rem;
+  text-align: justify;
 }
 
 .focus-heading {
@@ -950,13 +952,14 @@ p {
 
 .director-copy p {
   margin-top: 1rem;
+  text-align: justify;
 }
 
 /* The portrait sits in a pocket cut into the top-right of the card and the
    message wraps around it, rather than occupying a column of its own. */
 .director-portrait {
   float: right;
-  margin: 0.25rem 0 1.25rem 1.75rem;
+  margin: 4.75rem 0 1.25rem 1.75rem;
   shape-margin: 1.5rem;
   width: clamp(150px, 20vw, 232px);
 }
@@ -1031,6 +1034,10 @@ p {
   padding: clamp(1rem, 3vw, 1.8rem);
 }
 
+.facility-card p {
+  text-align: justify;
+}
+
 .spec-list {
   display: grid;
   gap: 0.55rem;
@@ -1074,6 +1081,7 @@ p {
   font-size: 0.95rem;
   line-height: 1.55;
   margin-bottom: 0;
+  text-align: justify;
 }
 
 .compact-figure {
@@ -1109,6 +1117,7 @@ p {
   font-size: 0.98rem;
   line-height: 1.6;
   margin-bottom: 0;
+  text-align: justify;
 }
 
 .contact-strip {
@@ -1443,5 +1452,243 @@ address svg {
   *::after {
     scroll-behavior: auto !important;
     transition: none !important;
+  }
+}
+
+/* ── People Page ──────────────────────────────────────────────────────────── */
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.75rem;
+}
+
+.person-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 1.25rem 1.5rem;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  font-family: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.person-card:hover,
+.person-card:focus-visible {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+  outline: none;
+}
+
+.person-card:focus-visible {
+  outline: 2px solid var(--accent, #1a56db);
+  outline-offset: 2px;
+}
+
+.person-card-photo {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.1rem;
+  border: 3px solid rgba(14, 24, 58, 0.1);
+  background: #e4e8f0;
+}
+
+.person-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+  color: var(--navy, #0e183a);
+}
+
+.person-card-role {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent, #1a56db);
+  margin: 0 0 0.2rem;
+}
+
+.person-card-affiliation {
+  font-size: 0.78rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── People Modal ─────────────────────────────────────────────────────────── */
+
+.person-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.58);
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+  animation: modal-fade-in 0.18s ease;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.person-modal-inner {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 14px;
+  max-width: 500px;
+  width: 100%;
+  padding: 2.75rem 2.25rem 2.25rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.22);
+  animation: modal-slide-up 0.22s ease;
+}
+
+@keyframes modal-slide-up {
+  from { transform: translateY(18px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.person-modal-photo {
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border: 4px solid rgba(14, 24, 58, 0.1);
+  background: #e4e8f0;
+}
+
+.person-modal-name {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--navy, #0e183a);
+  line-height: 1.2;
+}
+
+.person-modal-role {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent, #1a56db);
+  margin: 0;
+}
+
+.person-modal-affiliation {
+  font-size: 0.82rem;
+  color: #666;
+  margin: 0;
+}
+
+.person-modal-note {
+  margin: 0.5rem 0 0.25rem;
+  padding: 0;
+  border: none;
+}
+
+.person-modal-note p {
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: #444;
+  margin: 0;
+  max-width: 400px;
+}
+
+.person-modal-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  background: #0a66c2;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: background 0.15s ease;
+}
+
+.person-modal-linkedin:hover {
+  background: #0958a8;
+}
+
+.person-modal-linkedin--placeholder {
+  background: #8a9ab5;
+  cursor: default;
+}
+
+.person-modal-linkedin--placeholder:hover {
+  background: #8a9ab5;
+}
+
+.person-modal-close {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  background: rgba(0, 0, 0, 0.06);
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #555;
+  transition: background 0.15s ease;
+}
+
+.person-modal-close:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.person-modal-close:focus-visible {
+  outline: 2px solid var(--accent, #1a56db);
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .people-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .person-card {
+    padding: 1.5rem 0.75rem 1.25rem;
+  }
+
+  .person-card-photo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .person-modal-inner {
+    padding: 2.25rem 1.25rem 1.75rem;
+  }
+
+  .person-modal-photo {
+    width: 110px;
+    height: 110px;
   }
 }
