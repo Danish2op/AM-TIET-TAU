@@ -553,17 +553,6 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-        <address className="footer-text">
-          <strong>{siteContent.centreName}</strong>
-          <span>{siteContent.contact.address}</span>
-          <span>
-            <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
-            {" · "}
-            <a href={siteContent.contact.website} rel="noreferrer" target="_blank">
-              {siteContent.contact.website}
-            </a>
-          </span>
-        </address>
         <div className="footer-logos">
           {siteContent.partnerLogos.map((logo) => (
             <span className="footer-logo" key={logo.src}>
@@ -571,6 +560,13 @@ function Footer() {
             </span>
           ))}
         </div>
+        <address className="footer-text">
+          <strong>{siteContent.centreName}</strong>
+          <span>{siteContent.contact.address}</span>
+          <span>
+            <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
+          </span>
+        </address>
       </div>
     </footer>
   );

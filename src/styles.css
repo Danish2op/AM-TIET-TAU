@@ -1250,11 +1250,10 @@ address svg {
 }
 
 .footer-inner {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 1.1rem;
   margin: 0 auto;
   max-width: 1180px;
 }
@@ -1288,11 +1287,10 @@ address svg {
 }
 
 .footer-logos {
-  align-items: flex-end;
+  align-items: center;
   display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  gap: 0.9rem;
+  flex-direction: row;
+  gap: 1.25rem;
 }
 
 .footer-logo {
@@ -1304,13 +1302,6 @@ address svg {
   height: 68px;
   object-fit: contain;
   width: auto;
-}
-
-@media (max-width: 640px) {
-  .footer-inner {
-    align-items: flex-start;
-    flex-direction: column;
-  }
 }
 
 @media (max-width: 980px) {
