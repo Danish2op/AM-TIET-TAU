@@ -554,22 +554,23 @@ function ContactBanner() {
   return (
     <section className="contact-banner">
       <div className="contact-banner-inner">
-        <div className="contact-banner-logos">
-          {siteContent.partnerLogos.map((logo) => (
-            <img key={logo.src} src={logo.src} alt={logo.alt} />
-          ))}
-        </div>
-        <div className="contact-banner-grid">
-          <address>
-            <strong>{siteContent.centreName}</strong>
-            <span>{siteContent.contact.address}</span>
-          </address>
-          <div className="contact-banner-links">
+        <address className="contact-banner-text">
+          <strong>{siteContent.centreName}</strong>
+          <span>{siteContent.contact.address}</span>
+          <span>
             <a href={`mailto:${siteContent.contact.email}`}>{siteContent.contact.email}</a>
+            {" · "}
             <a href={siteContent.contact.website} rel="noreferrer" target="_blank">
               {siteContent.contact.website}
             </a>
-          </div>
+          </span>
+        </address>
+        <div className="contact-banner-logos">
+          {siteContent.partnerLogos.map((logo) => (
+            <span className="contact-banner-logo" key={logo.src}>
+              <img src={logo.src} alt={logo.alt} />
+            </span>
+          ))}
         </div>
       </div>
     </section>

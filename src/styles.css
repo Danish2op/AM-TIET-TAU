@@ -1242,97 +1242,77 @@ address svg {
 }
 
 .contact-banner {
-  background: var(--navy);
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  background: #fff;
+  border-top: 1px solid var(--line);
   margin-top: clamp(2rem, 5vw, 4rem);
-  padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 6vw, 5rem);
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 6vw, 5rem);
   width: 100%;
 }
 
 .contact-banner-inner {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: 1180px;
 }
 
-.contact-banner-logos {
-  align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-  display: flex;
-  flex-wrap: wrap;
-  gap: clamp(1.5rem, 5vw, 4rem);
-  justify-content: space-between;
-  padding: 1.25rem 0;
-}
-
-.contact-banner-logos img {
-  background: #fff;
-  border-radius: 3px;
-  height: 58px;
-  object-fit: contain;
-  padding: 0.4rem 0.6rem;
-  width: auto;
-}
-
-.contact-banner-grid {
-  display: grid;
-  gap: clamp(1.25rem, 4vw, 3rem);
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  padding-top: 1.75rem;
-}
-
-.contact-banner-grid address {
+.contact-banner-text {
   display: grid;
   font-style: normal;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
-.contact-banner-grid strong {
-  color: #fff;
-  font-size: 1.05rem;
-  font-weight: 700;
+.contact-banner-text strong {
+  color: var(--navy);
+  font-size: 0.9rem;
+  font-weight: 600;
   line-height: 1.4;
 }
 
-.contact-banner-grid address span {
-  background: none;
-  border: 0;
-  color: rgba(255, 255, 255, 0.8);
-  display: block;
-  line-height: 1.8;
-  padding: 0;
+.contact-banner-text span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
 }
 
-.contact-banner-links {
-  display: grid;
-  gap: 0.5rem;
+.contact-banner-text a {
+  color: var(--blue);
 }
 
-.contact-banner-links a {
-  color: rgba(255, 255, 255, 0.86);
-  line-height: 1.8;
-  min-height: 44px;
-  align-items: center;
-  display: flex;
-}
-
-.contact-banner-links a:hover {
-  color: #fff;
+.contact-banner-text a:hover {
   text-decoration: underline;
 }
 
-@media (max-width: 780px) {
-  .contact-banner-grid {
-    grid-template-columns: 1fr;
-  }
+.contact-banner-logos {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.75rem;
+}
 
-  .contact-banner-logos {
-    gap: 1.5rem;
-    justify-content: flex-start;
-  }
+.contact-banner-logo {
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  display: flex;
+  height: 46px;
+  justify-content: center;
+  padding: 0.4rem 0.85rem;
+}
 
-  .contact-banner-logos img {
-    height: 44px;
+.contact-banner-logo img {
+  height: 100%;
+  object-fit: contain;
+  width: auto;
+}
+
+@media (max-width: 640px) {
+  .contact-banner-inner {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 
