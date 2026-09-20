@@ -1084,14 +1084,17 @@ p {
   color: var(--navy);
 }
 
-/* No min-height here on purpose: flex stretch (the row's default
-   align-items) sizes this to exactly match the intro column's natural
-   content height, so there's never a height mismatch to leave as dead
-   space underneath either side. */
+/* Fixed width AND height, not flex-grow or aspect-ratio: the intro
+   column's text (heading + model + rule + 3 spec lines) renders at a
+   near-constant ~168px tall at every desktop width, since none of its
+   font sizes scale meaningfully with the viewport. Sizing the thumbnail
+   to that same constant, rather than letting it stretch to the source
+   photo's own intrinsic aspect ratio, is what actually guarantees no
+   leftover gap on either side. */
 .facility-card-thumb {
   border-radius: 8px;
-  flex: 1 1 300px;
-  max-width: 380px;
+  flex: 0 0 320px;
+  height: 168px;
   overflow: hidden;
 }
 
@@ -1572,9 +1575,14 @@ p {
     grid-template-columns: 1fr;
   }
 
+  /* Wrapped onto its own line below the intro text on narrow screens —
+     the fixed desktop height no longer applies, so it gets a normal
+     responsive banner height instead. */
   .facility-card-thumb {
-    max-width: none;
+    flex-basis: auto;
+    height: auto;
     min-height: 180px;
+    width: 100%;
   }
 
   .facility-card-thumb img {
