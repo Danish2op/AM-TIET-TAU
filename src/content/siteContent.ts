@@ -237,7 +237,45 @@ export const siteContent = {
         "Achievable tolerance of +/-2-5 microns",
         "Surface finish up to approximately 0.8 micrometers Ra",
         "Hardened tool steels, superalloys, carbides, and conductive composites"
-      ]
+      ],
+      heading: "Wire EDM System",
+      model: "Model: Ecocut, Electronica (India)",
+      specRows: [
+        {
+          label: "Machine Type",
+          value: "CNC Wire Cut EDM (High Precision)"
+        },
+        {
+          label: "Wire Diameter",
+          value: "0.1-0.25 mm"
+        },
+        {
+          label: "Achievable Tolerance",
+          value: "+/-2-5 microns"
+        },
+        {
+          label: "Surface Finish",
+          value: "Up to ~0.8 um Ra (multi-pass)"
+        }
+      ] satisfies SpecRow[],
+      specGroups: [
+        {
+          heading: "Work Materials",
+          items: [
+            "Hardened tool steels",
+            "Superalloys (Inconel, titanium)",
+            "Carbides and conductive composites"
+          ]
+        },
+        {
+          heading: "Capabilities",
+          items: [
+            "Complex contour cutting",
+            "Micro-feature machining",
+            "High repeatability production"
+          ]
+        }
+      ] satisfies SpecGroup[]
     },
     {
       eyebrow: "Validation ecosystem",

@@ -38,6 +38,23 @@ describe("site content", () => {
     expect(ded.specGroups?.[0].items.length).toBeGreaterThan(5);
   });
 
+  it("gives the Wire EDM card a structured heading, model line, and spec table", () => {
+    const wireEdm = siteContent.coreInfrastructure[1];
+    expect(wireEdm.heading).toBe("Wire EDM System");
+    expect(wireEdm.model).toContain("Ecocut");
+    expect(wireEdm.model).toContain("Electronica");
+    expect(wireEdm.specRows?.map((row) => row.label)).toEqual([
+      "Machine Type",
+      "Wire Diameter",
+      "Achievable Tolerance",
+      "Surface Finish"
+    ]);
+    expect(wireEdm.specGroups?.map((group) => group.heading)).toEqual([
+      "Work Materials",
+      "Capabilities"
+    ]);
+  });
+
   it("keeps the primary collaboration contact focused on the centre mailbox", () => {
     expect(siteContent.contact.email).toBe("coeam@thapar.edu");
   });
