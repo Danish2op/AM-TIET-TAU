@@ -1044,8 +1044,45 @@ p {
   width: 100%;
 }
 
+/* Heading/model text on the left, a small thumbnail on the right — the
+   photo is a supporting label here, not a hero image, so it stays compact
+   instead of competing with the table for vertical space. */
+.facility-card-head {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: space-between;
+  padding: clamp(1.1rem, 3vw, 2rem) clamp(1.1rem, 3vw, 2rem) 0;
+}
+
+.facility-card-intro {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.facility-card-thumb {
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  width: clamp(120px, 24vw, 190px);
+}
+
+.facility-card-thumb img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+}
+
 .facility-card-body {
   padding: clamp(1.1rem, 3vw, 2rem);
+}
+
+.facility-card-head + .facility-card-body {
+  padding-top: 1.25rem;
 }
 
 .facility-card p {
@@ -1067,7 +1104,7 @@ p {
   font-family: var(--font-mono);
   font-size: 0.88rem;
   font-weight: 500;
-  margin: 0 0 1.1rem;
+  margin: 0;
 }
 
 .facility-spec-table {
@@ -1507,6 +1544,10 @@ p {
   .facility-spec-row {
     gap: 0.2rem;
     grid-template-columns: 1fr;
+  }
+
+  .facility-card-thumb {
+    width: clamp(88px, 30vw, 120px);
   }
 }
 
