@@ -196,35 +196,57 @@ function FacilitiesPage() {
           >
             {item.heading ? (
               <>
-                <div className="facility-card-head">
-                  <div className="facility-card-intro">
+                {item.specRows && item.specRows.length > 0 ? (
+                  <div className="facility-card-head">
+                    <div className="facility-card-intro">
+                      <p className="facility-card-heading">{item.heading}</p>
+                      {item.model && <p className="facility-card-model">{item.model}</p>}
+                      <span className="rule" aria-hidden="true" />
+                      <ul className="facility-card-head-specs">
+                        {item.specRows.map((row) => (
+                          <li key={row.label}>
+                            <strong>{row.label}:</strong> {row.value}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="facility-card-thumb">
+                      <img src={item.image} alt={item.alt} loading="lazy" />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="facility-card-plain-head">
                     <p className="facility-card-heading">{item.heading}</p>
-                    <p className="facility-card-model">{item.model}</p>
-                    <span className="rule" aria-hidden="true" />
-                    <ul className="facility-card-head-specs">
-                      {item.specRows?.map((row) => (
-                        <li key={row.label}>
-                          <strong>{row.label}:</strong> {row.value}
-                        </li>
-                      ))}
-                    </ul>
+                    {item.model && <p className="facility-card-model">{item.model}</p>}
                   </div>
-                  <div className="facility-card-thumb">
-                    <img src={item.image} alt={item.alt} loading="lazy" />
-                  </div>
-                </div>
+                )}
                 <div className="facility-card-body">
                   <div className="facility-spec-table">
-                    {item.specGroups?.map((group) => (
-                      <div className="facility-spec-group" key={group.heading}>
-                        <p className="facility-spec-group-heading">{group.heading}</p>
-                        <ul className="facility-spec-group-list">
-                          {group.items.map((entry) => (
-                            <li key={entry}>{entry}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
+                    {item.specGroups?.map((group) => {
+                      const isLabeled = typeof group.items[0] === "object";
+                      return (
+                        <div className="facility-spec-group" key={group.heading}>
+                          <p className="facility-spec-group-heading">{group.heading}</p>
+                          <ul
+                            className={
+                              isLabeled
+                                ? "facility-spec-group-list facility-spec-group-list--divided"
+                                : "facility-spec-group-list"
+                            }
+                          >
+                            {group.items.map((entry) =>
+                              typeof entry === "string" ? (
+                                <li key={entry}>{entry}</li>
+                              ) : (
+                                <li key={entry.label}>
+                                  <strong>{entry.label}:</strong> {entry.description}
+                                </li>
+                              )
+                            )}
+                          </ul>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </>

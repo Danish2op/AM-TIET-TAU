@@ -3,9 +3,17 @@ export type SpecRow = {
   value: string;
 };
 
+export type LabeledSpecItem = {
+  label: string;
+  description: string;
+};
+
 export type SpecGroup = {
   heading: string;
-  items: string[];
+  // Plain phrases render as a compact multi-column bullet list. Labeled
+  // items (bold label + description) render as a single-column divided
+  // list instead, since the description text needs the full row width.
+  items: string[] | LabeledSpecItem[];
 };
 
 export type InfrastructureItem = {
@@ -289,7 +297,54 @@ export const siteContent = {
         "Tensile, fatigue, hardness, and impact testing",
         "CMM and 3D laser scanning",
         "Thermal treatment, sand blasting, and chemical polishing"
-      ]
+      ],
+      heading: "Complementary Infrastructure",
+      specGroups: [
+        {
+          heading: "Materials Characterization & Testing Labs",
+          items: [
+            {
+              label: "Microscopy Suite",
+              description:
+                "Scanning electron microscopy (SEM), Transmission electron microscopy (TEM), Electron backscatter diffraction (EBSD) for grain structure analysis"
+            },
+            {
+              label: "Phase analysis",
+              description:
+                "X-ray diffractometer (XRD), Raman spectroscopy, X-ray photoelectron spectroscopy (XPS)"
+            },
+            {
+              label: "Compositional analysis",
+              description:
+                "Energy-dispersive X-ray spectroscopy (EDS), Inductively coupled plasma - optical emission spectroscopy (ICP-OES)"
+            },
+            {
+              label: "Mechanical Testing",
+              description:
+                "Tensile, fatigue, hardness, and impact testing to validate part integrity"
+            },
+            {
+              label: "Metrology Lab",
+              description:
+                "Precision measurement tools like CMM (Coordinate Measuring Machines) and 3D laser scanners to ensure dimensional accuracy"
+            }
+          ]
+        },
+        {
+          heading: "Post-Processing & Finishing Zones",
+          items: [
+            {
+              label: "Thermal Treatment",
+              description: "Furnaces for stress-relieving, annealing, and age-hardening"
+            },
+            {
+              label: "Surface Finishing",
+              description:
+                "Sand blaster and chemical polishing stations to achieve required surface roughness"
+            }
+          ]
+        }
+      ] satisfies SpecGroup[]
     }
   ] satisfies InfrastructureItem[],
   researchAreas: [

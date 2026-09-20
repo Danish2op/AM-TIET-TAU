@@ -1107,6 +1107,15 @@ p {
   padding-top: 1.85rem;
 }
 
+/* No image, no model line — just the heading on its own above the table. */
+.facility-card-plain-head {
+  padding: clamp(1.1rem, 3vw, 2rem) clamp(1.1rem, 3vw, 2rem) 0;
+}
+
+.facility-card-plain-head + .facility-card-body {
+  padding-top: 1.5rem;
+}
+
 .facility-card p {
   text-align: justify;
 }
@@ -1193,6 +1202,28 @@ p {
   content: "\00bb";
   left: 0;
   position: absolute;
+}
+
+.facility-spec-group-list li strong {
+  color: var(--navy);
+}
+
+/* Label + description items need the full row width to read well, so
+   they get a single column with hairline dividers instead of the
+   multi-column bullet grid used for short plain phrases. */
+.facility-spec-group-list--divided {
+  grid-template-columns: 1fr;
+  row-gap: 0;
+}
+
+.facility-spec-group-list--divided li {
+  border-top: 1px solid var(--line);
+  padding: 0.75rem 0 0.75rem 1.1rem;
+}
+
+.facility-spec-group-list--divided li:first-child {
+  border-top: none;
+  padding-top: 0;
 }
 
 .spec-list {

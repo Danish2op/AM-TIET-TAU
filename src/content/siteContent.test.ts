@@ -55,6 +55,20 @@ describe("site content", () => {
     ]);
   });
 
+  it("gives the validation card a heading with no model line and labeled spec groups", () => {
+    const validation = siteContent.coreInfrastructure[2];
+    expect(validation.heading).toBe("Complementary Infrastructure");
+    expect(validation.model).toBeUndefined();
+    expect(validation.specRows).toBeUndefined();
+    expect(validation.specGroups?.map((group) => group.heading)).toEqual([
+      "Materials Characterization & Testing Labs",
+      "Post-Processing & Finishing Zones"
+    ]);
+    const firstItem = validation.specGroups?.[0].items[0];
+    expect(typeof firstItem).toBe("object");
+    expect((firstItem as { label: string }).label).toBe("Microscopy Suite");
+  });
+
   it("keeps the primary collaboration contact focused on the centre mailbox", () => {
     expect(siteContent.contact.email).toBe("coeam@thapar.edu");
   });
