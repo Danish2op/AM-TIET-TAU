@@ -1084,17 +1084,10 @@ p {
   color: var(--navy);
 }
 
-/* Fixed width AND height, not flex-grow or aspect-ratio: the intro
-   column's text (heading + model + rule + 3 spec lines) renders at a
-   near-constant ~168px tall at every desktop width, since none of its
-   font sizes scale meaningfully with the viewport. Sizing the thumbnail
-   to that same constant, rather than letting it stretch to the source
-   photo's own intrinsic aspect ratio, is what actually guarantees no
-   leftover gap on either side. */
 .facility-card-thumb {
   border-radius: 8px;
-  flex: 0 0 320px;
-  height: 168px;
+  flex: 0 0 340px;
+  height: 240px;
   overflow: hidden;
 }
 
@@ -1137,9 +1130,8 @@ p {
 }
 
 .facility-spec-table {
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  overflow: hidden;
+  display: grid;
+  gap: 1.1rem;
 }
 
 .facility-spec-row {
@@ -1168,12 +1160,7 @@ p {
 }
 
 .facility-spec-group {
-  border-bottom: 1px solid var(--line);
-  padding: 0.75rem 0.9rem 0.9rem;
-}
-
-.facility-spec-group:last-child {
-  border-bottom: none;
+  padding: 0;
 }
 
 .facility-spec-group-heading {
