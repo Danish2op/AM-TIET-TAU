@@ -613,7 +613,7 @@ function Footer() {
       <div className="footer-inner">
         <div className="footer-text">
           <strong className="footer-title">
-            {siteContent.eyebrow} – {siteContent.centreName}
+            {siteContent.eyebrow} {siteContent.centreName}
           </strong>
           <span className="footer-address">{siteContent.contact.address}</span>
           <span className="footer-email-row">
