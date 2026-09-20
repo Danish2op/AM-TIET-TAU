@@ -1314,7 +1314,15 @@ p {
 }
 
 .offering-group-card {
+  border-top: 3px solid var(--blue);
   padding: clamp(1.5rem, 3vw, 2.25rem);
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+
+.offering-group-card:hover,
+.offering-group-card:focus-visible {
+  box-shadow: 0 20px 44px rgba(8, 33, 61, 0.14);
+  transform: translateY(-4px);
 }
 
 .offering-group-card .facility-spec-group-heading {
