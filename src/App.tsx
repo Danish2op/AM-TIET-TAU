@@ -202,7 +202,7 @@ function FacilitiesPage() {
                     <p className="facility-card-model">{item.model}</p>
                     <span className="rule" aria-hidden="true" />
                     <ul className="facility-card-head-specs">
-                      {item.specRows?.slice(0, 2).map((row) => (
+                      {item.specRows?.map((row) => (
                         <li key={row.label}>
                           <strong>{row.label}:</strong> {row.value}
                         </li>
@@ -215,12 +215,6 @@ function FacilitiesPage() {
                 </div>
                 <div className="facility-card-body">
                   <div className="facility-spec-table">
-                    {item.specRows?.slice(2).map((row) => (
-                      <div className="facility-spec-row" key={row.label}>
-                        <span className="facility-spec-label">{row.label}</span>
-                        <span className="facility-spec-value">{row.value}</span>
-                      </div>
-                    ))}
                     {item.specGroups?.map((group) => (
                       <div className="facility-spec-group" key={group.heading}>
                         <p className="facility-spec-group-heading">{group.heading}</p>

@@ -1084,18 +1084,20 @@ p {
   color: var(--navy);
 }
 
+/* No min-height here on purpose: flex stretch (the row's default
+   align-items) sizes this to exactly match the intro column's natural
+   content height, so there's never a height mismatch to leave as dead
+   space underneath either side. */
 .facility-card-thumb {
   border-radius: 8px;
   flex: 1 1 300px;
   max-width: 380px;
-  min-height: 220px;
   overflow: hidden;
 }
 
 .facility-card-thumb img {
   display: block;
   height: 100%;
-  min-height: 220px;
   object-fit: cover;
   object-position: center;
   width: 100%;
