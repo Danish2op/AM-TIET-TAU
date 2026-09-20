@@ -187,19 +187,51 @@ function FacilitiesPage() {
     <>
       <PageHero title="Facilities" />
       <section className="section-shell facility-grid">
-        {siteContent.coreInfrastructure.map((item) => (
-          <article className="glass-card facility-card" key={item.title}>
-            <img src={item.image} alt={item.alt} loading="lazy" />
-            <div>
-              <p className="eyebrow">{item.eyebrow}</p>
-              <h2>{item.title}</h2>
-              <p>{item.summary}</p>
-              <ul className="spec-list">
-                {item.specs.map((spec) => (
-                  <li key={spec}>{spec}</li>
-                ))}
-              </ul>
+        {siteContent.coreInfrastructure.map((item, index) => (
+          <article
+            className="glass-card facility-card"
+            key={item.title}
+            data-reveal=""
+            data-reveal-delay={Math.min(index + 1, 5)}
+          >
+            <div className="facility-card-media">
+              <img src={item.image} alt={item.alt} loading="lazy" />
             </div>
+            {item.heading ? (
+              <div className="facility-card-body">
+                <p className="facility-card-heading">{item.heading}</p>
+                <p className="facility-card-model">{item.model}</p>
+                <div className="facility-spec-table">
+                  {item.specRows?.map((row) => (
+                    <div className="facility-spec-row" key={row.label}>
+                      <span className="facility-spec-label">{row.label}</span>
+                      <span className="facility-spec-value">{row.value}</span>
+                    </div>
+                  ))}
+                  {item.specGroups?.map((group) => (
+                    <div className="facility-spec-group" key={group.heading}>
+                      <p className="facility-spec-group-heading">{group.heading}</p>
+                      <ul className="facility-spec-group-list">
+                        {group.items.map((entry) => (
+                          <li key={entry}>{entry}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div className="facility-card-body">
+                <p className="eyebrow">{item.eyebrow}</p>
+                <h2>{item.title}</h2>
+                <p>{item.summary}</p>
+                <ul className="spec-list">
+                  {item.specs.map((spec) => (
+                    <li key={spec}>{spec}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </article>
         ))}
       </section>

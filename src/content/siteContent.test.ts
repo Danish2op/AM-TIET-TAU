@@ -21,6 +21,23 @@ describe("site content", () => {
     expect(claims.join(" ")).toContain("+/-2-5 microns");
   });
 
+  it("gives the DED card a structured heading, model line, and spec table", () => {
+    const ded = siteContent.coreInfrastructure[0];
+    expect(ded.heading).toBe("5-Axis Directed Energy Deposition System");
+    expect(ded.model).toContain("MX-Fab3");
+    expect(ded.model).toContain("InssTek");
+    expect(ded.specRows?.map((row) => row.label)).toEqual([
+      "Laser Power",
+      "Deposition Type",
+      "Build Capability"
+    ]);
+    expect(ded.specGroups?.map((group) => group.heading)).toEqual([
+      "Examples of AM'ed Materials",
+      "Features"
+    ]);
+    expect(ded.specGroups?.[0].items.length).toBeGreaterThan(5);
+  });
+
   it("keeps the primary collaboration contact focused on the centre mailbox", () => {
     expect(siteContent.contact.email).toBe("coeam@thapar.edu");
   });

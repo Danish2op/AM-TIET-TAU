@@ -1,3 +1,13 @@
+export type SpecRow = {
+  label: string;
+  value: string;
+};
+
+export type SpecGroup = {
+  heading: string;
+  items: string[];
+};
+
 export type InfrastructureItem = {
   title: string;
   eyebrow: string;
@@ -5,6 +15,13 @@ export type InfrastructureItem = {
   image: string;
   alt: string;
   specs: string[];
+  // Structured card layout: a bold heading + a lighter model line replace
+  // the eyebrow/title pair, and a label/value + grouped-list table replaces
+  // the flat spec bullet list. Optional so cards can migrate one at a time.
+  heading?: string;
+  model?: string;
+  specRows?: SpecRow[];
+  specGroups?: SpecGroup[];
 };
 
 export type NavigationItem = {
@@ -164,7 +181,49 @@ export const siteContent = {
         "Controlled inert atmosphere",
         "Six powder feeders and hoppers",
         "Hybrid manufacturing compatibility"
-      ]
+      ],
+      heading: "5-Axis Directed Energy Deposition System",
+      model: "Model: MX-Fab3, InssTek (South Korea)",
+      specRows: [
+        {
+          label: "Laser Power",
+          value: "2 kW fiber laser (high stability, industrial-grade)"
+        },
+        {
+          label: "Deposition Type",
+          value: "Powder-fed DED"
+        },
+        {
+          label: "Build Capability",
+          value:
+            "Multi-axis deposition for complex geometries, XYZ travel of 800 x 1000 x 700 mm"
+        }
+      ] satisfies SpecRow[],
+      specGroups: [
+        {
+          heading: "Examples of AM'ed Materials",
+          items: [
+            "Stainless steels (e.g., SS 316L, 304L, 420J2, H13)",
+            "Nickel-based alloys (e.g., Inconel 625/718, INVAR 36, HASTELLOY 22)",
+            "Titanium alloys (e.g., Ti-6Al-4V)",
+            "Cobalt based alloys (e.g., Stellite 25, CoCr MP1)",
+            "Tool steels & customized alloys",
+            "Multimaterials",
+            "Functionally graded materials (FGMs)",
+            "Composites",
+            "Repair"
+          ]
+        },
+        {
+          heading: "Features",
+          items: [
+            "Real-time process control",
+            "Hybrid manufacturing compatibility",
+            "Controlled inert atmosphere",
+            "Six powder feeders and hoppers"
+          ]
+        }
+      ] satisfies SpecGroup[]
     },
     {
       eyebrow: "Precision machining",
