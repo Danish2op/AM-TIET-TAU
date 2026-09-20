@@ -1294,17 +1294,21 @@ p {
 
 .offering-groups-grid {
   display: grid;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-top: 1.75rem;
 }
 
 .offering-group-card {
-  padding: clamp(1.25rem, 3vw, 1.75rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
 }
 
 .offering-group-card .facility-spec-group-heading {
-  font-size: 1rem;
+  font-size: 1.1rem;
+}
+
+.offering-group-card .facility-spec-group-list li {
+  font-size: 0.95rem;
 }
 
 .contact-strip {
