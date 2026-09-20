@@ -1062,7 +1062,8 @@ p {
   min-width: 0;
 }
 
-.facility-card-intro .rule {
+.facility-card-intro .rule,
+.facility-card-plain-head .rule {
   margin: 1.25rem 0;
 }
 

@@ -218,6 +218,7 @@ function FacilitiesPage() {
                   <div className="facility-card-plain-head">
                     <p className="facility-card-heading">{item.heading}</p>
                     {item.model && <p className="facility-card-model">{item.model}</p>}
+                    <span className="rule" aria-hidden="true" />
                   </div>
                 )}
                 <div className="facility-card-body">
