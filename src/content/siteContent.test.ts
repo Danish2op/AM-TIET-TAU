@@ -69,6 +69,15 @@ describe("site content", () => {
     expect((firstItem as { label: string }).label).toBe("Microscopy Suite");
   });
 
+  it("lists all funded projects for the research page with no duplicates", () => {
+    expect(siteContent.projects).toHaveLength(9);
+    expect(new Set(siteContent.projects).size).toBe(9);
+    expect(siteContent.projects.every((title) => title.length > 20)).toBe(true);
+    expect(
+      siteContent.projects.some((title) => title.includes("MAX-Phase Reinforced Metal Matrix Composites"))
+    ).toBe(true);
+  });
+
   it("keeps the primary collaboration contact focused on the centre mailbox", () => {
     expect(siteContent.contact.email).toBe("coeam@thapar.edu");
   });

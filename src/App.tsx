@@ -279,25 +279,22 @@ function ResearchPage() {
   return (
     <>
       <PageHero title="Research" />
-      <section className="section-shell research-layout">
-        <div className="glass-panel">
-          <p className="eyebrow">Research thrusts</p>
-          <h2>Six applied directions.</h2>
-          <div className="pill-grid">
-            {siteContent.researchAreas.map((area) => (
-              <article className="pill-item" key={area.title}>
-                <h3>{area.title}</h3>
-                <p>{area.summary}</p>
-              </article>
-            ))}
-          </div>
+      <section className="section-shell projects-section">
+        <p className="projects-heading">Projects</p>
+        <span className="rule" aria-hidden="true" />
+        <div className="projects-grid">
+          {siteContent.projects.map((title, index) => (
+            <article
+              className="glass-card project-card"
+              key={title}
+              data-reveal=""
+              data-reveal-delay={Math.min(index + 1, 5)}
+            >
+              <span className="project-card-index">{String(index + 1).padStart(2, "0")}</span>
+              <p className="project-card-title">{title}</p>
+            </article>
+          ))}
         </div>
-        <figure className="glass-card compact-figure">
-          <img src="/assets/sample-coupons.webp" alt="Advanced manufacturing sample coupons with different surface outcomes" />
-          <figcaption>
-            Material samples and surface outcomes connect the research agenda with visible process evidence.
-          </figcaption>
-        </figure>
       </section>
     </>
   );

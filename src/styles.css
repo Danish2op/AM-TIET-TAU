@@ -1003,15 +1003,6 @@ p {
   }
 }
 
-.split-layout,
-.research-layout,
-.contact-page {
-  align-items: start;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
-}
-
 .facility-grid {
   grid-template-columns: 1fr;
 }
@@ -1246,46 +1237,58 @@ p {
   padding: 0.55rem 0.75rem;
 }
 
-.pill-grid {
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 1.25rem;
+/* ── Research: project cards ──────────────────────────────────────────────── */
+
+.projects-section {
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
 }
 
-.pill-item {
-  background: rgba(255, 255, 255, 0.62);
-  border: 1px solid var(--line);
-  border-radius: 6px;
+.projects-heading {
   color: var(--navy);
-  padding: 1rem;
-}
-
-.pill-item h3 {
-  font-size: 1rem;
-  margin-bottom: 0.45rem;
-}
-
-.pill-item p {
-  font-size: 0.95rem;
-  line-height: 1.55;
-  margin-bottom: 0;
-  text-align: justify;
-}
-
-.compact-figure {
+  font-family: var(--font-mono);
+  font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
   margin: 0;
+  text-transform: uppercase;
 }
 
-.compact-figure img {
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  width: 100%;
+.projects-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  margin-top: 1.75rem;
 }
 
-.compact-figure figcaption {
-  color: var(--muted);
-  padding: 1rem;
+.project-card {
+  border-left: 3px solid var(--blue);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.4rem 1.5rem;
+  transition: box-shadow 220ms ease, transform 220ms ease;
+}
+
+.project-card:hover,
+.project-card:focus-visible {
+  box-shadow: 0 16px 36px rgba(8, 33, 61, 0.12);
+  transform: translateY(-3px);
+}
+
+.project-card-index {
+  color: var(--blue);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.project-card-title {
+  color: var(--navy);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  margin: 0;
+  text-align: left;
 }
 
 .offering-grid {
@@ -1525,11 +1528,6 @@ p {
 }
 
 @media (max-width: 980px) {
-  .split-layout,
-  .research-layout {
-    grid-template-columns: 1fr;
-  }
-
   .offering-grid,
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1575,8 +1573,11 @@ p {
   }
 
   .offering-grid,
-  .gallery-grid,
-  .pill-grid {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
     grid-template-columns: 1fr;
   }
 

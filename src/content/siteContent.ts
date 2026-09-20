@@ -347,6 +347,17 @@ export const siteContent = {
       ] satisfies SpecGroup[]
     }
   ] satisfies InfrastructureItem[],
+  projects: [
+    "Development of MAX-Phase Reinforced Metal Matrix Composites via Directed Energy Deposition for High-Performance Structural Applications",
+    "Additive Manufacturing of High-Entropy Alloy Superconductors: Towards Mechanically Robust Next Generation Superconductors for Extreme Environments",
+    "Experimental & Computational Design of Hybrid Additive-Thermomechanical Manufacturing Routes for Steel Heterostructures with Enhanced Strength–Ductility Synergy",
+    "Development of cost-effective antimicrobial high-entropy alloys for infection-resistant biomedical dental implants via multi feeder directed energy deposition",
+    "AI-Driven Design of Functionally Graded Patient-Specific Orthopaedic Implants from X-Ray Imaging Using Direct Energy Deposition",
+    "Additive Manufacturing of Indigenous Bimetallic Cu–Cr–Hf–Nb / Inconel 718/625 Nozzles for Rocket Applications",
+    "Grain Boundary Engineering of Additively Manufactured Materials Using Severe Plastic Deformation for High-Temperature Applications",
+    "Functionally Graded Multi-Material Coatings for Low-Pressure Turbine Blades via Laser Directed Energy Deposition",
+    "Experimental and Computational Study on the Tribo-Mechanical Performance of Defect-Engineered AM-Fabricated FGMs for Extreme Environments"
+  ] satisfies string[],
   researchAreas: [
     {
       title: "Additive manufacturing process optimization",
