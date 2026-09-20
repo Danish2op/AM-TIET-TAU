@@ -390,6 +390,43 @@ export const siteContent = {
         "Process data, monitoring, analytics, and intelligent decision-making for advanced manufacturing workflows."
     }
   ] satisfies ResearchArea[],
+  offeringGroups: [
+    {
+      heading: "Industry Offerings",
+      items: [
+        "Process development & optimization",
+        "Precision manufacturing",
+        "Material & component qualification",
+        "Hybrid manufacturing solutions"
+      ]
+    },
+    {
+      heading: "Training & Collaboration",
+      items: [
+        "Industry-focused training programs (DED & Wire EDM)",
+        "Sponsored R&D and consultancy projects",
+        "Prototype development and pilot production"
+      ]
+    },
+    {
+      heading: "Specialized Capabilities",
+      items: [
+        "Functionally Graded Materials (FGMs) & multimaterials",
+        "Near-net shape manufacturing",
+        "Legacy part reconstruction",
+        "Kerf width, surface roughness & dimensional accuracy studies"
+      ]
+    },
+    {
+      heading: "Value to Industry",
+      items: [
+        { label: "Cost Reduction", description: "Repair instead of replacement" },
+        { label: "Reduced Lead Time", description: "Rapid prototyping & manufacturing" },
+        { label: "High Precision", description: "Micron-level accuracy" },
+        { label: "Material Efficiency", description: "Near-net shape fabrication" }
+      ]
+    }
+  ] satisfies SpecGroup[],
   industryOfferings: [
     {
       title: "Process development and optimization",

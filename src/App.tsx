@@ -5,7 +5,6 @@ import {
   ChevronRight,
   Linkedin,
   Maximize2,
-  Sparkles,
   X
 } from "lucide-react";
 import { GalleryItem, TeamMember, siteContent } from "./content/siteContent";
@@ -304,14 +303,32 @@ function IndustryPage() {
   return (
     <>
       <PageHero title="Industry" />
-      <section className="section-shell offering-grid">
-        {siteContent.industryOfferings.map((offering) => (
-          <article className="glass-card offering" key={offering.title}>
-            <Sparkles aria-hidden="true" size={20} />
-            <h2>{offering.title}</h2>
-            <p>{offering.summary}</p>
-          </article>
-        ))}
+      <section className="section-shell offerings-section">
+        <p className="projects-heading">Offerings &amp; Capabilities</p>
+        <span className="rule" aria-hidden="true" />
+        <div className="offering-groups-grid">
+          {siteContent.offeringGroups.map((group, index) => (
+            <article
+              className="glass-card offering-group-card"
+              key={group.heading}
+              data-reveal=""
+              data-reveal-delay={Math.min(index + 1, 5)}
+            >
+              <p className="facility-spec-group-heading">{group.heading}</p>
+              <ul className="facility-spec-group-list facility-spec-group-list--divided">
+                {group.items.map((entry) =>
+                  typeof entry === "string" ? (
+                    <li key={entry}>{entry}</li>
+                  ) : (
+                    <li key={entry.label}>
+                      <strong>{entry.label}:</strong> {entry.description}
+                    </li>
+                  )
+                )}
+              </ul>
+            </article>
+          ))}
+        </div>
       </section>
     </>
   );

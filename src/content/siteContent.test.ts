@@ -78,6 +78,19 @@ describe("site content", () => {
     ).toBe(true);
   });
 
+  it("groups industry offerings into four labeled cards", () => {
+    expect(siteContent.offeringGroups.map((group) => group.heading)).toEqual([
+      "Industry Offerings",
+      "Training & Collaboration",
+      "Specialized Capabilities",
+      "Value to Industry"
+    ]);
+    const valueToIndustry = siteContent.offeringGroups[3];
+    const firstItem = valueToIndustry.items[0];
+    expect(typeof firstItem).toBe("object");
+    expect((firstItem as { label: string }).label).toBe("Cost Reduction");
+  });
+
   it("keeps the primary collaboration contact focused on the centre mailbox", () => {
     expect(siteContent.contact.email).toBe("coeam@thapar.edu");
   });
