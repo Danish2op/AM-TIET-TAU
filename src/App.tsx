@@ -217,6 +217,12 @@ function FacilitiesPage() {
                   <div className="facility-card-plain-head">
                     <p className="facility-card-heading">{item.heading}</p>
                     {item.model && <p className="facility-card-model">{item.model}</p>}
+                    {item.link && (
+                      <a className="facility-card-link" href={item.link.href} target="_blank" rel="noreferrer">
+                        {item.link.label}
+                        <ArrowRight aria-hidden="true" size={15} />
+                      </a>
+                    )}
                     <span className="rule" aria-hidden="true" />
                   </div>
                 )}

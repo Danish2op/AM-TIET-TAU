@@ -1125,6 +1125,20 @@ p {
   margin: 0;
 }
 
+.facility-card-link {
+  align-items: center;
+  color: var(--blue);
+  display: inline-flex;
+  font-size: 0.88rem;
+  font-weight: 600;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.facility-card-link:hover {
+  text-decoration: underline;
+}
+
 .facility-spec-table {
   display: grid;
   gap: 1.75rem;

@@ -30,6 +30,7 @@ export type InfrastructureItem = {
   model?: string;
   specRows?: SpecRow[];
   specGroups?: SpecGroup[];
+  link?: { label: string; href: string };
 };
 
 export type NavigationItem = {
@@ -301,6 +302,10 @@ export const siteContent = {
         "Thermal treatment, sand blasting, and chemical polishing"
       ],
       heading: "Complementary Infrastructure",
+      link: {
+        label: "Visit the Material Characterization Facility (MCF-SPMS) site",
+        href: "https://sites.google.com/thapar.edu/mcf-spms/home"
+      },
       specGroups: [
         {
           heading: "Materials Characterization & Testing Labs",
