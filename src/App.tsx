@@ -557,9 +557,11 @@ function PeoplePage() {
             <p className="person-modal-role">{selected.role}</p>
             <p className="person-modal-affiliation">{selected.affiliation}</p>
             <span className="rule" aria-hidden="true" />
-            <blockquote className="person-modal-note">
-              <p>"{selected.note}"</p>
-            </blockquote>
+            {selected.note && (
+              <blockquote className="person-modal-note">
+                <p>"{selected.note}"</p>
+              </blockquote>
+            )}
             {selected.linkedin !== "#" ? (
               <a
                 className="person-modal-linkedin"

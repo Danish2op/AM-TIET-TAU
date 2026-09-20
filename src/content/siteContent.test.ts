@@ -108,6 +108,17 @@ describe("site content", () => {
     expect(siteContent.navigation.some((item) => item.path === "/contact")).toBe(false);
   });
 
+  it("lists the real CoE-AM roster with no fabricated quotes", () => {
+    expect(siteContent.people.length).toBe(28);
+    expect(siteContent.people.every((person) => person.photo.startsWith("/assets/"))).toBe(true);
+    expect(siteContent.people.every((person) => person.linkedin.length > 0)).toBe(true);
+    // Quotes attributed to real, named people must come from the person
+    // themselves, not be invented on their behalf.
+    expect(siteContent.people.every((person) => !("note" in person && person.note))).toBe(true);
+    expect(siteContent.people.some((person) => person.name === "Prof. Noam Eliaz")).toBe(true);
+    expect(siteContent.people.some((person) => person.name === "Vineet Srivastava")).toBe(true);
+  });
+
   it("no longer carries team or capability strip content", () => {
     expect("leadership" in siteContent).toBe(false);
     expect("capabilityStrip" in siteContent).toBe(false);

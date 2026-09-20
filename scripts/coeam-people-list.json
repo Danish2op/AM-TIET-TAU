@@ -1,0 +1,229 @@
+[
+  {
+    "name": "Aaishwarika Sharma",
+    "roles": [
+      "Co-PI (TIET)"
+    ],
+    "department": null,
+    "affiliation": null
+  },
+  {
+    "name": "Ajay Batish",
+    "roles": [
+      "Co-PI (TIET)"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Amritbir Singh",
+    "roles": [
+      "Co-PI (TIET)"
+    ],
+    "department": null,
+    "affiliation": null
+  },
+  {
+    "name": "Ankit Thakur",
+    "roles": [
+      "Collaborator"
+    ],
+    "department": null,
+    "affiliation": "Tel Aviv University, Israel"
+  },
+  {
+    "name": "Bhaskar Mohanty",
+    "roles": [
+      "Co-PI (TIET)"
+    ],
+    "department": "DPMS",
+    "affiliation": null
+  },
+  {
+    "name": "Colin Hall",
+    "roles": [
+      "Collaborator"
+    ],
+    "department": null,
+    "affiliation": "Adelaide University, Australia"
+  },
+  {
+    "name": "Dheeraj Gupta",
+    "roles": [
+      "Co-PI (TIET)",
+      "PI"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Diptiman Choudhury",
+    "roles": [
+      "Co-PI (TIET)"
+    ],
+    "department": "DCBC",
+    "affiliation": null
+  },
+  {
+    "name": "Francesco Travascio",
+    "roles": [
+      "Collaborator"
+    ],
+    "department": null,
+    "affiliation": "University of Miami, USA"
+  },
+  {
+    "name": "Gaurav Goel",
+    "roles": [
+      "PI"
+    ],
+    "department": "SEE",
+    "affiliation": null
+  },
+  {
+    "name": "Hiralal Bhowmick",
+    "roles": [
+      "PI"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Malkeet Singh",
+    "roles": [
+      "Co-PI (TIET)"
+    ],
+    "department": "CoEAM",
+    "affiliation": null
+  },
+  {
+    "name": "Maxim Sokol",
+    "roles": [
+      "Collaborator"
+    ],
+    "department": null,
+    "affiliation": "Tel Aviv University, Israel"
+  },
+  {
+    "name": "Monsuru Ramoni",
+    "roles": [
+      "Collaborator"
+    ],
+    "department": null,
+    "affiliation": "The University of Texas, USA"
+  },
+  {
+    "name": "Neha Shah",
+    "roles": [
+      "Co-PI (external)"
+    ],
+    "department": "GNIDSR",
+    "affiliation": null
+  },
+  {
+    "name": "Noam Eliaz",
+    "roles": [
+      "Collaborator"
+    ],
+    "department": null,
+    "affiliation": "Tel Aviv University, Israel"
+  },
+  {
+    "name": "P Kalyan Chakravarthy K",
+    "roles": [
+      "Co-PI (TIET)"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Prabhat Chand Yadav",
+    "roles": [
+      "PI"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Ratnesh Kumar Raj Singh",
+    "roles": [
+      "Co-PI (TIET)"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Ravinder Singh Joshi",
+    "roles": [
+      "PI"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Satish Kumar Sharma",
+    "roles": [
+      "PI"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Saurav Goel",
+    "roles": [
+      "Collaborator"
+    ],
+    "department": null,
+    "affiliation": null
+  },
+  {
+    "name": "Sourav Marik",
+    "roles": [
+      "PI"
+    ],
+    "department": "DPMS",
+    "affiliation": null
+  },
+  {
+    "name": "Tanmoy Mukhopadhyay",
+    "roles": [
+      "Collaborator"
+    ],
+    "department": null,
+    "affiliation": "University of Southampton, UK"
+  },
+  {
+    "name": "Tarunpreet Bhatia",
+    "roles": [
+      "Co-PI (TIET)"
+    ],
+    "department": "CSED",
+    "affiliation": null
+  },
+  {
+    "name": "Vineet Srivastava",
+    "roles": [
+      "Co-PI (TIET)",
+      "PI"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Vivek Jain",
+    "roles": [
+      "Co-PI (TIET)",
+      "PI"
+    ],
+    "department": "DME",
+    "affiliation": null
+  },
+  {
+    "name": "Yi Huang",
+    "roles": [
+      "Collaborator"
+    ],
+    "department": null,
+    "affiliation": "Bournemouth University, U.K."
+  }
+]
