@@ -3,6 +3,7 @@ import { NavLink, Navigate, Route, Routes, useLocation } from "react-router-dom"
 import {
   ArrowRight,
   ChevronRight,
+  ExternalLink,
   Linkedin,
   Maximize2,
   X
@@ -219,8 +220,8 @@ function FacilitiesPage() {
                     {item.model && <p className="facility-card-model">{item.model}</p>}
                     {item.link && (
                       <a className="facility-card-link" href={item.link.href} target="_blank" rel="noreferrer">
+                        <ExternalLink aria-hidden="true" size={15} />
                         {item.link.label}
-                        <ArrowRight aria-hidden="true" size={15} />
                       </a>
                     )}
                     <span className="rule" aria-hidden="true" />
