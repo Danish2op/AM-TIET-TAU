@@ -1044,34 +1044,58 @@ p {
   width: 100%;
 }
 
-/* Heading/model text on the left, a small thumbnail on the right — the
-   photo is a supporting label here, not a hero image, so it stays compact
-   instead of competing with the table for vertical space. */
+/* Heading/model text and the first two specs sit left of a large thumbnail
+   on the right — sized so the image fills the row instead of leaving the
+   right side mostly empty beside two short lines of text. */
 .facility-card-head {
-  align-items: flex-start;
+  align-items: stretch;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
-  justify-content: space-between;
+  gap: 1.5rem;
   padding: clamp(1.1rem, 3vw, 2rem) clamp(1.1rem, 3vw, 2rem) 0;
 }
 
 .facility-card-intro {
-  flex: 1 1 220px;
+  display: flex;
+  flex: 1 1 260px;
+  flex-direction: column;
   min-width: 0;
 }
 
+.facility-card-intro .rule {
+  margin: 0.9rem 0;
+}
+
+.facility-card-head-specs {
+  display: grid;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.facility-card-head-specs li {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.facility-card-head-specs strong {
+  color: var(--navy);
+}
+
 .facility-card-thumb {
-  aspect-ratio: 4 / 3;
   border-radius: 8px;
-  flex: 0 0 auto;
+  flex: 1 1 300px;
+  max-width: 380px;
+  min-height: 220px;
   overflow: hidden;
-  width: clamp(120px, 24vw, 190px);
 }
 
 .facility-card-thumb img {
   display: block;
   height: 100%;
+  min-height: 220px;
   object-fit: cover;
   object-position: center;
   width: 100%;
@@ -1547,7 +1571,12 @@ p {
   }
 
   .facility-card-thumb {
-    width: clamp(88px, 30vw, 120px);
+    max-width: none;
+    min-height: 180px;
+  }
+
+  .facility-card-thumb img {
+    min-height: 180px;
   }
 }
 
