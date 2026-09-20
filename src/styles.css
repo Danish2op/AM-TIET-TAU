@@ -1016,11 +1016,12 @@ p {
   grid-template-columns: 1fr;
 }
 
+/* Stacked, not side-by-side: a wide spec table and a tall thumbnail don't
+   share a row without one of them floating in dead space. A full-width
+   banner up top lets the photo take a deliberate, fixed height and the
+   table below take the full card width instead of a squeezed 66%. */
 .facility-card {
-  align-items: start;
-  display: grid;
-  gap: 0;
-  grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+  display: block;
   transition: box-shadow 220ms ease, transform 220ms ease;
 }
 
@@ -1029,11 +1030,8 @@ p {
   transform: translateY(-3px);
 }
 
-/* Reserves its own aspect ratio instead of stretching to match the body
-   column's height, so the crop stays consistent no matter how much spec
-   content sits beside it. */
 .facility-card-media {
-  aspect-ratio: 4 / 3;
+  height: clamp(200px, 32vw, 340px);
   overflow: hidden;
   width: 100%;
 }
@@ -1047,7 +1045,7 @@ p {
 }
 
 .facility-card-body {
-  padding: clamp(1rem, 3vw, 1.8rem);
+  padding: clamp(1.1rem, 3vw, 2rem);
 }
 
 .facility-card p {
@@ -1120,11 +1118,13 @@ p {
 }
 
 .facility-spec-group-list {
+  column-gap: 1.5rem;
   display: grid;
-  gap: 0.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   list-style: none;
   margin: 0;
   padding: 0;
+  row-gap: 0.4rem;
 }
 
 .facility-spec-group-list li {
@@ -1441,18 +1441,13 @@ p {
 
 @media (max-width: 980px) {
   .split-layout,
-  .research-layout,
-  .facility-card {
+  .research-layout {
     grid-template-columns: 1fr;
   }
 
   .offering-grid,
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .facility-card-media {
-    aspect-ratio: 16 / 9;
   }
 }
 
