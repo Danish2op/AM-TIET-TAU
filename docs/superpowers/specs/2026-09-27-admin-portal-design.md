@@ -101,23 +101,25 @@ are never written to `content.json`.
 
 **Industry card**
 - `heading` — required, 1–100 characters.
-- `bullets` — 1–12, each `{ text: 1–300 chars, label?: 1–60 chars }`. If any bullet has a label, the
-  card uses the existing label-and-description layout; otherwise the compact bullet list.
+- `bullets` — 1–12, each `{ text: 1–300 chars, label?: 1–60 chars }`. A bullet with a label renders
+  as "**label:** text", one without as plain text, in the same divided list every Industry card
+  uses today.
 
 **Person**
 - `photo` — uploaded image, centre-cropped to a square and saved as 480×480 WebP. The admin form
   previews the circular crop before saving.
 - `name`, `designation`, `institution` — required, each 1–150 characters.
 - `linkedin` — optional; when present must be an `https://` URL whose host is `linkedin.com` or
-  ends in `.linkedin.com`. Empty means no LinkedIn button; the seed converts today's four `"#"`
-  values to empty.
-- Screen-reader alt text is generated as "Photo of {name}".
+  ends in `.linkedin.com`. Empty shows the existing grey "LinkedIn — coming soon" chip, exactly as
+  today's `"#"` does; the seed converts those four `"#"` values to empty.
+- Screen-reader alt text for new people is generated as "Photo of {name}". Seeded people keep their
+  current alt text.
 
 **Gallery photo**
 - `image` — uploaded image, longest side scaled to at most 1,600 px, saved as WebP.
 - `title` — required, 1–60 characters (today's `tag`).
-- `description` — required, 1–400 characters (today's `caption`). Also used as the image's alt
-  text.
+- `description` — required, 1–400 characters (today's `caption`). Also used as the alt text of
+  newly added photos; seeded photos keep their current alt text.
 - `inHomeCarousel` — boolean. The home page carousel shows only gallery photos with this on. The
   six current photos start with it on.
 
