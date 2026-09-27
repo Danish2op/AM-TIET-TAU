@@ -202,7 +202,7 @@ Each item has a test that attempts the attack and asserts it is refused.
 
 An email template (written as part of this work) asks for:
 
-1. Ubuntu 22.04 or 24.04 LTS VM: 2 vCPU, 4 GB RAM, 40 GB disk.
+1. Ubuntu 22.04 or 24.04 LTS VM: 1 vCPU, 2 GB RAM, 20 GB disk. Estimated peak use is about 1 GB RAM (while processing an uploaded photo) and about 12 GB disk (OS, images, 22 kept backups).
 2. SSH access with `sudo` for the developer during setup and warranty.
 3. Inbound ports 80 and 443 open from the internet.
 4. Outbound internet access from the VM.

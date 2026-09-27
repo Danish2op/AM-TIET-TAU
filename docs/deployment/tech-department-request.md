@@ -17,7 +17,7 @@ To host it on the institute's infrastructure, I would be grateful for the follow
 
 1. **A virtual machine**
    - Operating system: Ubuntu 22.04 or 24.04 LTS (Server)
-   - 2 vCPU, 4 GB RAM, 40 GB disk
+   - 1 vCPU, 2 GB RAM, 20 GB disk (the site is small; this leaves comfortable headroom)
 
 2. **Access for setup:** SSH access with sudo rights for me, from [date] until the end of the
    warranty period ([number] days after go-live). After that, the server is handed over to your
