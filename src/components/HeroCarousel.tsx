@@ -41,16 +41,21 @@ export function HeroCarousel({
       tabIndex={0}
     >
       <div className="hero-carousel-frame">
-        {items.map((item, itemIndex) => (
-          <figure
-            className={`hero-carousel-slide${itemIndex === index ? " active" : ""}`}
-            key={item.src}
-            aria-hidden={itemIndex === index ? undefined : true}
-          >
-            <img src={item.src} alt={item.alt} loading={itemIndex === 0 ? "eager" : "lazy"} />
-            <figcaption>{item.tag}</figcaption>
-          </figure>
-        ))}
+        <div
+          className="hero-carousel-track"
+          style={{ transform: `translateX(-${index * 100}%)` }}
+        >
+          {items.map((item, itemIndex) => (
+            <figure
+              className={`hero-carousel-slide${itemIndex === index ? " active" : ""}`}
+              key={item.src}
+              aria-hidden={itemIndex === index ? undefined : true}
+            >
+              <img src={item.src} alt={item.alt} loading={itemIndex === 0 ? "eager" : "lazy"} />
+              <figcaption>{item.tag}</figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
       <div className="hero-carousel-dots" role="tablist" aria-label="Choose carousel slide">
         {items.map((item, itemIndex) => (
