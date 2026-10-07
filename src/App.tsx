@@ -201,6 +201,12 @@ function FacilitiesPage() {
                     <div className="facility-card-intro">
                       <p className="facility-card-heading">{item.heading}</p>
                       {item.model && <p className="facility-card-model">{item.model}</p>}
+                      {item.link && (
+                        <a className="facility-card-link" href={item.link.href} target="_blank" rel="noreferrer">
+                          <ExternalLink aria-hidden="true" size={15} />
+                          {item.link.label}
+                        </a>
+                      )}
                       <span className="rule" aria-hidden="true" />
                       <ul className="facility-card-head-specs">
                         {item.specRows.map((row) => (
@@ -211,7 +217,11 @@ function FacilitiesPage() {
                       </ul>
                     </div>
                     <div className="facility-card-thumb">
-                      <img src={item.image} alt={item.alt} loading="lazy" />
+                      {item.carousel ? (
+                        <HeroCarousel items={item.carousel} advanceMs={5000} />
+                      ) : (
+                        <img src={item.image} alt={item.alt} loading="lazy" />
+                      )}
                     </div>
                   </div>
                 ) : (
