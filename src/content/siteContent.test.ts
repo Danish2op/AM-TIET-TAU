@@ -55,11 +55,12 @@ describe("site content", () => {
     ]);
   });
 
-  it("gives the validation card a heading with no model line and labeled spec groups", () => {
+  it("gives the validation card a heading with no model line, spec rows, and labeled spec groups", () => {
     const validation = siteContent.coreInfrastructure[2];
     expect(validation.heading).toBe("Complementary Infrastructure");
     expect(validation.model).toBeUndefined();
-    expect(validation.specRows).toBeUndefined();
+    expect(validation.specRows).toBeDefined();
+    expect(validation.specRows?.length).toBeGreaterThanOrEqual(3);
     expect(validation.specGroups?.map((group) => group.heading)).toEqual([
       "Materials Characterization & Testing Labs",
       "Post-Processing & Finishing Zones"
@@ -67,6 +68,21 @@ describe("site content", () => {
     const firstItem = validation.specGroups?.[0].items[0];
     expect(typeof firstItem).toBe("object");
     expect((firstItem as { label: string }).label).toBe("Microscopy Suite");
+  });
+
+  it("carries 3 carousel items for the complementary infrastructure card", () => {
+    const complementaryCard = siteContent.coreInfrastructure[2];
+    expect(complementaryCard.carousel).toBeDefined();
+    expect(complementaryCard.carousel).toHaveLength(3);
+
+    const tags = complementaryCard.carousel?.map((item) => item.tag);
+    expect(tags).toContain("X-Ray Diffractometer (XRD)");
+    expect(tags).toContain("Vibrating Sample Magnetometer (VSM)");
+    expect(tags).toContain("Raman and PL Spectrometer (RAMAN)");
+
+    expect(complementaryCard.carousel?.every((item) => item.src.endsWith(".webp"))).toBe(true);
+    expect(complementaryCard.specRows).toBeDefined();
+    expect(complementaryCard.specRows?.length).toBeGreaterThanOrEqual(3);
   });
 
   it("lists all funded projects for the research page with no duplicates", () => {

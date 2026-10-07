@@ -31,6 +31,7 @@ export type InfrastructureItem = {
   specRows?: SpecRow[];
   specGroups?: SpecGroup[];
   link?: { label: string; href: string };
+  carousel?: GalleryItem[];
 };
 
 export type NavigationItem = {
@@ -320,6 +321,40 @@ export const siteContent = {
         label: "Visit the Material Characterization Facility (MCF-SPMS) site",
         href: "https://sites.google.com/thapar.edu/mcf-spms/home"
       },
+      specRows: [
+        {
+          label: "Phase & Structural",
+          value: "X-Ray Diffractometer (XRD) & Raman Spectrometer"
+        },
+        {
+          label: "Magnetic Analysis",
+          value: "Vibrating Sample Magnetometer (VSM)"
+        },
+        {
+          label: "Microscopy & Metrology",
+          value: "SEM, TEM, EBSD, and CMM 3D scanning"
+        }
+      ] satisfies SpecRow[],
+      carousel: [
+        {
+          src: "/assets/facilities/xrd-diffractometer.webp",
+          alt: "X-Ray Diffractometer (XRD) system",
+          caption: "High-resolution X-ray diffractometer for phase identification and crystal structure analysis.",
+          tag: "X-Ray Diffractometer (XRD)"
+        },
+        {
+          src: "/assets/facilities/vsm-magnetometer.webp",
+          alt: "Vibrating Sample Magnetometer (VSM) setup",
+          caption: "Precision vibrating sample magnetometer for magnetic property and hysteresis characterization.",
+          tag: "Vibrating Sample Magnetometer (VSM)"
+        },
+        {
+          src: "/assets/facilities/raman-spectrometer.webp",
+          alt: "Raman and Photoluminescence Spectrometer (RAMAN)",
+          caption: "High-resolution confocal Raman and PL spectrometer for structural and optical analysis.",
+          tag: "Raman and PL Spectrometer (RAMAN)"
+        }
+      ] satisfies GalleryItem[],
       specGroups: [
         {
           heading: "Materials Characterization & Testing Labs",
