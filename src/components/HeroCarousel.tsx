@@ -4,10 +4,6 @@ import { nextIndex, prevIndex } from "../lib/carousel";
 
 const ADVANCE_MS = 4000;
 
-function prefersReducedMotion() {
-  return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
 export function HeroCarousel({
   items,
   advanceMs = ADVANCE_MS
@@ -16,17 +12,16 @@ export function HeroCarousel({
   advanceMs?: number;
 }) {
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (paused || prefersReducedMotion() || items.length <= 1) {
+    if (items.length <= 1) {
       return;
     }
     const id = window.setInterval(() => {
       setIndex((current) => nextIndex(current, items.length));
     }, advanceMs);
     return () => window.clearInterval(id);
-  }, [paused, items.length, advanceMs]);
+  }, [items.length, advanceMs, index]);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "ArrowRight") {
@@ -39,13 +34,10 @@ export function HeroCarousel({
   return (
     <div
       className="hero-carousel"
-      // Pauses for keyboard users only. Pausing on hover meant a pointer
-      // resting anywhere over the image stopped the rotation entirely.
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
       onKeyDown={handleKeyDown}
-      role="group"
-      aria-label="Facility image carousel"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Equipment image carousel"
       tabIndex={0}
     >
       <div className="hero-carousel-frame">

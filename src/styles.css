@@ -580,10 +580,12 @@ p {
   position: absolute;
   transition: opacity 480ms ease;
   width: 100%;
+  z-index: 1;
 }
 
 .hero-carousel-slide.active {
   opacity: 1;
+  z-index: 2;
 }
 
 /* Contain, not cover: these are equipment photographs, and a cropped
@@ -615,6 +617,7 @@ p {
   left: 0;
   position: absolute;
   right: 0;
+  z-index: 5;
 }
 
 .hero-carousel-dots button {
