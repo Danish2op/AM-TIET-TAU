@@ -514,26 +514,77 @@ function PeoplePage() {
   return (
     <>
       <PageHero title="People" />
-      <section className="section-shell people-grid">
-        {siteContent.people.map((member) => (
-          <button
-            className="person-card glass-card"
-            key={member.name}
-            onClick={() => openMember(member)}
-            aria-label={`View profile of ${member.name}`}
+      <div className="section-shell people-sections-container">
+        {siteContent.peopleSections.map((section) => (
+          <section
+            key={section.id}
+            className="people-section"
+            aria-label={section.title || "Core Team"}
           >
-            <img
-              className="person-card-photo"
-              src={member.photo}
-              alt={member.photoAlt}
-              loading="lazy"
-            />
-            <p className="person-card-name">{member.name}</p>
-            <p className="person-card-role">{member.role}</p>
-            <p className="person-card-affiliation">{member.affiliation}</p>
-          </button>
+            {section.title && (
+              <div className="people-section-header">
+                <h2 className="people-section-title">{section.title}</h2>
+                <span className="people-section-rule" aria-hidden="true" />
+              </div>
+            )}
+
+            {section.members.length > 0 && (
+              <div
+                className={
+                  section.isFeatured
+                    ? "people-grid people-grid--featured"
+                    : "people-grid"
+                }
+              >
+                {section.members.map((member) => (
+                  <button
+                    className={`person-card glass-card ${
+                      section.isFeatured ? "person-card--featured" : ""
+                    }`}
+                    key={member.name}
+                    onClick={() => openMember(member)}
+                    aria-label={`View profile of ${member.name}`}
+                  >
+                    <img
+                      className="person-card-photo"
+                      src={member.photo}
+                      alt={member.photoAlt}
+                      loading="lazy"
+                    />
+                    <p className="person-card-name">{member.name}</p>
+                    <p className="person-card-role">{member.role}</p>
+                    {member.affiliation && (
+                      <p className="person-card-affiliation">{member.affiliation}</p>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {section.placeholder && (
+              <div className="people-grid people-grid--placeholder">
+                {Array.from({ length: section.placeholder.count }).map(
+                  (_, idx) => (
+                    <div
+                      key={idx}
+                      className="person-card person-card--skeleton glass-card"
+                      aria-hidden="true"
+                    >
+                      <div className="person-skeleton-avatar" />
+                      <span className="person-skeleton-badge">
+                        {section.placeholder?.badgeText}
+                      </span>
+                      <p className="person-skeleton-subtext">
+                        {section.placeholder?.subtext}
+                      </p>
+                    </div>
+                  )
+                )}
+              </div>
+            )}
+          </section>
         ))}
-      </section>
+      </div>
 
       {selected && (
         <div
@@ -562,29 +613,38 @@ function PeoplePage() {
             />
             <h2 className="person-modal-name">{selected.name}</h2>
             <p className="person-modal-role">{selected.role}</p>
-            <p className="person-modal-affiliation">{selected.affiliation}</p>
-            <span className="rule" aria-hidden="true" />
+            {selected.affiliation && (
+              <p className="person-modal-affiliation">{selected.affiliation}</p>
+            )}
             {selected.note && (
               <blockquote className="person-modal-note">
                 <p>"{selected.note}"</p>
               </blockquote>
             )}
-            {selected.linkedin !== "#" ? (
-              <a
-                className="person-modal-linkedin"
-                href={selected.linkedin}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Linkedin aria-hidden="true" size={16} />
-                LinkedIn Profile
-              </a>
-            ) : (
-              <span className="person-modal-linkedin person-modal-linkedin--placeholder">
-                <Linkedin aria-hidden="true" size={16} />
-                LinkedIn — coming soon
-              </span>
-            )}
+            {selected.linkedin ? (
+              selected.linkedin !== "#" ? (
+                <>
+                  <span className="rule" aria-hidden="true" />
+                  <a
+                    className="person-modal-linkedin"
+                    href={selected.linkedin}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Linkedin aria-hidden="true" size={16} />
+                    LinkedIn Profile
+                  </a>
+                </>
+              ) : (
+                <>
+                  <span className="rule" aria-hidden="true" />
+                  <span className="person-modal-linkedin person-modal-linkedin--placeholder">
+                    <Linkedin aria-hidden="true" size={16} />
+                    LinkedIn — coming soon
+                  </span>
+                </>
+              )
+            ) : null}
           </div>
         </div>
       )}
