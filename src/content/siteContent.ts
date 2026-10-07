@@ -70,13 +70,27 @@ export type PartnerLogo = {
 export type TeamMember = {
   name: string;
   role: string;
-  affiliation: string;
+  affiliation?: string;
   photo: string;
   photoAlt: string;
-  linkedin: string;
+  linkedin?: string;
   // No invented quotes for real, named people — only set when the person
   // has supplied their own words (currently just the director's message).
   note?: string;
+};
+
+export type PeopleSectionPlaceholder = {
+  count: number;
+  badgeText: string;
+  subtext: string;
+};
+
+export type PeopleSection = {
+  id: string;
+  title?: string;
+  isFeatured?: boolean;
+  members: TeamMember[];
+  placeholder?: PeopleSectionPlaceholder;
 };
 
 export const siteContent = {
@@ -466,235 +480,282 @@ export const siteContent = {
         "Structured collaboration for materials, process studies, component repair, product development, and technical advice."
     }
   ] satisfies IndustryOffering[],
-  people: [
+  peopleSections: [
     {
-      name: "Prof. Noam Eliaz",
-      role: "Founding Director & Chair Professor, CoE-AM",
-      affiliation: "Tel Aviv University",
-      photo: "/assets/director.webp",
-      photoAlt: "Prof. Noam Eliaz, Founding Director of CoE-AM",
-      linkedin: "https://www.linkedin.com/in/noam-eliaz-3743a6b/"
-    },
-    // Principal Investigators (one per funded project).
-    {
-      name: "Satish Kumar Sharma",
-      role: "Associate Professor, Department of Mechanical Engineering",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/satish-kumar-sharma.webp",
-      photoAlt: "Satish Kumar Sharma, Associate Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/dr-satish-kumar-sharma-0b88b669/"
-    },
-    {
-      name: "Sourav Marik",
-      role: "Associate Professor, DPMS",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/sourav-marik.webp",
-      photoAlt: "Sourav Marik, Associate Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/sourav-marik-910b4864/"
-    },
-    {
-      name: "Vineet Srivastava",
-      role: "Associate Professor & Joint Director, CoE-AM",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/vineet-srivastava.webp",
-      photoAlt: "Vineet Srivastava, Associate Professor and Joint Director of CoE-AM",
-      linkedin: "https://www.linkedin.com/in/vineet-srivastava-68b9aa10a/"
-    },
-    {
-      name: "Gaurav Goel",
-      role: "Associate Professor, SEE",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/gaurav-goel.webp",
-      photoAlt: "Gaurav Goel, Associate Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/dr-gaurav-goel-b548255/"
-    },
-    {
-      name: "Vivek Jain",
-      role: "Professor, Department of Mechanical Engineering",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/vivek-jain.webp",
-      photoAlt: "Vivek Jain, Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/vivek-jain-3594181b/"
-    },
-    {
-      name: "Dheeraj Gupta",
-      role: "Professor, Department of Mechanical Engineering",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/dheeraj-gupta.webp",
-      photoAlt: "Dheeraj Gupta, Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/dr-dheeraj-gupta-314b2b42/"
+      id: "core",
+      isFeatured: true,
+      members: [
+        {
+          name: "Prof. Noam Eliaz",
+          role: "Founding Director & Chair Professor, CoE-AM",
+          affiliation: "Tel Aviv University",
+          photo: "/assets/director.webp",
+          photoAlt: "Prof. Noam Eliaz, Founding Director of CoE-AM",
+          linkedin: "https://www.linkedin.com/in/noam-eliaz-3743a6b/"
+        },
+        {
+          name: "Prof. Bhaskar Chandra Mohanty",
+          role: "Faculty, DPMS",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/bhaskar-mohanty.webp",
+          photoAlt: "Prof. Bhaskar Chandra Mohanty, Faculty at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/bhaskar-mohanty/"
+        },
+        {
+          name: "Dr. Vineet Srivastava",
+          role: "Associate Professor & Joint Director, CoE-AM",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/vineet-srivastava.webp",
+          photoAlt: "Dr. Vineet Srivastava, Associate Professor and Joint Director of CoE-AM",
+          linkedin: "https://www.linkedin.com/in/vineet-srivastava-68b9aa10a/"
+        },
+        {
+          name: "Dr. Malkeet Singh",
+          role: "Assistant Professor / Scientist (PI)",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/malkeet-singh.webp",
+          photoAlt: "Dr. Malkeet Singh, Assistant Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/malkeet-singh-0029b2137/"
+        },
+        {
+          name: "Mr. Dileep Kumar",
+          role: "3D Printer Technician",
+          photo: "/assets/people/dileep-kumar.webp",
+          photoAlt: "Mr. Dileep Kumar, 3D Printer Technician"
+        },
+        {
+          name: "Mr. Jagjit Singh",
+          role: "Wire EDM Technician",
+          photo: "/assets/people/jagjit-singh.webp",
+          photoAlt: "Mr. Jagjit Singh, Wire EDM Technician"
+        }
+      ]
     },
     {
-      name: "Prabhat Chand Yadav",
-      role: "Assistant Professor, Department of Mechanical Engineering",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/prabhat-chand-yadav.webp",
-      photoAlt: "Prabhat Chand Yadav, Assistant Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/prabhat-chand-yadav-453b263a/"
+      id: "affiliated",
+      title: "Affiliated Researchers",
+      members: [
+        // Principal Investigators (one per funded project).
+        {
+          name: "Satish Kumar Sharma",
+          role: "Associate Professor, Department of Mechanical Engineering",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/satish-kumar-sharma.webp",
+          photoAlt: "Satish Kumar Sharma, Associate Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/dr-satish-kumar-sharma-0b88b669/"
+        },
+        {
+          name: "Sourav Marik",
+          role: "Associate Professor, DPMS",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/sourav-marik.webp",
+          photoAlt: "Sourav Marik, Associate Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/sourav-marik-910b4864/"
+        },
+        {
+          name: "Gaurav Goel",
+          role: "Associate Professor, SEE",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/gaurav-goel.webp",
+          photoAlt: "Gaurav Goel, Associate Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/dr-gaurav-goel-b548255/"
+        },
+        {
+          name: "Vivek Jain",
+          role: "Professor, Department of Mechanical Engineering",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/vivek-jain.webp",
+          photoAlt: "Vivek Jain, Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/vivek-jain-3594181b/"
+        },
+        {
+          name: "Dheeraj Gupta",
+          role: "Professor, Department of Mechanical Engineering",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/dheeraj-gupta.webp",
+          photoAlt: "Dheeraj Gupta, Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/dr-dheeraj-gupta-314b2b42/"
+        },
+        {
+          name: "Prabhat Chand Yadav",
+          role: "Assistant Professor, Department of Mechanical Engineering",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/prabhat-chand-yadav.webp",
+          photoAlt: "Prabhat Chand Yadav, Assistant Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/prabhat-chand-yadav-453b263a/"
+        },
+        {
+          name: "Ravinder Singh Joshi",
+          role: "Associate Professor",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/ravinder-singh-joshi.webp",
+          photoAlt: "Ravinder Singh Joshi, Associate Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/ravinder-singh-joshi-5611093b/"
+        },
+        {
+          name: "Hiralal Bhowmick",
+          role: "Professor",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/hiralal-bhowmick.webp",
+          photoAlt: "Hiralal Bhowmick, Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/hiralal-bhowmick-59b26b1b/"
+        },
+        // Co-Principal Investigators (TIET).
+        {
+          name: "Ajay Batish",
+          role: "Pro Vice Chancellor & Chief Academic Officer",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/ajay-batish.webp",
+          photoAlt: "Ajay Batish, Pro Vice Chancellor & Chief Academic Officer at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/ajay-batish-92060aa0/"
+        },
+        {
+          name: "Diptiman Choudhury",
+          role: "Associate Professor, Department of Chemistry & Biochemistry",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/diptiman-choudhury.webp",
+          photoAlt: "Diptiman Choudhury, Associate Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/diptiman-choudhury-ph-d-60882114/"
+        },
+        {
+          name: "Tarunpreet Bhatia",
+          role: "Associate Dean, Strategic Initiatives & Associate Professor, CSED",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/tarunpreet-bhatia.webp",
+          photoAlt: "Tarunpreet Bhatia, Associate Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/tarunpreet-bhatia30/"
+        },
+        {
+          name: "P Kalyan Chakravarthy K",
+          role: "Visiting Assistant Professor, Department of Mechanical Engineering",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/person-placeholder.svg",
+          photoAlt: "P Kalyan Chakravarthy K, Visiting Assistant Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "#"
+        },
+        {
+          name: "Ratnesh Kumar Raj Singh",
+          role: "Associate Professor",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/ratnesh-kumar-raj-singh.webp",
+          photoAlt: "Ratnesh Kumar Raj Singh, Associate Professor at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/dr-ratnesh-kumar-raj-singh-8905a633/"
+        },
+        {
+          name: "Amritbir Singh",
+          role: "Assistant Professor (Research)",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/people/amritbir-singh.webp",
+          photoAlt: "Amritbir Singh, Assistant Professor (Research) at Thapar Institute of Engineering & Technology",
+          linkedin: "https://www.linkedin.com/in/amritbir-singh-ph-d-692290176/"
+        },
+        {
+          name: "Aaishwarika Sharma",
+          role: "Co-PI, CoE-AM project",
+          affiliation: "Thapar Institute of Engineering & Technology",
+          photo: "/assets/person-placeholder.svg",
+          photoAlt: "Aaishwarika Sharma, Co-PI at Thapar Institute of Engineering & Technology",
+          linkedin: "#"
+        },
+        // External co-investigators and collaborators.
+        {
+          name: "Neha Shah",
+          role: "Co-PI, CoE-AM project",
+          affiliation: "GNIDSR, Kolkata",
+          photo: "/assets/person-placeholder.svg",
+          photoAlt: "Neha Shah, Co-PI at Guru Nanak Institute of Dental Sciences and Research, Kolkata",
+          linkedin: "#"
+        },
+        {
+          name: "Ankit Thakur",
+          role: "Postdoctoral Research Fellow",
+          affiliation: "Tel Aviv University, Israel",
+          photo: "/assets/people/ankit-thakur.webp",
+          photoAlt: "Ankit Thakur, Postdoctoral Research Fellow at Tel Aviv University",
+          linkedin: "https://www.linkedin.com/in/ankit-thakur-4577aa66/"
+        },
+        {
+          name: "Maxim Sokol",
+          role: "Associate Professor",
+          affiliation: "Tel Aviv University, Israel",
+          photo: "/assets/people/maxim-sokol.webp",
+          photoAlt: "Maxim Sokol, Associate Professor at Tel Aviv University",
+          linkedin: "https://www.linkedin.com/in/maxim-sokol-b903511a8/"
+        },
+        {
+          name: "Saurav Goel",
+          role: "Professor of Manufacturing",
+          affiliation: "London South Bank University, UK",
+          photo: "/assets/people/saurav-goel.webp",
+          photoAlt: "Saurav Goel, Professor of Manufacturing at London South Bank University",
+          linkedin: "https://www.linkedin.com/in/sauravgoel/"
+        },
+        {
+          name: "Francesco Travascio",
+          role: "Associate Professor",
+          affiliation: "University of Miami, USA",
+          photo: "/assets/person-placeholder.svg",
+          photoAlt: "Francesco Travascio, Associate Professor at University of Miami",
+          linkedin: "https://www.linkedin.com/in/francesco-travascio-022b036b/"
+        },
+        {
+          name: "Monsuru Ramoni",
+          role: "Assistant Professor, Industrial, Manufacturing & Systems Engineering",
+          affiliation: "University of Texas Rio Grande Valley, USA",
+          photo: "/assets/person-placeholder.svg",
+          photoAlt: "Monsuru Ramoni, Assistant Professor at the University of Texas Rio Grande Valley",
+          linkedin: "#"
+        },
+        {
+          name: "Yi Huang",
+          role: "Associate Professor, Manufacturing and Materials Engineering",
+          affiliation: "Bournemouth University, UK",
+          photo: "/assets/people/yi-huang.webp",
+          photoAlt: "Yi Huang, Associate Professor at Bournemouth University",
+          linkedin: "https://www.linkedin.com/in/yi-huang-18523369/"
+        },
+        {
+          name: "Colin Hall",
+          role: "Industry Professor",
+          affiliation: "Adelaide University, Australia",
+          photo: "/assets/people/colin-hall.webp",
+          photoAlt: "Colin Hall, Industry Professor at Adelaide University",
+          linkedin: "https://www.linkedin.com/in/colinhallunisa/"
+        },
+        {
+          name: "Tanmoy Mukhopadhyay",
+          role: "Faculty, Programmable Matter Lab",
+          affiliation: "University of Southampton, UK",
+          photo: "/assets/people/tanmoy-mukhopadhyay.webp",
+          photoAlt: "Tanmoy Mukhopadhyay, Faculty at the University of Southampton",
+          linkedin: "https://www.linkedin.com/in/tanmoy-mukhopadhyay-0b6a7912/"
+        }
+      ]
     },
     {
-      name: "Ravinder Singh Joshi",
-      role: "Associate Professor",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/ravinder-singh-joshi.webp",
-      photoAlt: "Ravinder Singh Joshi, Associate Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/ravinder-singh-joshi-5611093b/"
+      id: "postdocs-phd",
+      title: "Postdocs and PhD Scholars",
+      members: [],
+      placeholder: {
+        count: 3,
+        badgeText: "Upcoming Cohort",
+        subtext: "Postdoctoral and doctoral researcher profiles will be listed here upon appointment."
+      }
     },
     {
-      name: "Hiralal Bhowmick",
-      role: "Professor",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/hiralal-bhowmick.webp",
-      photoAlt: "Hiralal Bhowmick, Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/hiralal-bhowmick-59b26b1b/"
-    },
-    // Co-Principal Investigators (TIET).
-    {
-      name: "Ajay Batish",
-      role: "Pro Vice Chancellor & Chief Academic Officer",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/ajay-batish.webp",
-      photoAlt: "Ajay Batish, Pro Vice Chancellor & Chief Academic Officer at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/ajay-batish-92060aa0/"
-    },
-    {
-      name: "Diptiman Choudhury",
-      role: "Associate Professor, Department of Chemistry & Biochemistry",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/diptiman-choudhury.webp",
-      photoAlt: "Diptiman Choudhury, Associate Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/diptiman-choudhury-ph-d-60882114/"
-    },
-    {
-      name: "Malkeet Singh",
-      role: "Assistant Professor / Scientist (PI)",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/malkeet-singh.webp",
-      photoAlt: "Malkeet Singh, Assistant Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/malkeet-singh-0029b2137/"
-    },
-    {
-      name: "Tarunpreet Bhatia",
-      role: "Associate Dean, Strategic Initiatives & Associate Professor, CSED",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/tarunpreet-bhatia.webp",
-      photoAlt: "Tarunpreet Bhatia, Associate Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/tarunpreet-bhatia30/"
-    },
-    {
-      name: "P Kalyan Chakravarthy K",
-      role: "Visiting Assistant Professor, Department of Mechanical Engineering",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/person-placeholder.svg",
-      photoAlt: "P Kalyan Chakravarthy K, Visiting Assistant Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "#"
-    },
-    {
-      name: "Ratnesh Kumar Raj Singh",
-      role: "Associate Professor",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/ratnesh-kumar-raj-singh.webp",
-      photoAlt: "Ratnesh Kumar Raj Singh, Associate Professor at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/dr-ratnesh-kumar-raj-singh-8905a633/"
-    },
-    {
-      name: "Amritbir Singh",
-      role: "Assistant Professor (Research)",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/amritbir-singh.webp",
-      photoAlt: "Amritbir Singh, Assistant Professor (Research) at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/amritbir-singh-ph-d-692290176/"
-    },
-    {
-      name: "Aaishwarika Sharma",
-      role: "Co-PI, CoE-AM project",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/person-placeholder.svg",
-      photoAlt: "Aaishwarika Sharma, Co-PI at Thapar Institute of Engineering & Technology",
-      linkedin: "#"
-    },
-    {
-      name: "Bhaskar Mohanty",
-      role: "Faculty, DPMS",
-      affiliation: "Thapar Institute of Engineering & Technology",
-      photo: "/assets/people/bhaskar-mohanty.webp",
-      photoAlt: "Bhaskar Mohanty, Faculty at Thapar Institute of Engineering & Technology",
-      linkedin: "https://www.linkedin.com/in/bhaskar-mohanty/"
-    },
-    // External co-investigators and collaborators.
-    {
-      name: "Neha Shah",
-      role: "Co-PI, CoE-AM project",
-      affiliation: "GNIDSR, Kolkata",
-      photo: "/assets/person-placeholder.svg",
-      photoAlt: "Neha Shah, Co-PI at Guru Nanak Institute of Dental Sciences and Research, Kolkata",
-      linkedin: "#"
-    },
-    {
-      name: "Ankit Thakur",
-      role: "Postdoctoral Research Fellow",
-      affiliation: "Tel Aviv University, Israel",
-      photo: "/assets/people/ankit-thakur.webp",
-      photoAlt: "Ankit Thakur, Postdoctoral Research Fellow at Tel Aviv University",
-      linkedin: "https://www.linkedin.com/in/ankit-thakur-4577aa66/"
-    },
-    {
-      name: "Maxim Sokol",
-      role: "Associate Professor",
-      affiliation: "Tel Aviv University, Israel",
-      photo: "/assets/people/maxim-sokol.webp",
-      photoAlt: "Maxim Sokol, Associate Professor at Tel Aviv University",
-      linkedin: "https://www.linkedin.com/in/maxim-sokol-b903511a8/"
-    },
-    {
-      name: "Saurav Goel",
-      role: "Professor of Manufacturing",
-      affiliation: "London South Bank University, UK",
-      photo: "/assets/people/saurav-goel.webp",
-      photoAlt: "Saurav Goel, Professor of Manufacturing at London South Bank University",
-      linkedin: "https://www.linkedin.com/in/sauravgoel/"
-    },
-    {
-      name: "Francesco Travascio",
-      role: "Associate Professor",
-      affiliation: "University of Miami, USA",
-      photo: "/assets/person-placeholder.svg",
-      photoAlt: "Francesco Travascio, Associate Professor at University of Miami",
-      linkedin: "https://www.linkedin.com/in/francesco-travascio-022b036b/"
-    },
-    {
-      name: "Monsuru Ramoni",
-      role: "Assistant Professor, Industrial, Manufacturing & Systems Engineering",
-      affiliation: "University of Texas Rio Grande Valley, USA",
-      photo: "/assets/person-placeholder.svg",
-      photoAlt: "Monsuru Ramoni, Assistant Professor at the University of Texas Rio Grande Valley",
-      linkedin: "#"
-    },
-    {
-      name: "Yi Huang",
-      role: "Associate Professor, Manufacturing and Materials Engineering",
-      affiliation: "Bournemouth University, UK",
-      photo: "/assets/people/yi-huang.webp",
-      photoAlt: "Yi Huang, Associate Professor at Bournemouth University",
-      linkedin: "https://www.linkedin.com/in/yi-huang-18523369/"
-    },
-    {
-      name: "Colin Hall",
-      role: "Industry Professor",
-      affiliation: "Adelaide University, Australia",
-      photo: "/assets/people/colin-hall.webp",
-      photoAlt: "Colin Hall, Industry Professor at Adelaide University",
-      linkedin: "https://www.linkedin.com/in/colinhallunisa/"
-    },
-    {
-      name: "Tanmoy Mukhopadhyay",
-      role: "Faculty, Programmable Matter Lab",
-      affiliation: "University of Southampton, UK",
-      photo: "/assets/people/tanmoy-mukhopadhyay.webp",
-      photoAlt: "Tanmoy Mukhopadhyay, Faculty at the University of Southampton",
-      linkedin: "https://www.linkedin.com/in/tanmoy-mukhopadhyay-0b6a7912/"
+      id: "students",
+      title: "Undergraduate and Masters Students",
+      members: [],
+      placeholder: {
+        count: 3,
+        badgeText: "Upcoming Cohort",
+        subtext: "Student researcher profiles will be listed here."
+      }
     }
-  ] satisfies TeamMember[],
+  ] satisfies PeopleSection[],
+  get people(): TeamMember[] {
+    return this.peopleSections.flatMap((section) => section.members);
+  },
   gallery: [
     {
       src: "/assets/ded-system.webp",

@@ -109,14 +109,58 @@ describe("site content", () => {
   });
 
   it("lists the real CoE-AM roster with no fabricated quotes", () => {
-    expect(siteContent.people.length).toBe(28);
+    expect(siteContent.people.length).toBe(30);
     expect(siteContent.people.every((person) => person.photo.startsWith("/assets/"))).toBe(true);
-    expect(siteContent.people.every((person) => person.linkedin.length > 0)).toBe(true);
     // Quotes attributed to real, named people must come from the person
     // themselves, not be invented on their behalf.
     expect(siteContent.people.every((person) => !("note" in person && person.note))).toBe(true);
     expect(siteContent.people.some((person) => person.name === "Prof. Noam Eliaz")).toBe(true);
-    expect(siteContent.people.some((person) => person.name === "Vineet Srivastava")).toBe(true);
+    expect(siteContent.people.some((person) => person.name === "Dr. Vineet Srivastava")).toBe(true);
+  });
+
+  it("structures people into four hierarchical panels", () => {
+    expect(siteContent.peopleSections).toHaveLength(4);
+
+    const [panel1, panel2, panel3, panel4] = siteContent.peopleSections;
+
+    // Panel 1: Core Leadership & Technical Staff
+    expect(panel1.id).toBe("core");
+    expect(panel1.title).toBeUndefined();
+    expect(panel1.isFeatured).toBe(true);
+    expect(panel1.members).toHaveLength(6);
+    expect(panel1.members[0].name).toBe("Prof. Noam Eliaz");
+    expect(panel1.members[1].name).toBe("Prof. Bhaskar Chandra Mohanty");
+    expect(panel1.members[2].name).toBe("Dr. Vineet Srivastava");
+    expect(panel1.members[3].name).toBe("Dr. Malkeet Singh");
+    expect(panel1.members[4].name).toBe("Mr. Dileep Kumar");
+    expect(panel1.members[4].role).toBe("3D Printer Technician");
+    expect(panel1.members[4].photo).toBe("/assets/people/dileep-kumar.webp");
+    expect(panel1.members[4].affiliation).toBeUndefined();
+    expect(panel1.members[4].linkedin).toBeUndefined();
+    expect(panel1.members[5].name).toBe("Mr. Jagjit Singh");
+    expect(panel1.members[5].role).toBe("Wire EDM Technician");
+    expect(panel1.members[5].photo).toBe("/assets/people/jagjit-singh.webp");
+    expect(panel1.members[5].affiliation).toBeUndefined();
+    expect(panel1.members[5].linkedin).toBeUndefined();
+
+    // Panel 2: Affiliated Researchers
+    expect(panel2.id).toBe("affiliated");
+    expect(panel2.title).toBe("Affiliated Researchers");
+    expect(panel2.members.length).toBe(24);
+
+    // Panel 3: Postdocs and PhD Scholars
+    expect(panel3.id).toBe("postdocs-phd");
+    expect(panel3.title).toBe("Postdocs and PhD Scholars");
+    expect(panel3.members).toHaveLength(0);
+    expect(panel3.placeholder).toBeDefined();
+    expect(panel3.placeholder?.count).toBe(3);
+
+    // Panel 4: Undergraduate and Masters Students
+    expect(panel4.id).toBe("students");
+    expect(panel4.title).toBe("Undergraduate and Masters Students");
+    expect(panel4.members).toHaveLength(0);
+    expect(panel4.placeholder).toBeDefined();
+    expect(panel4.placeholder?.count).toBe(3);
   });
 
   it("no longer carries team or capability strip content", () => {
