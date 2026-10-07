@@ -8,7 +8,13 @@ function prefersReducedMotion() {
   return typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
-export function HeroCarousel({ items }: { items: GalleryItem[] }) {
+export function HeroCarousel({
+  items,
+  advanceMs = ADVANCE_MS
+}: {
+  items: GalleryItem[];
+  advanceMs?: number;
+}) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -18,9 +24,9 @@ export function HeroCarousel({ items }: { items: GalleryItem[] }) {
     }
     const id = window.setInterval(() => {
       setIndex((current) => nextIndex(current, items.length));
-    }, ADVANCE_MS);
+    }, advanceMs);
     return () => window.clearInterval(id);
-  }, [paused, items.length]);
+  }, [paused, items.length, advanceMs]);
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "ArrowRight") {
