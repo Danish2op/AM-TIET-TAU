@@ -523,8 +523,9 @@ function PeoplePage() {
           >
             {section.title && (
               <div className="people-section-header">
+                <span className="people-section-rule people-section-rule--left" aria-hidden="true" />
                 <h2 className="people-section-title">{section.title}</h2>
-                <span className="people-section-rule" aria-hidden="true" />
+                <span className="people-section-rule people-section-rule--right" aria-hidden="true" />
               </div>
             )}
 

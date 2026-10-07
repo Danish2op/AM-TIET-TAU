@@ -1638,8 +1638,9 @@ p {
 /* ── People Page ──────────────────────────────────────────────────────────── */
 
 .people-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.75rem;
 }
 
@@ -1651,7 +1652,8 @@ p {
   padding: 2rem 1.25rem 1.5rem;
   cursor: pointer;
   border: none;
-  width: 100%;
+  width: 216px;
+  max-width: 100%;
   font-family: inherit;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -1718,8 +1720,10 @@ p {
 .people-section-header {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
-  margin-bottom: 2rem;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.25rem;
+  text-align: center;
 }
 
 .people-section-title {
@@ -1734,22 +1738,27 @@ p {
 .people-section-rule {
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, rgba(14, 24, 58, 0.2), rgba(14, 24, 58, 0.04));
+}
+
+.people-section-rule--left {
+  background: linear-gradient(to left, rgba(14, 24, 58, 0.22), rgba(14, 24, 58, 0.02));
+}
+
+.people-section-rule--right {
+  background: linear-gradient(to right, rgba(14, 24, 58, 0.22), rgba(14, 24, 58, 0.02));
 }
 
 /* Featured Core Cards (Panel 1) */
 .people-grid--featured {
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
 }
 
-@media (min-width: 960px) {
-  .people-grid--featured {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .person-card--featured {
+  width: 320px;
+  max-width: 100%;
   padding: 2.5rem 1.5rem 1.85rem;
   border-top: 2px solid rgba(26, 86, 219, 0.4);
 }
@@ -1774,11 +1783,15 @@ p {
 
 /* Ghost / Skeleton Cards (Panels 3 & 4) */
 .people-grid--placeholder {
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.75rem;
 }
 
 .person-card--skeleton {
+  width: 240px;
+  max-width: 100%;
   cursor: default;
   opacity: 0.85;
   border: 1px dashed rgba(14, 24, 58, 0.22);
@@ -2001,20 +2014,20 @@ p {
   }
 
   .people-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.85rem;
   }
 
   .people-grid--featured {
-    grid-template-columns: 1fr;
     gap: 1.25rem;
   }
 
   .person-card {
+    width: calc(50% - 0.5rem);
     padding: 1.5rem 0.75rem 1.25rem;
   }
 
   .person-card--featured {
+    width: 100%;
     padding: 1.75rem 1rem 1.5rem;
   }
 
@@ -2026,6 +2039,11 @@ p {
   .person-card--featured .person-card-photo {
     width: 104px;
     height: 104px;
+  }
+
+  .person-card--skeleton {
+    width: 100%;
+    max-width: 280px;
   }
 
   .person-modal-inner {
