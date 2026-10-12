@@ -134,14 +134,14 @@ describe("site content", () => {
     expect(siteContent.people.some((person) => person.name === "Dr. Vineet Srivastava")).toBe(true);
   });
 
-  it("structures people into four hierarchical panels", () => {
-    expect(siteContent.peopleSections).toHaveLength(4);
+  it("structures people into five hierarchical panels", () => {
+    expect(siteContent.peopleSections).toHaveLength(5);
 
-    const [panel1, panel2, panel3, panel4] = siteContent.peopleSections;
+    const [panel1, panel2, panel3, panel4, panel5] = siteContent.peopleSections;
 
     // Panel 1: Core Leadership & Technical Staff
     expect(panel1.id).toBe("core");
-    expect(panel1.title).toBeUndefined();
+    expect(panel1.title).toBe("Core Members");
     expect(panel1.isFeatured).toBe(true);
     expect(panel1.members).toHaveLength(6);
     expect(panel1.members[0].name).toBe("Prof. Noam Eliaz");
@@ -162,21 +162,36 @@ describe("site content", () => {
     // Panel 2: Affiliated Researchers
     expect(panel2.id).toBe("affiliated");
     expect(panel2.title).toBe("Affiliated Researchers");
-    expect(panel2.members.length).toBe(24);
+    expect(panel2.members.length).toBe(16);
 
-    // Panel 3: Postdocs and PhD Scholars
-    expect(panel3.id).toBe("postdocs-phd");
-    expect(panel3.title).toBe("Postdocs and PhD Scholars");
-    expect(panel3.members).toHaveLength(0);
-    expect(panel3.placeholder).toBeDefined();
-    expect(panel3.placeholder?.count).toBe(3);
+    // Panel 3: Foreign Collaboration
+    expect(panel3.id).toBe("foreign-collaboration");
+    expect(panel3.title).toBe("Foreign Collaboration");
+    expect(panel3.members.length).toBe(8);
+    expect(panel3.members.map((m) => m.name)).toEqual([
+      "Ankit Thakur",
+      "Maxim Sokol",
+      "Saurav Goel",
+      "Francesco Travascio",
+      "Monsuru Ramoni",
+      "Yi Huang",
+      "Colin Hall",
+      "Tanmoy Mukhopadhyay"
+    ]);
 
-    // Panel 4: Undergraduate and Masters Students
-    expect(panel4.id).toBe("students");
-    expect(panel4.title).toBe("Undergraduate and Masters Students");
+    // Panel 4: Postdocs and PhD Scholars
+    expect(panel4.id).toBe("postdocs-phd");
+    expect(panel4.title).toBe("Postdocs and PhD Scholars");
     expect(panel4.members).toHaveLength(0);
     expect(panel4.placeholder).toBeDefined();
     expect(panel4.placeholder?.count).toBe(3);
+
+    // Panel 5: Undergraduate and Masters Students
+    expect(panel5.id).toBe("students");
+    expect(panel5.title).toBe("Undergraduate and Masters Students");
+    expect(panel5.members).toHaveLength(0);
+    expect(panel5.placeholder).toBeDefined();
+    expect(panel5.placeholder?.count).toBe(3);
   });
 
   it("no longer carries team or capability strip content", () => {

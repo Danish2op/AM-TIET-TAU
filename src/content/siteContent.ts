@@ -518,6 +518,7 @@ export const siteContent = {
   peopleSections: [
     {
       id: "core",
+      title: "Core Members",
       isFeatured: true,
       members: [
         {
@@ -700,7 +701,13 @@ export const siteContent = {
           photo: "/assets/person-placeholder.svg",
           photoAlt: "Neha Shah, Co-PI at Guru Nanak Institute of Dental Sciences and Research, Kolkata",
           linkedin: "#"
-        },
+        }
+      ]
+    },
+    {
+      id: "foreign-collaboration",
+      title: "Foreign Collaboration",
+      members: [
         {
           name: "Ankit Thakur",
           role: "Postdoctoral Research Fellow",
