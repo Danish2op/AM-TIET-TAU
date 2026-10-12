@@ -164,9 +164,9 @@ describe("site content", () => {
     expect(panel2.title).toBe("Affiliated Researchers");
     expect(panel2.members.length).toBe(16);
 
-    // Panel 3: Foreign Collaboration
-    expect(panel3.id).toBe("foreign-collaboration");
-    expect(panel3.title).toBe("Foreign Collaboration");
+    // Panel 3: International Collaborators
+    expect(panel3.id).toBe("international-collaborators");
+    expect(panel3.title).toBe("International Collaborators");
     expect(panel3.members.length).toBe(8);
     expect(panel3.members.map((m) => m.name)).toEqual([
       "Ankit Thakur",

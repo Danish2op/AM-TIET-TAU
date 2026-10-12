@@ -705,8 +705,8 @@ export const siteContent = {
       ]
     },
     {
-      id: "foreign-collaboration",
-      title: "Foreign Collaboration",
+      id: "international-collaborators",
+      title: "International Collaborators",
       members: [
         {
           name: "Ankit Thakur",
